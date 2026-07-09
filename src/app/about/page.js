@@ -43,7 +43,7 @@ export default function About() {
                         {/* Buttons */}
                         <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
                             <Link
-                                href="/consultation"
+                                href="/contact"
                                 className="flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3.5 rounded-xl font-medium transition-colors shadow-lg shadow-blue-200/50"
                             >
                                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -53,7 +53,7 @@ export default function About() {
                             </Link>
 
                             <Link
-                                href="/work"
+                                href="/portfolio"
                                 className="flex items-center justify-center gap-2 bg-white text-[#0B1B3D] border-2 border-gray-300 hover:border-gray-500 px-6 py-3.5 rounded-xl font-medium transition-colors"
                             >
                                 View our work

@@ -1,18 +1,33 @@
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 
 export default function Navbar() {
+  const pathname = usePathname();
+
+  const navLinks = [
+    { href: '/', label: 'Home' },
+    { href: '/about', label: 'About' },
+    { href: '/services', label: 'Services' },
+    { href: '/portfolio', label: 'Portfolio' },
+    { href: '/blog', label: 'Blog' },
+    { href: '/faq', label: 'FAQs' },
+    { href: '/contact', label: 'Contact' },
+  ];
+
   return (
-    <nav className="flex items-center justify-between px-6 py-4 bg-white border-b border-gray-100 font-sans w-full">
+    <nav className="sticky top-0 z-50 flex items-center justify-between px-6 py-4 bg-white border-b border-gray-100 font-sans w-full shadow-sm">
       {/* Logo Section */}
       <div className="flex items-center gap-3 cursor-pointer">
         <Link href="/">
           <Image
-            src="/logo.png"
+            src="/remove.png"
             alt="DevCodeX Logo"
-            width={160}
-            height={60}
-            className="object-contain h-12 w-auto"
+            width={240}
+            height={80}
+            className="object-contain h-16 w-auto"
             priority
           />
         </Link>
@@ -20,16 +35,23 @@ export default function Navbar() {
 
       {/* Navigation Links */}
       <div className="hidden lg:flex items-center gap-8">
-        <Link href="/" className="text-blue-600 font-semibold relative text-sm">
-          Home
-          <span className="absolute left-0 -bottom-1.5 w-full h-0.5 bg-blue-600 rounded-full"></span>
-        </Link>
-        <Link href="/about" className="text-gray-600 hover:text-blue-600 font-medium transition-colors text-sm">About</Link>
-        <Link href="/services" className="text-gray-600 hover:text-blue-600 font-medium transition-colors text-sm">Services</Link>
-        <Link href="/portfolio" className="text-gray-600 hover:text-blue-600 font-medium transition-colors text-sm">Portfolio</Link>
-        <Link href="/blog" className="text-gray-600 hover:text-blue-600 font-medium transition-colors text-sm">Blog</Link>
-        <Link href="/faq" className="text-gray-600 hover:text-blue-600 font-medium transition-colors text-sm">FAQs</Link>
-        <Link href="/contact" className="text-gray-600 hover:text-blue-600 font-medium transition-colors text-sm">Contact</Link>
+        {navLinks.map(({ href, label }) => {
+          const isActive = pathname === href;
+          return (
+            <Link
+              key={href}
+              href={href}
+              className={`relative text-sm font-medium transition-colors ${
+                isActive ? 'text-blue-600 font-semibold' : 'text-gray-600 hover:text-blue-600'
+              }`}
+            >
+              {label}
+              {isActive && (
+                <span className="absolute left-0 -bottom-1.5 w-full h-0.5 bg-blue-600 rounded-full"></span>
+              )}
+            </Link>
+          );
+        })}
       </div>
 
       {/* Call to Action */}

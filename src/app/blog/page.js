@@ -45,7 +45,7 @@ export default function Blog() {
                     <div className="relative w-full h-[400px] md:h-[500px] lg:h-[600px] flex justify-end items-center">
                         <div className="relative w-full h-full">
                            <Image 
-                               src="/img7.png" 
+                               src="/img26.png" 
                                alt="Blog Hero Image" 
                                fill
                                className="object-contain lg:object-right scale-110 lg:scale-125 origin-center lg:origin-right"
