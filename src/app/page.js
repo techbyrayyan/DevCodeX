@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import Testimonial from "@/components/Testimonial";
+import Counter from "@/components/Counter";
 
 export default function Home() {
   return (
@@ -81,7 +82,7 @@ export default function Home() {
                   </svg>
                 </div>
                 <div>
-                  <div className="text-4xl font-extrabold text-blue-600">50+</div>
+                  <div className="text-4xl font-extrabold text-blue-600"><Counter end={50} suffix="+" /></div>
                   <div className="text-sm font-semibold text-gray-500 mt-1">Projects Completed</div>
                 </div>
               </div>
@@ -94,7 +95,7 @@ export default function Home() {
                   </svg>
                 </div>
                 <div>
-                  <div className="text-4xl font-extrabold text-blue-600">30+</div>
+                  <div className="text-4xl font-extrabold text-blue-600"><Counter end={30} suffix="+" /></div>
                   <div className="text-sm font-semibold text-gray-500 mt-1">Happy Clients</div>
                 </div>
               </div>
@@ -107,7 +108,7 @@ export default function Home() {
                   </svg>
                 </div>
                 <div>
-                  <div className="text-4xl font-extrabold text-blue-600">3+</div>
+                  <div className="text-4xl font-extrabold text-blue-600"><Counter end={3} suffix="+" /></div>
                   <div className="text-sm font-semibold text-gray-500 mt-1">Years Experience</div>
                 </div>
               </div>
@@ -120,7 +121,7 @@ export default function Home() {
                   </svg>
                 </div>
                 <div>
-                  <div className="text-4xl font-extrabold text-blue-600">100%</div>
+                  <div className="text-4xl font-extrabold text-blue-600"><Counter end={100} suffix="%" /></div>
                   <div className="text-sm font-semibold text-gray-500 mt-1">Client Satisfaction</div>
                 </div>
               </div>
@@ -161,7 +162,7 @@ export default function Home() {
             {[...Array(2)].map((_, index) => (
               <div key={index} className="flex gap-6 lg:gap-8 pr-6 lg:pr-8">
                 {/* Card 1 */}
-                <div className="w-[300px] md:w-[350px] lg:w-[380px] flex-shrink-0 bg-white border border-gray-300 p-8 rounded-3xl shadow-[0_4px_20px_-4px_rgba(0,0,0,0.03)] hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                <Link href="/wordpress" className="block w-[300px] md:w-[350px] lg:w-[380px] flex-shrink-0 bg-white border border-gray-300 p-8 rounded-3xl shadow-[0_4px_20px_-4px_rgba(0,0,0,0.03)] hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
                   <div className="flex flex-col sm:flex-row gap-5 h-full">
                     <div className="w-16 h-16 rounded-2xl bg-[#E8F3FF] flex items-center justify-center flex-shrink-0">
                       <svg className="w-8 h-8 text-[#21759B]" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -173,18 +174,18 @@ export default function Home() {
                       <p className="text-sm text-gray-500 mb-6 leading-relaxed flex-grow">
                         Custom WordPress websites that are fast, secure and easy to manage.
                       </p>
-                      <Link href="#" className="inline-flex items-center gap-1.5 text-blue-600 font-semibold hover:text-blue-700 text-sm mt-auto">
+                      <span className="inline-flex items-center gap-1.5 text-blue-600 font-semibold hover:text-blue-700 text-sm mt-auto">
                         Learn more
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                         </svg>
-                      </Link>
+                      </span>
                     </div>
                   </div>
-                </div>
+                </Link>
 
                 {/* Card 2 */}
-                <div className="w-[300px] md:w-[350px] lg:w-[380px] flex-shrink-0 bg-white border border-gray-300 p-8 rounded-3xl shadow-[0_4px_20px_-4px_rgba(0,0,0,0.03)] hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                <Link href="/shopify" className="block w-[300px] md:w-[350px] lg:w-[380px] flex-shrink-0 bg-white border border-gray-300 p-8 rounded-3xl shadow-[0_4px_20px_-4px_rgba(0,0,0,0.03)] hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
                   <div className="flex flex-col sm:flex-row gap-5 h-full">
                     <div className="w-16 h-16 rounded-2xl bg-[#E8FAED] flex items-center justify-center flex-shrink-0">
                       <svg className="w-8 h-8 text-[#95BF47]" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -196,18 +197,18 @@ export default function Home() {
                       <p className="text-sm text-gray-500 mb-6 leading-relaxed flex-grow">
                         High-converting Shopify stores designed to boost your sales and brand.
                       </p>
-                      <Link href="#" className="inline-flex items-center gap-1.5 text-blue-600 font-semibold hover:text-blue-700 text-sm mt-auto">
+                      <span className="inline-flex items-center gap-1.5 text-blue-600 font-semibold hover:text-blue-700 text-sm mt-auto">
                         Learn more
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                         </svg>
-                      </Link>
+                      </span>
                     </div>
                   </div>
-                </div>
+                </Link>
 
                 {/* Card 3 */}
-                <div className="w-[300px] md:w-[350px] lg:w-[380px] flex-shrink-0 bg-white border border-gray-300 p-8 rounded-3xl shadow-[0_4px_20px_-4px_rgba(0,0,0,0.03)] hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                <Link href="/front-end" className="block w-[300px] md:w-[350px] lg:w-[380px] flex-shrink-0 bg-white border border-gray-300 p-8 rounded-3xl shadow-[0_4px_20px_-4px_rgba(0,0,0,0.03)] hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
                   <div className="flex flex-col sm:flex-row gap-5 h-full">
                     <div className="w-16 h-16 rounded-2xl bg-[#F0F5FF] flex items-center justify-center flex-shrink-0">
                       <svg className="w-8 h-8 text-[#4285F4]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -219,18 +220,17 @@ export default function Home() {
                       <p className="text-sm text-gray-500 mb-6 leading-relaxed flex-grow">
                         Modern, responsive and pixel-perfect websites using HTML, CSS, Bootstrap, JavaScript.
                       </p>
-                      <Link href="#" className="inline-flex items-center gap-1.5 text-blue-600 font-semibold hover:text-blue-700 text-sm mt-auto">
+                      <span className="inline-flex items-center gap-1.5 text-blue-600 font-semibold hover:text-blue-700 text-sm mt-auto">
                         Learn more
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                         </svg>
-                      </Link>
+                      </span>
                     </div>
                   </div>
-                </div>
+                </Link>
 
-                {/* Card 4 */}
-                <div className="w-[300px] md:w-[350px] lg:w-[380px] flex-shrink-0 bg-white border border-gray-300 p-8 rounded-3xl shadow-[0_4px_20px_-4px_rgba(0,0,0,0.03)] hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                <Link href="/back-end" className="block w-[300px] md:w-[350px] lg:w-[380px] flex-shrink-0 bg-white border border-gray-300 p-8 rounded-3xl shadow-[0_4px_20px_-4px_rgba(0,0,0,0.03)] hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
                   <div className="flex flex-col sm:flex-row gap-5 h-full">
                     <div className="w-16 h-16 rounded-2xl bg-[#F8EEFF] flex items-center justify-center flex-shrink-0">
                       <svg className="w-8 h-8 text-[#9333EA]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -242,18 +242,18 @@ export default function Home() {
                       <p className="text-sm text-gray-500 mb-6 leading-relaxed flex-grow">
                         Robust, scalable and secure backend solutions with modern technologies.
                       </p>
-                      <Link href="#" className="inline-flex items-center gap-1.5 text-blue-600 font-semibold hover:text-blue-700 text-sm mt-auto">
+                      <span className="inline-flex items-center gap-1.5 text-blue-600 font-semibold hover:text-blue-700 text-sm mt-auto">
                         Learn more
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                         </svg>
-                      </Link>
+                      </span>
                     </div>
                   </div>
-                </div>
+                </Link>
 
                 {/* Card 5 */}
-                <div className="w-[300px] md:w-[350px] lg:w-[380px] flex-shrink-0 bg-white border border-gray-300 p-8 rounded-3xl shadow-[0_4px_20px_-4px_rgba(0,0,0,0.03)] hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                <Link href="/ai-saas" className="block w-[300px] md:w-[350px] lg:w-[380px] flex-shrink-0 bg-white border border-gray-300 p-8 rounded-3xl shadow-[0_4px_20px_-4px_rgba(0,0,0,0.03)] hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
                   <div className="flex flex-col sm:flex-row gap-5 h-full">
                     <div className="w-16 h-16 rounded-2xl bg-[#F8EEFF] flex items-center justify-center flex-shrink-0">
                       <svg className="w-7 h-7 text-[#9333EA]" fill="currentColor" viewBox="0 0 24 24">
@@ -265,18 +265,18 @@ export default function Home() {
                       <p className="text-sm text-gray-500 mb-6 leading-relaxed flex-grow">
                         We build smart AI-powered SaaS products that solve real business problems.
                       </p>
-                      <Link href="#" className="inline-flex items-center gap-1.5 text-blue-600 font-semibold hover:text-blue-700 text-sm mt-auto">
+                      <span className="inline-flex items-center gap-1.5 text-blue-600 font-semibold hover:text-blue-700 text-sm mt-auto">
                         Learn more
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                         </svg>
-                      </Link>
+                      </span>
                     </div>
                   </div>
-                </div>
+                </Link>
 
                 {/* Card 6 */}
-                <div className="w-[300px] md:w-[350px] lg:w-[380px] flex-shrink-0 bg-white border border-gray-300 p-8 rounded-3xl shadow-[0_4px_20px_-4px_rgba(0,0,0,0.03)] hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                <Link href="/ai-automation" className="block w-[300px] md:w-[350px] lg:w-[380px] flex-shrink-0 bg-white border border-gray-300 p-8 rounded-3xl shadow-[0_4px_20px_-4px_rgba(0,0,0,0.03)] hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
                   <div className="flex flex-col sm:flex-row gap-5 h-full">
                     <div className="w-16 h-16 rounded-2xl bg-[#F8EEFF] flex items-center justify-center flex-shrink-0">
                       <svg className="w-8 h-8 text-[#9333EA]" fill="currentColor" viewBox="0 0 24 24">
@@ -288,15 +288,15 @@ export default function Home() {
                       <p className="text-sm text-gray-500 mb-6 leading-relaxed flex-grow">
                         Automate repetitive tasks and workflows using AI to save time and increase productivity.
                       </p>
-                      <Link href="#" className="inline-flex items-center gap-1.5 text-blue-600 font-semibold hover:text-blue-700 text-sm mt-auto">
+                      <span className="inline-flex items-center gap-1.5 text-blue-600 font-semibold hover:text-blue-700 text-sm mt-auto">
                         Learn more
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                         </svg>
-                      </Link>
+                      </span>
                     </div>
                   </div>
-                </div>
+                </Link>
               </div>
             ))}
           </div>
