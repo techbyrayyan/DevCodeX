@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import Testimonial from "@/components/Testimonial";
+import ServicesSection from "@/components/ServicesSection";
 
 export default function About() {
     return (
@@ -12,7 +13,7 @@ export default function About() {
             </div>
 
             {/* ─── HERO SECTION ─── */}
-            <main className="max-w-7xl mx-auto px-6 pt-16 pb-16 lg:pt-24 relative">
+            <main className="max-w-7xl mx-auto px-6 pt-8 pb-8 lg:pt-12 relative">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
                     {/* Left Content */}
@@ -86,159 +87,7 @@ export default function About() {
             </main>
 
             {/* ─── SERVICES SECTION ─── */}
-            <section className="max-w-7xl mx-auto px-6 py-16 lg:py-24">
-                {/* Section Header */}
-                <div className="text-center mb-12">
-                    <span className="text-sm font-bold text-blue-600 tracking-widest uppercase mb-3 block">
-                        WHAT WE DO
-                    </span>
-                    <h2 className="text-4xl font-extrabold text-[#0B1B3D] mb-4">
-                        End-to-End Digital Solutions
-                    </h2>
-                    <p className="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">
-                        We offer a wide range of services to help your business grow online with modern technology and smart strategies.
-                    </p>
-                </div>
-
-                {/* Cards Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-                    {/* Card 1 — WordPress */}
-                    <div className="bg-white border-2 border-gray-300 rounded-3xl p-7  hover:-translate-y-1 transition-all duration-300">
-                        <div className="flex flex-col sm:flex-row gap-5 h-full">
-                            <div className="w-16 h-16 rounded-2xl bg-[#E8F3FF] flex items-center justify-center flex-shrink-0">
-                                <img src="https://cdn.simpleicons.org/wordpress/21759B" alt="WordPress" className="w-8 h-8" />
-                            </div>
-                            <div className="flex flex-col flex-grow">
-                                <h3 className="text-xl font-bold text-[#0B1B3D] mb-2 leading-tight">WordPress Development</h3>
-                                <p className="text-sm text-gray-500 mb-6 leading-relaxed flex-grow">
-                                    Custom WordPress websites that are fast, secure and easy to manage.
-                                </p>
-                                <Link href="#" className="inline-flex items-center gap-1.5 text-blue-600 font-semibold hover:text-blue-700 text-sm mt-auto">
-                                    Learn more
-                                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                                    </svg>
-                                </Link>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Card 2 — Shopify */}
-                    <div className="bg-white border-2 border-gray-300 rounded-3xl p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-                        <div className="flex flex-col sm:flex-row gap-5 h-full">
-                            <div className="w-16 h-16 rounded-2xl bg-[#E8FAED] flex items-center justify-center flex-shrink-0">
-                                <img src="https://cdn.simpleicons.org/shopify/95BF47" alt="Shopify" className="w-8 h-8" />
-                            </div>
-                            <div className="flex flex-col flex-grow">
-                                <h3 className="text-xl font-bold text-[#0B1B3D] mb-2 leading-tight">Shopify Development</h3>
-                                <p className="text-sm text-gray-500 mb-6 leading-relaxed flex-grow">
-                                    High-converting Shopify stores designed to boost your sales and brand.
-                                </p>
-                                <Link href="#" className="inline-flex items-center gap-1.5 text-blue-600 font-semibold hover:text-blue-700 text-sm mt-auto">
-                                    Learn more
-                                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                                    </svg>
-                                </Link>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Card 3 — Frontend */}
-                    <div className="bg-white border-2 border-gray-300 rounded-3xl p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-                        <div className="flex flex-col sm:flex-row gap-5 h-full">
-                            <div className="w-16 h-16 rounded-2xl bg-[#F0F5FF] flex items-center justify-center flex-shrink-0">
-                                <svg className="w-8 h-8 text-[#4285F4]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                                </svg>
-                            </div>
-                            <div className="flex flex-col flex-grow">
-                                <h3 className="text-xl font-bold text-[#0B1B3D] mb-2 leading-tight">Frontend Development</h3>
-                                <p className="text-sm text-gray-500 mb-6 leading-relaxed flex-grow">
-                                    Modern, responsive and pixel-perfect websites using HTML, CSS, Bootstrap, JavaScript.
-                                </p>
-                                <Link href="#" className="inline-flex items-center gap-1.5 text-blue-600 font-semibold hover:text-blue-700 text-sm mt-auto">
-                                    Learn more
-                                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                                    </svg>
-                                </Link>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Card 4 — Backend */}
-                    <div className="bg-white border-2 border-gray-300 rounded-3xl p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-                        <div className="flex flex-col sm:flex-row gap-5 h-full">
-                            <div className="w-16 h-16 rounded-2xl bg-[#F8EEFF] flex items-center justify-center flex-shrink-0">
-                                <svg className="w-8 h-8 text-[#9333EA]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
-                                </svg>
-                            </div>
-                            <div className="flex flex-col flex-grow">
-                                <h3 className="text-xl font-bold text-[#0B1B3D] mb-2 leading-tight">Backend Development</h3>
-                                <p className="text-sm text-gray-500 mb-6 leading-relaxed flex-grow">
-                                    Robust, scalable and secure backend solutions with modern technologies.
-                                </p>
-                                <Link href="#" className="inline-flex items-center gap-1.5 text-blue-600 font-semibold hover:text-blue-700 text-sm mt-auto">
-                                    Learn more
-                                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                                    </svg>
-                                </Link>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Card 5 — AI SaaS */}
-                    <div className="bg-white border-2 border-gray-300 rounded-3xl p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-                        <div className="flex flex-col sm:flex-row gap-5 h-full">
-                            <div className="w-16 h-16 rounded-2xl bg-[#F8EEFF] flex items-center justify-center flex-shrink-0">
-                                <svg className="w-7 h-7 text-[#9333EA]" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M4 4h16a2 2 0 012 2v12a2 2 0 01-2 2H4a2 2 0 01-2-2V6a2 2 0 012-2zm0 2v12h16V6H4zm3 3h2v6H7V9zm5 0h4v2h-2v1h2v2h-2v1h2v-2h-2v-1h2v-2h-4V9z" />
-                                </svg>
-                            </div>
-                            <div className="flex flex-col flex-grow">
-                                <h3 className="text-xl font-bold text-[#0B1B3D] mb-2 leading-tight">AI SaaS Development</h3>
-                                <p className="text-sm text-gray-500 mb-6 leading-relaxed flex-grow">
-                                    We build smart AI-powered SaaS products that solve real business problems.
-                                </p>
-                                <Link href="#" className="inline-flex items-center gap-1.5 text-blue-600 font-semibold hover:text-blue-700 text-sm mt-auto">
-                                    Learn more
-                                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                                    </svg>
-                                </Link>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Card 6 — AI Automation */}
-                    <div className="bg-white border-2 border-gray-300 rounded-3xl p-7 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
-                        <div className="flex flex-col sm:flex-row gap-5 h-full">
-                            <div className="w-16 h-16 rounded-2xl bg-[#F8EEFF] flex items-center justify-center flex-shrink-0">
-                                <svg className="w-8 h-8 text-[#9333EA]" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M12 2a2 2 0 012 2c0 .74-.4 1.39-1 1.73V7h3a3 3 0 013 3v2h2a2 2 0 110 4h-2v1a3 3 0 01-3 3H8a3 3 0 01-3-3v-1H3a2 2 0 110-4h2v-2a3 3 0 013-3h3V5.73A2 2 0 0110 4a2 2 0 012-2zm-3 8a1 1 0 100 2 1 1 0 000-2zm6 0a1 1 0 100 2 1 1 0 000-2zm-6 4v1h6v-1H9z" />
-                                </svg>
-                            </div>
-                            <div className="flex flex-col flex-grow">
-                                <h3 className="text-xl font-bold text-[#0B1B3D] mb-2 leading-tight">AI Automation Systems</h3>
-                                <p className="text-sm text-gray-500 mb-6 leading-relaxed flex-grow">
-                                    Automate repetitive tasks and workflows using AI to save time and increase productivity.
-                                </p>
-                                <Link href="#" className="inline-flex items-center gap-1.5 text-blue-600 font-semibold hover:text-blue-700 text-sm mt-auto">
-                                    Learn more
-                                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                                    </svg>
-                                </Link>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </section>
+            <ServicesSection />
 
             {/* ─── HOW WE WORK SECTION ─── */}
             <section className="max-w-7xl mx-auto px-6 py-16 lg:py-24">

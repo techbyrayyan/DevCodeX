@@ -6,7 +6,7 @@ export default function ShopifyPage() {
     <div className="min-h-screen bg-[#dbe9fd] font-sans overflow-hidden relative">
 
       {/* Hero Section */}
-      <main className="max-w-7xl mx-auto px-6 pt-16 pb-12 relative">
+      <main className="max-w-7xl mx-auto px-6 pt-8 pb-8 relative">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
 
           {/* Left Content */}

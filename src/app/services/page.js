@@ -121,7 +121,7 @@ export default function ServicesPage() {
       </div>
 
       {/* ─── HERO SECTION ─── */}
-      <section className="max-w-7xl mx-auto px-6 pt-16 lg:pt-24 pb-32 lg:pb-40 relative z-10">
+      <section className="max-w-7xl mx-auto px-6 pt-8 lg:pt-12 pb-32 lg:pb-40 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               
               {/* Left Column - Content */}

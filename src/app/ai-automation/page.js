@@ -6,7 +6,7 @@ export default function AIAutomationPage() {
     <div className="min-h-screen bg-white font-sans overflow-hidden">
 
       {/* Hero Section */}
-      <main className="max-w-7xl mx-auto px-6 pt-16 pb-20 relative">
+      <main className="max-w-7xl mx-auto px-6 pt-8 pb-12 relative">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
           {/* Left Content */}
