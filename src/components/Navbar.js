@@ -15,18 +15,19 @@ export default function Navbar() {
     { href: '/blog', label: 'Blog' },
     { href: '/faq', label: 'FAQs' },
     { href: '/contact', label: 'Contact' },
+    { href: '/tools', label: 'Free AI Tools' },
   ];
 
   return (
     <nav 
       className="sticky top-0 z-50 flex items-center justify-between px-6 py-4 border-b border-gray-100 font-sans w-full shadow-sm"
-      style={{ backgroundColor: '#f7f7f7' }}
+      style={{ backgroundColor: 'white' }}
     >
       {/* Logo Section */}
       <div className="flex-1 flex items-center justify-start shrink-0 h-16">
         <Link href="/">
           <Image
-            src="/logo.png"
+            src="/real1.png"
             alt="DevCodeX Logo"
             width={240}
             height={80}
