@@ -141,11 +141,11 @@ export default function Footer() {
             <ul className="space-y-2.5 text-xs">
               <li className="flex items-center gap-2 hover:text-white transition-colors" style={{ color: '#a1a1aa' }}>
                 <Phone className="w-3.5 h-3.5 shrink-0" style={{ color: '#3b82f6' }} />
-                <span>+92 323 9724377</span>
-              </li>
+                <span>+92 3239724377</span>
+              </li> 
               <li className="flex items-center gap-2 hover:text-white transition-colors" style={{ color: '#a1a1aa' }}>
                 <Mail className="w-3.5 h-3.5 shrink-0" style={{ color: '#3b82f6' }} />
-                <span>hello@devcodex.com</span>
+                <span>devcodex.agency@gmail.com</span>
               </li>
               <li className="flex items-center gap-2 hover:text-white transition-colors" style={{ color: '#a1a1aa' }}>
                 <MapPin className="w-3.5 h-3.5 shrink-0" style={{ color: '#3b82f6' }} />
