@@ -4,6 +4,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import BackgroundVideo from '@/components/BackgroundVideo';
 import WhatsAppButton from '@/components/WhatsAppButton';
+import IntroAnimation from '@/components/IntroAnimation';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -46,6 +47,7 @@ export default function RootLayout({ children }) {
         suppressHydrationWarning
       >
         <BackgroundVideo />
+        <IntroAnimation />
         <Navbar />
         <main className="flex-grow pt-20 relative z-10">
           {children}
