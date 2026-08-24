@@ -227,40 +227,25 @@ export default function AboutPage() {
               <motion.div key={i} variants={fadeInUp} custom={i} className="hover-card rounded-2xl p-6 space-y-5" style={cardStyle}>
                 <div className="flex items-center gap-4">
                   <div
-                    className="relative w-16 h-16 rounded-xl overflow-hidden shrink-0 flex items-center justify-center p-2"
+                    className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden shrink-0"
                     style={{ border: '1px solid #27272a', backgroundColor: '#050505' }}
                   >
-                    <Image src={member.avatar} alt={member.name} width={48} height={48} className="object-contain" />
+                    <Image src={member.avatar} alt={member.name} fill className="object-cover" />
                   </div>
                   <div>
                     <h4
-                      className="text-lg font-bold"
+                      className="text-lg sm:text-xl font-bold"
                       style={{ color: '#ffffff', fontFamily: '"Outfit", "Inter", system-ui, sans-serif' }}
                     >
                       {member.name}
                     </h4>
-                    <p className="text-xs font-mono" style={{ color: '#3b82f6' }}>{member.role}</p>
+                    <p className="text-xs font-mono mt-0.5" style={{ color: '#3b82f6' }}>{member.role}</p>
                   </div>
                 </div>
 
-                <p className="text-xs leading-relaxed" style={{ color: '#a1a1aa' }}>
+                <p className="text-xs sm:text-sm leading-relaxed" style={{ color: '#a1a1aa' }}>
                   {member.bio}
                 </p>
-
-                {/* Skills tags */}
-                {member.skills && (
-                  <div className="flex flex-wrap gap-1.5 pt-1">
-                    {member.skills.map((skill, sIdx) => (
-                      <span
-                        key={sIdx}
-                        className="text-[10px] font-mono px-2 py-0.5 rounded-md"
-                        style={{ ...innerCardStyle, color: '#a1a1aa' }}
-                      >
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
-                )}
               </motion.div>
             ))}
           </motion.div>

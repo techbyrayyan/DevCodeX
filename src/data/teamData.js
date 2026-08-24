@@ -49,7 +49,7 @@ export const teamMembers = [
     name: "Rayyan Ansari",
     role: "Full Stack Engineer",
     bio: "Specializing in high-speed Next.js applications, serverless architecture, and scalable REST/GraphQL APIs.",
-    avatar: "/logo4.png",
+    avatar: "/human1.jpeg",
     skills: ["Next.js", "React", "Node.js", "TypeScript"],
     socials: { twitter: "#", linkedin: "#", github: "#" }
   },
@@ -57,7 +57,7 @@ export const teamMembers = [
     name: "Hamza Tariq",
     role: "AI & ML Specialist",
     bio: "Engineering custom AI agents, fine-tuned language models, and enterprise workflow automation pipelines.",
-    avatar: "/devcodex.jpeg",
+    avatar: "/human2.png",
     skills: ["Python", "OpenAI", "LangChain", "Vector DBs"],
     socials: { twitter: "#", linkedin: "#", github: "#" }
   },
@@ -65,7 +65,7 @@ export const teamMembers = [
     name: "Daniyal Khan",
     role: "Lead UI/UX Designer",
     bio: "Crafting sleek dark-mode interfaces, interactive wireframes, and conversion-optimized user experiences.",
-    avatar: "/devcodex.png",
+    avatar: "/human3.jpeg",
     skills: ["Figma", "Design Systems", "Prototyping", "UI/UX"],
     socials: { twitter: "#", linkedin: "#", github: "#" }
   },
@@ -73,7 +73,7 @@ export const teamMembers = [
     name: "Zainab Malik",
     role: "Cloud & DevOps Architect",
     bio: "Managing high-availability cloud infrastructure, Docker containers, Kubernetes, and automated deployment pipelines.",
-    avatar: "/logo4.png",
+    avatar: "/human4.jpeg",
     skills: ["AWS", "Docker", "Vercel", "Kubernetes"],
     socials: { twitter: "#", linkedin: "#", github: "#" }
   },
@@ -81,7 +81,7 @@ export const teamMembers = [
     name: "Bilal Ahmed",
     role: "Frontend & 3D Developer",
     bio: "Building immersive client-side WebGL graphics, micro-animations, and smooth responsive web interfaces.",
-    avatar: "/devcodex.jpeg",
+    avatar: "/img2.jpg",
     skills: ["Three.js", "Tailwind CSS", "Framer Motion", "WebGL"],
     socials: { twitter: "#", linkedin: "#", github: "#" }
   },
@@ -89,7 +89,7 @@ export const teamMembers = [
     name: "Ayesha Siddiqui",
     role: "QA & Security Engineer",
     bio: "Ensuring zero-vulnerability codebases, automated end-to-end testing, and top-tier Lighthouse benchmarks.",
-    avatar: "/devcodex.png",
+    avatar: "/img3.jpg",
     skills: ["Cypress", "Jest", "SOC2", "Penetration Testing"],
     socials: { twitter: "#", linkedin: "#", github: "#" }
   }
