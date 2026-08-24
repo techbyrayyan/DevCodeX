@@ -1,11 +1,21 @@
 import './globals.css';
+import { Inter, Outfit } from 'next/font/google';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import BackgroundVideo from '@/components/BackgroundVideo';
 import WhatsAppButton from '@/components/WhatsAppButton';
-import IntroAnimation from '@/components/IntroAnimation';
-import ScrollIndicator from '@/components/ScrollIndicator';
-import CustomCursor from '@/components/CustomCursor';
+
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-sans',
+});
+
+const outfit = Outfit({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-display',
+});
 
 export const metadata = {
   title: 'DevCodeX — Modern Software Agency & 3D Web Engineering Studio',
@@ -30,16 +40,12 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="dark h-full antialiased" suppressHydrationWarning>
+    <html lang="en" className={`dark h-full antialiased ${inter.variable} ${outfit.variable}`} suppressHydrationWarning>
       <body
-        className="min-h-full flex flex-col text-white bg-[#050505] relative"
-        style={{ fontFamily: '"Inter", system-ui, sans-serif' }}
+        className="min-h-full flex flex-col text-white bg-[#050505] relative font-sans"
         suppressHydrationWarning
       >
         <BackgroundVideo />
-        <IntroAnimation />
-        <ScrollIndicator />
-        <CustomCursor />
         <Navbar />
         <main className="flex-grow pt-20 relative z-10">
           {children}

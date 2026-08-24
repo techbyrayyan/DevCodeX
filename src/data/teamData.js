@@ -46,51 +46,63 @@ export const workflowSteps = [
 
 export const teamMembers = [
   {
+    id: "rayyan-ansari",
     name: "Rayyan Ansari",
     role: "Full Stack Engineer",
-    bio: "Specializing in high-speed Next.js applications, serverless architecture, and scalable REST/GraphQL APIs.",
+    bio: "Specializing in high-speed Next.js applications, serverless architecture, microservices, and scalable enterprise REST/GraphQL APIs.",
     avatar: "/human1.jpeg",
-    skills: ["Next.js", "React", "Node.js", "TypeScript"],
+    skills: ["Next.js", "React", "Node.js", "TypeScript", "PostgreSQL", "Tailwind CSS"],
+    experience: "3+ Years Exp",
     socials: { twitter: "#", linkedin: "#", github: "#" }
   },
   {
+    id: "hamza-tariq",
     name: "Hamza Tariq",
     role: "AI & ML Specialist",
-    bio: "Engineering custom AI agents, fine-tuned language models, and enterprise workflow automation pipelines.",
+    bio: "Engineering custom AI agents, fine-tuned language models, automated LLM workflows, and enterprise knowledge retrieval pipelines.",
     avatar: "/human2.png",
-    skills: ["Python", "OpenAI", "LangChain", "Vector DBs"],
+    skills: ["Python", "OpenAI", "LangChain", "Vector DBs", "FastAPI", "PyTorch"],
+    experience: "4+ Years Exp",
     socials: { twitter: "#", linkedin: "#", github: "#" }
   },
   {
+    id: "daniyal-khan",
     name: "Daniyal Khan",
     role: "Lead UI/UX Designer",
-    bio: "Crafting sleek dark-mode interfaces, interactive wireframes, and conversion-optimized user experiences.",
+    bio: "Crafting sleek dark-mode interfaces, interactive wireframes, custom design systems, and conversion-optimized user experiences.",
     avatar: "/human3.jpeg",
-    skills: ["Figma", "Design Systems", "Prototyping", "UI/UX"],
+    skills: ["Figma", "Design Systems", "Prototyping", "UI/UX", "User Research", "Wireframing"],
+    experience: "3+ Years Exp",
     socials: { twitter: "#", linkedin: "#", github: "#" }
   },
   {
+    id: "zainab-malik",
     name: "Zainab Malik",
     role: "Cloud & DevOps Architect",
-    bio: "Managing high-availability cloud infrastructure, Docker containers, Kubernetes, and automated deployment pipelines.",
+    bio: "Managing high-availability cloud infrastructure, Docker containers, Kubernetes clusters, and automated CI/CD deployment pipelines.",
     avatar: "/human4.jpeg",
-    skills: ["AWS", "Docker", "Vercel", "Kubernetes"],
+    skills: ["AWS", "Docker", "Kubernetes", "CI/CD", "Terraform", "Vercel"],
+    experience: "4+ Years Exp",
     socials: { twitter: "#", linkedin: "#", github: "#" }
   },
   {
+    id: "bilal-ahmed",
     name: "Bilal Ahmed",
     role: "Frontend & 3D Developer",
-    bio: "Building immersive client-side WebGL graphics, micro-animations, and smooth responsive web interfaces.",
+    bio: "Building immersive client-side WebGL graphics, 3D interactive canvases, micro-animations, and smooth responsive web interfaces.",
     avatar: "/img2.jpg",
-    skills: ["Three.js", "Tailwind CSS", "Framer Motion", "WebGL"],
+    skills: ["Three.js", "WebGL", "Framer Motion", "GLSL", "React 3D", "Tailwind CSS"],
+    experience: "3+ Years Exp",
     socials: { twitter: "#", linkedin: "#", github: "#" }
   },
   {
+    id: "ayesha-siddiqui",
     name: "Ayesha Siddiqui",
     role: "QA & Security Engineer",
-    bio: "Ensuring zero-vulnerability codebases, automated end-to-end testing, and top-tier Lighthouse benchmarks.",
+    bio: "Ensuring zero-vulnerability codebases, automated end-to-end testing suites, penetration testing, and top-tier Lighthouse benchmarks.",
     avatar: "/img3.jpg",
-    skills: ["Cypress", "Jest", "SOC2", "Penetration Testing"],
+    skills: ["Cypress", "Jest", "SOC2", "Pen Testing", "Postman", "CI Audits"],
+    experience: "3+ Years Exp",
     socials: { twitter: "#", linkedin: "#", github: "#" }
   }
 ];

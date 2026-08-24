@@ -5,9 +5,15 @@ import { motion } from 'framer-motion';
 import PageTransition from '@/components/PageTransition';
 import SectionHeading from '@/components/SectionHeading';
 import { services } from '@/data/servicesData';
-import { ArrowRight, CheckCircle2, Code2, Cpu, Layers, ShoppingBag, TrendingUp, Palette, Server, Zap } from 'lucide-react';
+import { 
+  ArrowRight, CheckCircle2, Code2, Layout, Sparkles, Zap, Cpu, Layers, 
+  Server, Box, Database, Globe, ShoppingBag, Bot, Brain, Palette, Cloud, TrendingUp 
+} from 'lucide-react';
 
-const iconMap = { Code2, Cpu, Layers, ShoppingBag, TrendingUp, Palette, Server, Zap };
+const iconMap = { 
+  Code2, Layout, Sparkles, Zap, Cpu, Layers, 
+  Server, Box, Database, Globe, ShoppingBag, Bot, Brain, Palette, Cloud, TrendingUp 
+};
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },

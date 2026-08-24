@@ -42,7 +42,7 @@ export async function POST(request) {
   } catch (error) {
     console.error('Contact Form Submission Error:', error);
     return NextResponse.json(
-      { error: 'Internal server error while submitting message. Please try again or email contact@devcodex.com directly.' },
+      { error: 'Internal server error while submitting message. Please try again or email devcodex.agency@gmail.com directly.' },
       { status: 500 }
     );
   }

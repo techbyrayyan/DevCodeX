@@ -1,266 +1,497 @@
 export const services = [
   {
-    id: "web-development",
-    slug: "web-development",
-    title: "Web Development",
-    shortDescription: "Custom, ultra-fast, modern web applications built with Next.js, React, and Three.js.",
-    description: "We engineer high-performance web applications, marketing portals, and enterprise web solutions that captivate users, convert traffic, and scale effortlessly. Every line of code is optimized for SEO, speed, and sleek visual design.",
+    id: "html-css",
+    slug: "html-css",
+    title: "HTML & CSS",
+    shortDescription: "Pixel-perfect, semantic HTML5 and standards-compliant CSS3 architecture for high-speed, accessible websites.",
+    description: "We build rock-solid foundational web markup using semantic HTML5 and modern CSS3. Every page is structured for optimal accessibility (WCAG), search engine indexing, and flawless cross-browser rendering across every screen size.",
     icon: "Code2",
-    badge: "Core Service",
+    badge: "Core Frontend",
     features: [
-      "Next.js App Router Architecture",
-      "Interactive 3D Web Graphics (Three.js/R3F)",
-      "Server-Side Rendering & Lightning Performance",
-      "Custom UI/UX & Responsive Engineering",
-      "Full API & Database Integrations",
-      "Automated Testing & Security Hardening"
+      "Semantic HTML5 Clean Markup",
+      "CSS3 Animations & Custom Styling",
+      "WCAG 2.1 AAA Accessibility Standards",
+      "Cross-Browser Pixel Perfection",
+      "Mobile-First Responsive Layouts",
+      "SEO-Friendly DOM Structure"
     ],
     capabilities: [
-      "Frontend Development",
-      "Backend API & Database Architecture",
-      "Progressive Web Apps (PWA)",
-      "Full-Stack Web Platforms",
-      "Web Performance Optimization",
-      "Headless CMS Integration"
+      "Semantic HTML Markup",
+      "CSS3 Custom Styling & Media Queries",
+      "Responsive Layout Design",
+      "Web Accessibility & SEO Optimization",
+      "SVG & Vector Icon Integration",
+      "Clean Modular Codebases"
     ],
-    technologies: ["Next.js", "React", "Three.js", "Tailwind CSS", "Node.js", "TypeScript", "GraphQL", "PostgreSQL"],
+    technologies: ["HTML5", "CSS3", "Semantic Elements", "Web Standards", "W3C Validation", "SVG"],
     process: [
-      { step: "01", title: "Discovery & Architecture", desc: "Analyzing project goals, wireframing user flows, and mapping tech stack." },
-      { step: "02", title: "3D & UI/UX Design", desc: "Designing responsive prototypes with interactive motion and modern aesthetics." },
-      { step: "03", title: "Agile Development", desc: "Building modular components, integrating APIs, and implementing performance hooks." },
-      { step: "04", title: "QA & Deployment", desc: "Automated speed audits, security checks, and seamless Vercel/Cloud deployment." }
+      { step: "01", title: "Design Analysis", desc: "Analyzing wireframes to determine optimal semantic tag structure and hierarchy." },
+      { step: "02", title: "HTML5 Scaffolding", desc: "Writing clean, readable, accessible semantic markup for all page components." },
+      { step: "03", title: "CSS3 Styling", desc: "Crafting fluid responsive layouts, typography scales, and custom UI elements." },
+      { step: "04", title: "Cross-Device QA", desc: "Testing across Chrome, Safari, Firefox, iOS, and Android for zero visual flaws." }
     ],
-    metrics: { speed: "< 0.8s LCP", lighthouse: "99+", uptime: "99.99%" }
+    metrics: { accessibility: "100 Score", validation: "W3C Valid", compatibility: "100% Browsers" }
+  },
+  {
+    id: "advanced-css",
+    slug: "advanced-css",
+    title: "Advanced CSS (Flexbox, Grid & Bootstrap)",
+    shortDescription: "Complex multi-dimensional layouts, 2D CSS Grid systems, Flexbox architecture, Bootstrap 5, and keyframe animations.",
+    description: "Mastering complex responsive web layouts with advanced CSS techniques. We design dynamic 2D CSS Grid templates, precision Flexbox alignments, customized Bootstrap 5 frameworks, and hardware-accelerated CSS keyframe animations for high-impact visual experiences.",
+    icon: "Layout",
+    badge: "Styling & Layout",
+    features: [
+      "2D CSS Grid & Subgrid Systems",
+      "Complex Flexbox Dynamic Alignments",
+      "Custom Bootstrap 5 Component Overrides",
+      "Hardware-Accelerated CSS Keyframe Animations",
+      "CSS Custom Properties & Dynamic Theming",
+      "Fluid Typography & Clamp Calculations"
+    ],
+    capabilities: [
+      "CSS Grid 2D Layouts",
+      "Flexbox Dynamic Interfaces",
+      "Bootstrap 5 Responsive Themes",
+      "CSS Micro-Interactions & Animations",
+      "Modern CSS Functions (clamp, min, max)",
+      "Dark Mode & Dynamic Theme Variables"
+    ],
+    technologies: ["CSS Grid", "Flexbox", "Bootstrap 5", "CSS Keyframes", "CSS Variables", "Sass/SCSS"],
+    process: [
+      { step: "01", title: "Grid Architecture", desc: "Structuring 12-column and custom multi-axis CSS grids for adaptive screen flows." },
+      { step: "02", title: "Flexbox Layouts", desc: "Aligning inner components, navigation bars, and flexible content containers." },
+      { step: "03", title: "Animation Tuning", desc: "Creating 60fps smooth CSS transitions and keyframe motion effects." },
+      { step: "04", title: "Optimization", desc: "Minifying CSS, eliminating layout shifts (CLS), and fine-tuning responsive breakpoints." }
+    ],
+    metrics: { fps: "60 FPS Smooth", cls: "0.00 CLS Shift", responsiveness: "100% Adaptive" }
+  },
+  {
+    id: "tailwindcss",
+    slug: "tailwindcss",
+    title: "Tailwind CSS",
+    shortDescription: "Utility-first modern design systems, custom configuration themes, dark mode engines, and zero-runtime CSS.",
+    description: "Accelerate frontend development with custom-engineered Tailwind CSS architectures. We build highly reusable component systems, extend design tokens, implement seamless dark mode switching, and produce lightning-fast, purged CSS bundles.",
+    icon: "Sparkles",
+    badge: "Modern UI Styling",
+    features: [
+      "Custom Tailwind Design System Configs",
+      "Zero-Runtime Lightning Fast Bundles",
+      "Seamless Dark / Light Mode Switching",
+      "Arbitrary Value & Plugin Customizations",
+      "Responsive Utility Class Architecture",
+      "Tailwind Merge & Clsx Component Harmony"
+    ],
+    capabilities: [
+      "Utility-First Component Development",
+      "Custom Tailwind Plugins & Extensions",
+      "Tailwind v4 Modern Configuration",
+      "Dark Theme Design Systems",
+      "Micro-Interactions & Hover Transforms",
+      "Purged & Minified Production Builds"
+    ],
+    technologies: ["Tailwind CSS v4", "PostCSS", "Tailwind Merge", "Clsx", "CSS Variables", "Modern UI"],
+    process: [
+      { step: "01", title: "Token Definition", desc: "Defining brand color palettes, typography scales, and border radiuses in config." },
+      { step: "02", title: "Component Crafting", desc: "Assembling modular, styled UI components with utility classes." },
+      { step: "03", title: "Theme Integration", desc: "Configuring dark/light mode toggles with persistent user preferences." },
+      { step: "04", title: "Purge & Build", desc: "Optimizing production bundle to sub-10KB stylesheet footprint." }
+    ],
+    metrics: { bundleSize: "< 12KB CSS", loadTime: "< 0.2s", maintainability: "A+ Clean" }
+  },
+  {
+    id: "javascript",
+    slug: "javascript",
+    title: "JavaScript (Modern ES6+)",
+    shortDescription: "High-performance vanilla JavaScript, asynchronous APIs, DOM manipulation, and dynamic client-side logic.",
+    description: "Harness the true power of Modern JavaScript (ES6+). We build high-speed client-side applications, complex interactive calculators, custom sliders, async data fetching modules, and event-driven architectures with clean, modern syntax.",
+    icon: "Zap",
+    badge: "Core Programming",
+    features: [
+      "Modern ES6+ Syntax (Async/Await, Promises)",
+      "High-Speed DOM Manipulation & Event Handling",
+      "Fetch API & RESTful Data Integration",
+      "Local Storage & Session State Management",
+      "Modular JavaScript (ES Modules / Webpack)",
+      "Clean, Bug-Free, Tested Code Logic"
+    ],
+    capabilities: [
+      "Vanilla JS Interactive UI Components",
+      "Asynchronous API Data Fetching",
+      "Event-Driven Architecture",
+      "Custom JS Algorithms & Calculations",
+      "Browser Storage & Session Handlers",
+      "Performance & Memory Optimization"
+    ],
+    technologies: ["JavaScript ES6+", "DOM API", "Fetch API", "Async/Await", "Event Loop", "Web Workers"],
+    process: [
+      { step: "01", title: "Logic Design", desc: "Formulating algorithm flows, data structures, and event listeners." },
+      { step: "02", title: "Modular Coding", desc: "Writing clean ES modules with strict error handling and async pipelines." },
+      { step: "03", title: "DOM Optimization", desc: "Eliminating memory leaks and optimizing browser rendering cycles." },
+      { step: "04", title: "Unit Testing", desc: "Writing automated tests to verify edge-case calculations and inputs." }
+    ],
+    metrics: { execution: "Sub-millisecond", coverage: "95% Tested", memory: "Zero Leaks" }
+  },
+  {
+    id: "react-js",
+    slug: "react-js",
+    title: "React.js",
+    shortDescription: "Scalable component-based SPAs, custom React hooks, state management with Redux/Zustand, and snappy interactive UIs.",
+    description: "We architect scalable, lightning-fast Single Page Applications (SPAs) with React.js. From complex dashboard states to high-performance component libraries, our React solutions deliver silky-smooth user interactions with clean component lifecycles.",
+    icon: "Cpu",
+    badge: "Frontend Framework",
+    features: [
+      "Component-Driven Modular Architecture",
+      "Custom React Hooks & Context APIs",
+      "State Management with Zustand & Redux",
+      "Virtual DOM & Re-render Optimization",
+      "Interactive Client-Side Routing",
+      "Reusable UI Component Libraries"
+    ],
+    capabilities: [
+      "Single Page Applications (SPA)",
+      "Dynamic Dashboard Interfaces",
+      "Complex Form & State Management",
+      "Custom React Hooks Architecture",
+      "Third-Party SDK & Library Integration",
+      "Performance Profiling & Memoization"
+    ],
+    technologies: ["React 19", "React Hooks", "Zustand", "Redux Toolkit", "React Router", "Framer Motion"],
+    process: [
+      { step: "01", title: "State Architecture", desc: "Planning component hierarchy, global state stores, and data contracts." },
+      { step: "02", title: "Component Sprints", desc: "Building type-safe, reusable UI elements with reactive props." },
+      { step: "03", title: "State Binding", desc: "Connecting REST/GraphQL APIs with optimistic UI updates and caching." },
+      { step: "04", title: "Profiling & Polish", desc: "Profiling with React DevTools to ensure zero unnecessary re-renders." }
+    ],
+    metrics: { renderSpeed: "< 16ms Frame", reRenders: "Zero Waste", satisfaction: "99%" }
+  },
+  {
+    id: "next-js",
+    slug: "next-js",
+    title: "Next.js (Full Stack & SSR)",
+    shortDescription: "Production Next.js 15 App Router applications with Server-Side Rendering (SSR), Server Components, and Edge APIs.",
+    description: "DevCodeX specializes in production-ready Next.js web platforms. We leverage the App Router, React Server Components (RSC), incremental static regeneration (ISR), dynamic server actions, and edge API routes to achieve 99+ Lighthouse performance.",
+    icon: "Layers",
+    badge: "Full Stack Powerhouse",
+    features: [
+      "Next.js 15 App Router Architecture",
+      "React Server Components (RSC) & Streaming SSR",
+      "Static Site Generation (SSG) & ISR Caching",
+      "Type-Safe Server Actions & API Handlers",
+      "Core Web Vitals & SEO Perfection (99+ Score)",
+      "Edge Middleware & Route Handlers"
+    ],
+    capabilities: [
+      "Full-Stack Web Applications",
+      "High-Traffic Marketing Portals",
+      "Server-Rendered SaaS Dashboards",
+      "SEO-Dominant Web Platforms",
+      "Edge Computing & Authentication",
+      "Automated Vercel & Cloud Deployments"
+    ],
+    technologies: ["Next.js 15", "React 19", "App Router", "Server Actions", "TypeScript", "Vercel Edge"],
+    process: [
+      { step: "01", title: "SSR / SSG Strategy", desc: "Categorizing static, dynamic, and cached routes for maximum speed." },
+      { step: "02", title: "App Router Build", desc: "Constructing layouts, server components, and streaming Suspense boundaries." },
+      { step: "03", title: "Server Actions & DB", desc: "Wiring direct database queries and mutations securely in server actions." },
+      { step: "04", title: "Lighthouse Optimization", desc: "Auditing Core Web Vitals to guarantee sub-second LCP and 99+ scores." }
+    ],
+    metrics: { lighthouse: "99+ All Scores", lcp: "< 0.7s Speed", uptime: "99.99%" }
+  },
+  {
+    id: "node-js",
+    slug: "node-js",
+    title: "Node.js",
+    shortDescription: "High-throughput asynchronous backend systems, Express.js REST/GraphQL APIs, and microservices architecture.",
+    description: "Power your software with high-concurrency, asynchronous Node.js backends. We develop scalable RESTful APIs, real-time WebSocket communication servers, background task workers, and microservices designed for enterprise durability.",
+    icon: "Server",
+    badge: "Backend Runtime",
+    features: [
+      "High-Throughput Asynchronous Event Loop",
+      "RESTful API & GraphQL Server Development",
+      "Real-Time WebSockets & Event Streaming",
+      "JWT Authentication & Role-Based Access Control",
+      "Background Queues & Job Workers (BullMQ/Redis)",
+      "Secure Middleware & Input Validation Pipelines"
+    ],
+    capabilities: [
+      "Backend REST & GraphQL APIs",
+      "Real-Time Chat & Collaboration Engines",
+      "Microservices Architecture",
+      "Third-Party Payment & Webhook Integrations",
+      "Asynchronous File Processing & PDF Generation",
+      "High-Concurrency Server Scaling"
+    ],
+    technologies: ["Node.js", "Express.js", "Fastify", "Socket.io", "JWT", "Redis", "BullMQ"],
+    process: [
+      { step: "01", title: "API Contract Design", desc: "Designing REST endpoints, request/response DTOs, and error codes." },
+      { step: "02", title: "Controller Development", desc: "Implementing asynchronous business logic, services, and validation." },
+      { step: "03", title: "Security Hardening", desc: "Configuring CORS, helmet, rate limiting, and token encryption." },
+      { step: "04", title: "Load Testing", desc: "Simulating heavy concurrent requests to guarantee low latency under load." }
+    ],
+    metrics: { latency: "< 35ms API", concurrency: "50,000 req/min", reliability: "99.99%" }
+  },
+  {
+    id: "nest-js",
+    slug: "nest-js",
+    title: "Nest.js",
+    shortDescription: "Enterprise-grade TypeScript modular backend architecture with dependency injection and microservice scalability.",
+    description: "For enterprise platforms requiring strict maintainability, we engineer backends with Nest.js. Utilizing progressive TypeScript, modular controllers, decorators, dependency injection, and clean architecture, our Nest.js systems scale seamlessly across large engineering teams.",
+    icon: "Box",
+    badge: "Enterprise Backend",
+    features: [
+      "Strict TypeScript Enterprise Architecture",
+      "Modular Dependency Injection System",
+      "Built-in Microservices (gRPC, RabbitMQ, Kafka)",
+      "Swagger / OpenAPI Automated Documentation",
+      "Class-Validator & Transform Interceptors",
+      "TypeORM & Prisma Database Integrations"
+    ],
+    capabilities: [
+      "Enterprise Backend Architectures",
+      "Modular Microservices",
+      "GraphQL & REST API Gateways",
+      "Automated Swagger API Docs",
+      "Role & Permission Guard Middleware",
+      "Distributed Event-Driven Services"
+    ],
+    technologies: ["Nest.js", "TypeScript", "TypeORM", "Prisma", "Swagger", "gRPC", "Docker"],
+    process: [
+      { step: "01", title: "Domain Modeling", desc: "Structuring modules, entities, DTOs, and dependency injection graphs." },
+      { step: "02", title: "Module Development", desc: "Engineering controllers, services, guards, and custom pipe interceptors." },
+      { step: "03", title: "Database & Microservices", desc: "Wiring ORM repositories, transaction managers, and message brokers." },
+      { step: "04", title: "Integration Testing", desc: "Running end-to-end (e2e) test suites with Jest and supertest." }
+    ],
+    metrics: { typeSafety: "100% Strict", testCoverage: "95% E2E", scalability: "Enterprise Ready" }
+  },
+  {
+    id: "mongodb",
+    slug: "mongodb",
+    title: "MongoDB & Databases",
+    shortDescription: "Scalable NoSQL database architecture, Mongoose schema modeling, aggregation pipelines, and cloud cluster management.",
+    description: "Store and query your business data with ultra-high speed and reliability. We design normalized and document-oriented database schemas in MongoDB, build optimized aggregation pipelines, configure indexing strategies, and manage secure Atlas cloud clusters.",
+    icon: "Database",
+    badge: "Database & Storage",
+    features: [
+      "Mongoose Schema Modeling & Validation",
+      "Advanced Aggregation & Analytics Pipelines",
+      "Index Tuning & Query Optimization (<10ms)",
+      "MongoDB Atlas High-Availability Clusters",
+      "Data Encryption At Rest & In Transit",
+      "Automated Backups & Sharding Strategies"
+    ],
+    capabilities: [
+      "NoSQL Database Schema Design",
+      "Data Migration & Seeding Scripts",
+      "High-Speed Search & Filter Pipelines",
+      "Multi-Tenant Database Separation",
+      "Atlas Cluster Configuration & Security",
+      "Performance Profiling & Query Optimization"
+    ],
+    technologies: ["MongoDB", "Mongoose", "MongoDB Atlas", "Aggregation Pipeline", "Redis Caching", "Compass"],
+    process: [
+      { step: "01", title: "Schema Engineering", desc: "Designing document schemas, relations, and embedded subdocuments." },
+      { step: "02", title: "Index Optimization", desc: "Creating compound and text indexes for fast lookup query speeds." },
+      { step: "03", title: "Pipeline Construction", desc: "Building multi-stage aggregation pipelines for reports and dashboard stats." },
+      { step: "04", title: "Cluster Deployment", desc: "Configuring Atlas replica sets, automated backups, and IP whitelisting." }
+    ],
+    metrics: { querySpeed: "< 8ms Queries", availability: "99.999% SLA", scalability: "Billions of Docs" }
+  },
+  {
+    id: "wordpress",
+    slug: "wordpress",
+    title: "WordPress Development",
+    shortDescription: "Custom WordPress theme engineering, WooCommerce e-commerce stores, custom plugin creation, and headless WordPress.",
+    description: "Get the full power of the world's most popular CMS with zero template bloat. We build bespoke WordPress themes from scratch, configure high-converting WooCommerce storefronts, develop custom plugins, and create lightning-fast headless WordPress setups.",
+    icon: "Globe",
+    badge: "CMS & Portals",
+    features: [
+      "100% Custom Theme Development (No Heavy Builders)",
+      "WooCommerce Custom Storefronts & Checkout",
+      "Custom Gutenberg Blocks & ACF Pro Integration",
+      "Custom Plugin Development for Unique Logic",
+      "Enterprise WordPress Security Hardening",
+      "Speed Optimization & Cloudflare Caching"
+    ],
+    capabilities: [
+      "Custom WordPress Theme Creation",
+      "WooCommerce E-Commerce Stores",
+      "ACF Pro & Custom Block Architecture",
+      "Headless WordPress with Next.js",
+      "Security Audits & Malware Prevention",
+      "PageSpeed 95+ Score Optimization"
+    ],
+    technologies: ["WordPress", "PHP", "WooCommerce", "ACF Pro", "Gutenberg", "MySQL", "REST API"],
+    process: [
+      { step: "01", title: "Wireframe Mapping", desc: "Designing custom field blueprints and editable block layouts in ACF." },
+      { step: "02", title: "Theme Coding", desc: "Writing clean, lightweight PHP/CSS templates with zero bloated plugins." },
+      { step: "03", title: "WooCommerce & Payments", desc: "Configuring payment gateways, shipping rules, and frictionless checkout." },
+      { step: "04", title: "Speed & Security", desc: "Configuring caching, object caches, SSL, and security firewalls." }
+    ],
+    metrics: { pageSpeed: "95+ Mobile Score", security: "Zero Vulnerability", easeOfUse: "Client Friendly" }
+  },
+  {
+    id: "shopify",
+    slug: "shopify",
+    title: "Shopify & E-Commerce",
+    shortDescription: "Custom Liquid theme design, Headless Shopify storefronts with Next.js, app integrations, and conversion checkout flows.",
+    description: "Maximize online retail sales with custom-built Shopify stores. We craft bespoke Liquid themes, engineer headless Next.js storefronts connected to the Shopify Storefront API, build custom product builders, and optimize every step of your checkout funnel.",
+    icon: "ShoppingBag",
+    badge: "E-Commerce Growth",
+    features: [
+      "Custom Shopify Liquid Theme Development",
+      "Headless Storefronts (Next.js + Shopify API)",
+      "High-Converting One-Click Checkout Flows",
+      "Custom App Integrations & Private Apps",
+      "Inventory Sync & Third-Party ERP Hookups",
+      "Conversion Rate Optimization (CRO) UX"
+    ],
+    capabilities: [
+      "Shopify Plus Theme Engineering",
+      "Headless Commerce Architectures",
+      "Custom 3D Product Customizers",
+      "Payment & Currency Multi-Region Setup",
+      "App Development & Webhook Automation",
+      "Conversion Funnel Optimization"
+    ],
+    technologies: ["Shopify Liquid", "Shopify Plus", "Storefront GraphQL API", "Next.js", "Stripe", "Klaviyo"],
+    process: [
+      { step: "01", title: "Funnel Analysis", desc: "Analyzing target audience, checkout drop-offs, and product catalog scope." },
+      { step: "02", title: "Theme Customization", desc: "Developing bespoke Liquid sections, quick-view modals, and cart drawers." },
+      { step: "03", title: "API Integrations", desc: "Connecting payment gateways, analytics pixels, reviews, and email flows." },
+      { step: "04", title: "Launch & CRO", desc: "Executing end-to-end purchase testing and speed optimization across all devices." }
+    ],
+    metrics: { conversionLift: "+35% Average", checkoutSpeed: "1.1s", mobileUX: "Flawless" }
   },
   {
     id: "ai-automation",
     slug: "ai-automation",
-    title: "AI & Workflow Automation",
-    shortDescription: "Custom AI agents, LLM integrations, chatbot assistants, and automated business workflows.",
-    description: "Transform your operations with enterprise-grade Artificial Intelligence solutions. We integrate custom AI models, automate repetitive workflows, build autonomous agents, and implement natural language interfaces that save thousands of work hours.",
-    icon: "Cpu",
-    badge: "AI-Native",
+    title: "AI Automation",
+    shortDescription: "Autonomous AI agents, enterprise workflow automation (n8n/Zapier), document processing, and task automation pipelines.",
+    description: "Automate complex business processes and save hundreds of manual hours every week. We design autonomous AI agents, multi-step workflow pipelines with n8n and Zapier, automated data scrapers, invoice/document parsing systems, and enterprise bots.",
+    icon: "Bot",
+    badge: "Intelligent Workflows",
     features: [
-      "Custom LLM & RAG Agent Development",
-      "Automated Workflow Pipelines (Zapier/n8n/Custom)",
-      "AI Chatbots & Intelligent Support Agents",
-      "Document Processing & Vision Analytics",
-      "API Integrations with OpenAI, Claude, HuggingFace",
-      "Predictive Analytics & Data Science"
+      "Autonomous Multi-Step AI Agent Pipelines",
+      "Enterprise n8n, Make & Zapier Automations",
+      "Automated Document & Invoice Data Extraction",
+      "CRM & Lead Auto-Routing Workflows",
+      "Automated Email & Customer Outreach Sequences",
+      "24/7 Error Handlers & Fallback Alerts"
     ],
     capabilities: [
-      "AI Chatbots",
-      "Workflow Automation",
-      "AI Integrations",
-      "API Automation",
-      "Business Intelligence Agents",
-      "Custom Fine-Tuned Models"
+      "End-to-End Workflow Automation",
+      "Custom n8n Server Deployments",
+      "Document AI & OCR Extraction",
+      "Automated Reporting & Analytics",
+      "API Webhook Relay Systems",
+      "Business Process Optimization"
     ],
-    technologies: ["OpenAI API", "Python", "LangChain", "Pinecone", "Next.js", "n8n", "TensorFlow", "FastAPI"],
+    technologies: ["n8n", "Python", "Zapier", "Make.com", "OpenAI", "Webhooks", "LangChain"],
     process: [
-      { step: "01", title: "Workflow Audit", desc: "Identifying manual bottlenecks and data integration opportunities." },
-      { step: "02", title: "Agent Blueprint", desc: "Selecting optimal LLMs, vectors, and security permissions." },
-      { step: "03", title: "Model Integration", desc: "Connecting custom endpoints, state management, and memory modules." },
-      { step: "04", title: "Testing & Scaling", desc: "Evaluating response precision, fallbacks, and real-time scaling." }
+      { step: "01", title: "Bottleneck Audit", desc: "Mapping current manual operations, data handoffs, and time sinks." },
+      { step: "02", title: "Pipeline Architecture", desc: "Configuring multi-branch workflows with AI classification and logic." },
+      { step: "03", title: "Integration & Testing", desc: "Connecting CRMs, databases, email providers, and webhooks securely." },
+      { step: "04", title: "Live Automation", desc: "Deploying automated triggers with instant failure alerts and logs." }
     ],
-    metrics: { timeSaved: "70% Hours Saved", efficiency: "10x Throughput", accuracy: "99.2%" }
+    metrics: { timeSaved: "75% Hours Cut", throughput: "10x Faster", reliability: "99.9% Uptime" }
   },
   {
-    id: "custom-web-apps",
-    slug: "custom-web-apps",
-    title: "Custom Web Applications",
-    shortDescription: "Bespoke SaaS platforms, internal management portals, and cloud-native software.",
-    description: "From concept to market launch, we design and develop complex custom software solutions. Build scalable SaaS products, real-time analytics dashboards, and robust multi-tenant platforms tailored to your business needs.",
-    icon: "Layers",
-    badge: "Enterprise",
+    id: "ai-integration",
+    slug: "ai-integration",
+    title: "AI Integration & LLMs",
+    shortDescription: "Custom LLM integrations, OpenAI & Claude APIs, RAG knowledge bases, intelligent chatbots, and embeddings.",
+    description: "Embed modern AI directly into your web platforms and SaaS products. We integrate cutting-edge models from OpenAI (GPT-4o), Anthropic (Claude 3.5), and Hugging Face, build Retrieval-Augmented Generation (RAG) vector systems, and engineer intelligent conversational chatbots.",
+    icon: "Brain",
+    badge: "Smart Applications",
     features: [
-      "Multi-Tenant SaaS Architectures",
-      "Real-time Dashboards & Data Visualization",
-      "Secure Role-Based Authentication (RBAC)",
-      "Payment Gateways & Subscription Billing",
-      "Microservices & Serverless Backends",
-      "Cross-Platform Desktop & Web Sync"
+      "Custom AI Chatbots & Customer Assistants",
+      "RAG Vector Knowledge Bases (Pinecone / Chroma)",
+      "OpenAI, Claude, & Gemini API Integrations",
+      "Semantic Search & Natural Language Querying",
+      "Structured JSON Output & Function Calling",
+      "Prompt Engineering & Token Cost Optimization"
     ],
     capabilities: [
-      "SaaS Architecture",
-      "Custom CRM/ERP Systems",
-      "Admin Dashboards",
-      "Real-time Data Engines",
-      "Cloud Infrastructure",
-      "Third-Party Integrations"
+      "LLM Web Application Integrations",
+      "RAG Knowledge Base Engines",
+      "Intelligent Chatbot Widgets",
+      "Automated Content Generation Tools",
+      "AI Code & Data Analysis Engines",
+      "Model Fine-Tuning & Prompt Tuning"
     ],
-    technologies: ["React", "Next.js", "Node.js", "Express", "MongoDB", "PostgreSQL", "Docker", "AWS"],
+    technologies: ["OpenAI API", "Claude API", "Gemini API", "Pinecone", "LangChain", "Vector DBs", "LlamaIndex"],
     process: [
-      { step: "01", title: "Product Blueprint", desc: "Scope definition, database schema modeling, and UX specifications." },
-      { step: "02", title: "Core Architecture", desc: "Setting up secure backends, multi-tenant databases, and authentication." },
-      { step: "03", title: "Feature Sprints", desc: "Rapid iterative development of dashboard components and integrations." },
-      { step: "04", title: "Launch & Monitoring", desc: "CI/CD setup, log tracking, and zero-downtime server scaling." }
+      { step: "01", title: "Model Selection", desc: "Evaluating accuracy, latency, and token pricing for optimal model choices." },
+      { step: "02", title: "Vector Embedding", desc: "Chunking company docs, generating embeddings, and storing in vector DBs." },
+      { step: "03", title: "Agent Integration", desc: "Connecting system prompts, streaming responses, and function calling." },
+      { step: "04", title: "Safety & Scaling", desc: "Implementing rate limits, content moderation filters, and fallback responses." }
     ],
-    metrics: { scalability: "1M+ Users", security: "SOC2 Ready", latency: "< 50ms" }
+    metrics: { responseTime: "< 1.2s Stream", accuracy: "99.4%", tokenEfficiency: "40% Cost Saved" }
   },
   {
-    id: "ecommerce-solutions",
-    slug: "ecommerce-solutions",
-    title: "E-Commerce Platforms",
-    shortDescription: "High-converting online stores, headless commerce, Shopify integrations, and custom checkout flows.",
-    description: "We build custom online stores designed to maximize conversions, lower customer acquisition costs, and handle massive traffic spikes. Harness the speed of headless commerce or custom e-commerce engines with frictionless payments.",
-    icon: "ShoppingBag",
-    badge: "High Conversion",
-    features: [
-      "Headless E-Commerce Solutions",
-      "Custom Shopify & WooCommerce Themes",
-      "Frictionless One-Click Checkout Systems",
-      "Stripe, PayPal & Crypto Payment Gateways",
-      "Inventory Sync & Order Management API",
-      "Real-Time Analytics & Personalization"
-    ],
-    capabilities: [
-      "Shopify Plus Development",
-      "Custom E-Commerce Storefronts",
-      "Headless Storefront (Next.js + Shopify)",
-      "Payment Gateway Integrations",
-      "Product Customizers & 3D Previews",
-      "Subscription & Recurring Billing"
-    ],
-    technologies: ["Shopify API", "Next.js", "Stripe", "Tailwind CSS", "Sanity.io", "GraphQL", "Redis"],
-    process: [
-      { step: "01", title: "CRO & Store Audit", desc: "Analyzing buyer journey, cart conversion drivers, and funnel flow." },
-      { step: "02", title: "Storefront Design", desc: "Crafting modern product showcases and lightning-fast product pages." },
-      { step: "03", title: "Checkout Integration", desc: "Building secure, low-friction payment flows with local payment support." },
-      { step: "04", title: "Growth Launch", desc: "A/B testing, pixel integrations, and speed optimization for ad campaigns." }
-    ],
-    metrics: { conversionBoost: "+35% Average", checkoutSpeed: "1.2s", uptime: "99.99%" }
-  },
-  {
-    id: "seo-digital-growth",
-    slug: "seo-digital-growth",
-    title: "SEO & Digital Growth",
-    shortDescription: "Data-driven SEO, technical optimization, conversion rate optimization, and organic market dominance.",
-    description: "Dominating search rankings requires technical perfection, high-authority content, and strategic growth loops. We optimize every aspect of your web presence to rank on page 1 of Google and drive high-intent organic traffic.",
-    icon: "TrendingUp",
-    badge: "Growth Engine",
-    features: [
-      "Technical SEO Audits & Core Web Vitals Optimization",
-      "Keyword Strategy & Semantic Content Planning",
-      "Schema Markup & Structured Data Implementation",
-      "Conversion Rate Optimization (CRO)",
-      "Competitor Analysis & Link Architecture",
-      "Local & International Multi-Region SEO"
-    ],
-    capabilities: [
-      "Technical SEO",
-      "On-Page & Schema Optimization",
-      "Core Web Vitals Boost",
-      "Conversion Optimization",
-      "Organic Search Strategy",
-      "Analytics & Funnel Tracking"
-    ],
-    technologies: ["Google Search Console", "Ahrefs", "Semrush", "Next.js SEO", "Google Analytics 4", "Lighthouse"],
-    process: [
-      { step: "01", title: "Deep Technical Audit", desc: "Identifying indexing issues, speed bottlenecks, and code inefficiencies." },
-      { step: "02", title: "Keyword Architecture", desc: "Mapping high-value search terms to dedicated landing pages." },
-      { step: "03", title: "Optimization Sprint", desc: "Refactoring meta tags, structured data, canonicals, and DOM size." },
-      { step: "04", title: "Growth Monitoring", desc: "Weekly rank tracking, traffic analysis, and ongoing CRO adjustments." }
-    ],
-    metrics: { rankImprovement: "#1 Page Target", trafficGrowth: "3x Organic", loadTime: "< 1s" }
-  },
-  {
-    id: "ui-ux-design",
-    slug: "ui-ux-design",
-    title: "UI/UX & Interactive Design",
-    shortDescription: "Award-winning interface design, wireframing, design systems, and micro-animations.",
-    description: "We create digital interfaces that leave lasting impressions. Combining deep user research, sleek visual polish, and subtle interactive animations, we transform complex software into intuitive, pleasurable product experiences.",
+    id: "figma",
+    slug: "figma",
+    title: "Figma & UI/UX Design",
+    shortDescription: "Award-winning dark mode interfaces, design systems, clickable interactive prototypes, and user journey wireframes.",
+    description: "Transform your vision into world-class digital aesthetics. We design bespoke, dark-mode user interfaces in Figma, create comprehensive component design systems with auto-layout and variants, and craft interactive prototypes ready for seamless developer handoff.",
     icon: "Palette",
-    badge: "Creative Studio",
+    badge: "Design & Prototyping",
     features: [
-      "User Research & Wireframing",
-      "Interactive High-Fidelity Prototypes",
-      "Enterprise Design Systems & UI Components",
-      "Micro-Animations & Motion Specs",
-      "Usability Testing & Accessibility (WCAG 2.1)",
-      "3D Asset Design & Visual Branding"
+      "High-Fidelity Interactive Figma Prototypes",
+      "Scalable Enterprise Design Systems & Tokens",
+      "Dark-Mode Aesthetics & Glassmorphic UI",
+      "User Persona Research & Wireframe Flows",
+      "Micro-Interactions & Animation Specs",
+      "Pixel-Perfect Developer Handoff Specs"
     ],
     capabilities: [
-      "Figma Prototype Design",
-      "Design System Architecture",
-      "Product UX Audits",
-      "Mobile App UI",
-      "Micro-Interactions",
-      "3D Visual Assets"
+      "Figma UI/UX Interface Design",
+      "Comprehensive Design Systems",
+      "Interactive Clickable Prototypes",
+      "SaaS Product & Dashboard Design",
+      "Mobile App UI/UX Design",
+      "Design-to-Code Asset Exporting"
     ],
-    technologies: ["Figma", "Framer", "Adobe CC", "Blender", "Lottie", "Spline"],
+    technologies: ["Figma", "Design Tokens", "Auto-Layout", "Variants", "FigJam", "Framer", "UI/UX"],
     process: [
-      { step: "01", title: "User Persona Research", desc: "Understanding user psychology, pain points, and functional goals." },
-      { step: "02", title: "Wireframes & Flows", desc: "Mapping visual hierarchy, key user journeys, and action paths." },
-      { step: "03", title: "UI & Motion Design", desc: "Building responsive component systems, dark mode palettes, and glass effects." },
-      { step: "04", title: "Handoff & Guidelines", desc: "Delivering pixel-perfect design specs and dev-ready asset libraries." }
+      { step: "01", title: "User Research & Flows", desc: "Mapping user journeys, information hierarchy, and low-fi wireframes." },
+      { step: "02", title: "Visual Style Guide", desc: "Establishing typography scales, sleek color palettes, and component tokens." },
+      { step: "03", title: "Hi-Fi Prototyping", desc: "Designing pixel-perfect responsive screens with interactive click flows." },
+      { step: "04", title: "Dev Handoff", desc: "Annotating spacing, responsive rules, and exporting production-ready assets." }
     ],
-    metrics: { userSatisfaction: "98%", accessibility: "WCAG AAA", engagement: "+45%" }
+    metrics: { userRating: "98% Positive", handoffSpeed: "2x Faster Dev", fidelity: "100% Pixel Perfect" }
   },
   {
-    id: "api-backend",
-    slug: "api-backend",
-    title: "API & Backend Infrastructure",
-    shortDescription: "Scalable REST & GraphQL APIs, microservices, database architecture, and cloud server management.",
-    description: "Power your web apps with robust, secure, high-throughput backend infrastructure. We design scalable databases, construct high-speed APIs, and implement serverless cloud architectures that handle heavy loads effortlessly.",
-    icon: "Server",
-    badge: "Infrastructure",
+    id: "aws",
+    slug: "aws",
+    title: "AWS & Cloud DevOps",
+    shortDescription: "Cloud architecture on AWS (EC2, S3, Lambda), Docker containerization, CI/CD automated deployment, and server scaling.",
+    description: "Build, deploy, and scale on battle-tested cloud infrastructure. We engineer secure Amazon Web Services (AWS) architectures, containerize applications with Docker, configure zero-downtime CI/CD automated deployment pipelines, and optimize cloud server performance.",
+    icon: "Cloud",
+    badge: "Cloud & DevOps",
     features: [
-      "RESTful & GraphQL API Engineering",
-      "PostgreSQL, MongoDB, and Redis Optimization",
-      "Authentication & JWT / OAuth Systems",
-      "Serverless Architecture (Vercel, AWS Lambda)",
-      "Real-time WebSockets & Data Streaming",
-      "API Security & Rate Limiting"
+      "AWS Cloud Infrastructure (EC2, S3, RDS, CloudFront)",
+      "Serverless Architecture (AWS Lambda & API Gateway)",
+      "Docker Containerization & Kubernetes Clusters",
+      "Automated CI/CD Pipelines (GitHub Actions / GitLab)",
+      "SSL, IAM Security, VPC & Firewall Configuration",
+      "Real-Time CloudWatch Monitoring & Auto-Scaling"
     ],
     capabilities: [
-      "Backend Architecture",
-      "Database Design & Migration",
-      "GraphQL & REST APIs",
-      "Microservices",
-      "Cloud Deployment & Server Management",
-      "Security Audits"
+      "AWS Cloud Infrastructure Setup",
+      "Docker Containerization",
+      "Automated CI/CD Deployment",
+      "Database High-Availability & Backups",
+      "Serverless Cloud Functions",
+      "Cloud Cost & Security Optimization"
     ],
-    technologies: ["Node.js", "Express", "Python", "MongoDB", "PostgreSQL", "Redis", "Docker", "AWS"],
+    technologies: ["AWS", "EC2", "S3", "AWS Lambda", "Docker", "Kubernetes", "GitHub Actions", "Terraform"],
     process: [
-      { step: "01", title: "Data Modeling", desc: "Designing normalized schemas, indexes, and caching strategies." },
-      { step: "02", title: "API Construction", desc: "Writing clean, type-safe backend controllers with full validation." },
-      { step: "03", title: "Security Hardening", desc: "Implementing CORS, rate limiting, encryption, and token rotation." },
-      { step: "04", title: "DevOps & Deployment", desc: "Configuring auto-scaling containers, logs, and server health alerts." }
+      { step: "01", title: "Cloud Blueprint", desc: "Designing secure VPC networks, subnet routing, and IAM permission policies." },
+      { step: "02", title: "Containerization", desc: "Writing optimized Dockerfiles and docker-compose configurations." },
+      { step: "03", title: "CI/CD Automation", desc: "Configuring automated test runs and zero-downtime deployment triggers." },
+      { step: "04", title: "Monitoring & Scaling", desc: "Setting up CloudWatch metrics, CPU alarm triggers, and auto-scaling groups." }
     ],
-    metrics: { latency: "< 30ms API", concurrency: "50k req/min", uptime: "99.99%" }
-  },
-  {
-    id: "saas-development",
-    slug: "saas-development",
-    title: "SaaS Product Development",
-    shortDescription: "End-to-end SaaS creation from MVP validation to scalable multi-tenant platform architecture.",
-    description: "Launch your SaaS product with confidence. We partner with founders and enterprise teams to design, engineer, and scale recurring-revenue digital products with built-in subscription billing, tenant isolation, and analytics.",
-    icon: "Zap",
-    badge: "Full Cycle",
-    features: [
-      "Rapid MVP Development",
-      "Stripe Subscription & Invoicing Engine",
-      "Multi-Tenant Isolation & Security",
-      "Customer Portal & Plan Upgrades",
-      "Product Analytics & Usage Metrics",
-      "Automated Onboarding Flows"
-    ],
-    capabilities: [
-      "SaaS MVP Engineering",
-      "Subscription Billing Integration",
-      "Tenant Management Portals",
-      "User Permission Systems",
-      "SaaS Analytics",
-      "API Platform Integrations"
-    ],
-    technologies: ["Next.js", "React", "Node.js", "MongoDB", "Stripe", "Tailwind CSS", "Resend"],
-    process: [
-      { step: "01", title: "MVP Scope & Roadmapping", desc: "Prioritizing core features for fast market entry." },
-      { step: "02", title: "Architecture & Auth", desc: "Setting up authentication, database tenants, and Stripe billing." },
-      { step: "03", title: "Core Feature Sprints", desc: "Engineering user dashboards, workflows, and automated emails." },
-      { step: "04", title: "Beta & Public Launch", desc: "Deploying to production, monitoring conversion funnels, and scaling." }
-    ],
-    metrics: { timeToMarket: "6-8 Weeks", retention: "High Retention", billing: "Stripe Ready" }
+    metrics: { uptime: "99.99% Uptime", deploySpeed: "< 3min Deploys", securityScore: "A+ Enterprise" }
   }
 ];

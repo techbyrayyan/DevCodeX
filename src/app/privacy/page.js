@@ -54,7 +54,7 @@ export default function PrivacyPage() {
             4. Contact Information
           </h2>
           <p>
-            For questions regarding privacy, email us at <strong style={{ color: '#3b82f6' }}>contact@devcodex.com</strong>.
+            For questions regarding privacy, email us at <a href="mailto:devcodex.agency@gmail.com" className="font-bold hover:underline" style={{ color: '#3b82f6' }}>devcodex.agency@gmail.com</a>.
           </p>
         </div>
       </div>

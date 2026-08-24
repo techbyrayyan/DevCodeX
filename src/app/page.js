@@ -1,10 +1,13 @@
 'use client';
 
 import { useState } from 'react';
+import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import PageTransition from '@/components/PageTransition';
-import Hero3D from '@/components/Hero3D';
+import { services } from '@/data/servicesData';
+
+const Hero3D = dynamic(() => import('@/components/Hero3D'), { ssr: false });
 import {
   ArrowRight, Target, Eye, Code2, ShieldCheck,
   Lightbulb, Gem, Handshake, Star,
@@ -39,45 +42,6 @@ const staggerContainer = {
 
 export default function HomePage() {
   const [activeTab, setActiveTab] = useState(0);
-
-  const servicesData = [
-    {
-      title: 'Web Development',
-      badge: 'Core Service',
-      desc: 'High-performance Next.js & React web applications engineered for speed, SEO, and user conversion.',
-      features: ['Next.js 15 & React Architecture', 'Server-Side Rendering (SSR)', 'SEO & Core Web Vitals Optimized', 'Responsive Mobile-First UI']
-    },
-    {
-      title: 'AI & Automation',
-      badge: 'Advanced Tech',
-      desc: 'Autonomous AI agents, automated workflows, and LLM integrations that transform business efficiency.',
-      features: ['Custom AI Agents & Chatbots', 'Workflow & API Automations', 'Data Processing Pipelines', 'OpenAI & Claude Integrations']
-    },
-    {
-      title: 'Custom Web Apps',
-      badge: 'Enterprise',
-      desc: 'Scalable SaaS platforms, admin dashboards, and cloud applications tailored to your business logic.',
-      features: ['Multi-tenant SaaS Architecture', 'Real-time Analytics Dashboards', 'Secure Auth & Role Permissions', 'Rest API & GraphQL Backends']
-    },
-    {
-      title: 'E-Commerce Storefronts',
-      badge: 'E-Commerce',
-      desc: 'Custom headless storefronts designed for maximum conversion rates and seamless checkout flows.',
-      features: ['Shopify & Headless Commerce', 'Payment Gateway Integration', 'Inventory Management Systems', 'High-Speed Product Filters']
-    },
-    {
-      title: 'UI/UX & Interactive Design',
-      badge: 'Design & Creative',
-      desc: 'Sleek dark-themed user interfaces, wireframes, and design systems crafted for prestige brands.',
-      features: ['Figma Design Systems', 'User Journey & Wireframing', 'Interactive Prototypes', 'Responsive Layout Patterns']
-    },
-    {
-      title: 'SEO & Growth Strategy',
-      badge: 'Marketing',
-      desc: 'Data-driven search engine optimization and digital marketing strategies to scale organic traffic.',
-      features: ['Technical SEO Audits', 'Keyword Strategy & Content', 'Performance Optimization', 'Conversion Rate Optimization']
-    }
-  ];
 
   /* ── Shared inline style constants ── */
   const cardStyle = { backgroundColor: '#121212', border: '1px solid #27272a' };
@@ -299,12 +263,12 @@ export default function HomePage() {
             {/* Tabbed Layout */}
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
               {/* Category Tabs */}
-              <div className="lg:col-span-4 space-y-2">
-                {servicesData.map((serv, index) => (
+              <div className="lg:col-span-4 space-y-2 max-h-[480px] overflow-y-auto pr-2 custom-scrollbar">
+                {services.map((serv, index) => (
                   <button
-                    key={index}
+                    key={serv.id || index}
                     onClick={() => setActiveTab(index)}
-                    className="w-full text-left p-4 rounded-xl text-sm font-semibold flex items-center justify-between transition-all duration-300 cursor-pointer"
+                    className="w-full text-left p-3.5 rounded-xl text-sm font-semibold flex items-center justify-between transition-all duration-300 cursor-pointer"
                     style={{
                       backgroundColor: activeTab === index ? '#121212' : 'transparent',
                       color: activeTab === index ? '#ffffff' : '#a1a1aa',
@@ -313,66 +277,78 @@ export default function HomePage() {
                       boxShadow: activeTab === index ? '0 4px 20px -5px rgba(59, 130, 246, 0.2)' : 'none',
                     }}
                   >
-                    <span>{serv.title}</span>
-                    <span className="text-xs font-mono" style={{ color: activeTab === index ? '#3b82f6' : '#71717a' }}>{serv.badge}</span>
+                    <span className="truncate pr-2">{serv.title}</span>
+                    <span className="text-[11px] font-mono shrink-0" style={{ color: activeTab === index ? '#3b82f6' : '#71717a' }}>{serv.badge}</span>
                   </button>
                 ))}
               </div>
 
               {/* Active Service Card with Motion */}
-              <motion.div 
-                key={activeTab}
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                className="lg:col-span-8 rounded-2xl p-8 space-y-6 hover-glow" 
-                style={cardStyle}
-              >
-                <div className="flex items-center justify-between pb-4" style={{ borderBottom: '1px solid #27272a' }}>
-                  <span className="text-xs font-mono uppercase tracking-wider font-semibold flex items-center gap-2" style={{ color: '#3b82f6' }}>
-                    <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
-                    {servicesData[activeTab].badge}
-                  </span>
-                  <span className="text-xs font-mono" style={{ color: '#a1a1aa' }}>0{activeTab + 1} / 06</span>
-                </div>
-
-                <div className="space-y-3">
-                  <h3
-                    className="text-2xl font-bold"
-                    style={{ color: '#ffffff', fontFamily: '"Outfit", "Inter", system-ui, sans-serif' }}
-                  >
-                    {servicesData[activeTab].title}
-                  </h3>
-                  <p className="text-sm leading-relaxed" style={{ color: '#a1a1aa' }}>{servicesData[activeTab].desc}</p>
-                </div>
-
-                <div className="space-y-3 pt-2">
-                  <span className="text-xs font-mono uppercase tracking-wider block font-semibold" style={{ color: '#ffffff' }}>Capabilities Included</span>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    {servicesData[activeTab].features.map((feat, fIdx) => (
-                      <div 
-                        key={fIdx} 
-                        className="p-3 rounded-lg flex items-center gap-2 text-xs transition-colors hover:border-zinc-600 hover:text-white" 
-                        style={{ ...innerCardStyle, color: '#a1a1aa' }}
-                      >
-                        <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ backgroundColor: '#3b82f6' }} />
-                        <span>{feat}</span>
-                      </div>
-                    ))}
+              {services[activeTab] && (
+                <motion.div 
+                  key={activeTab}
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                  className="lg:col-span-8 rounded-2xl p-8 space-y-6 hover-glow" 
+                  style={cardStyle}
+                >
+                  <div className="flex items-center justify-between pb-4" style={{ borderBottom: '1px solid #27272a' }}>
+                    <span className="text-xs font-mono uppercase tracking-wider font-semibold flex items-center gap-2" style={{ color: '#3b82f6' }}>
+                      <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
+                      {services[activeTab].badge}
+                    </span>
+                    <span className="text-xs font-mono" style={{ color: '#a1a1aa' }}>
+                      {activeTab + 1 < 10 ? `0${activeTab + 1}` : activeTab + 1} / {services.length < 10 ? `0${services.length}` : services.length}
+                    </span>
                   </div>
-                </div>
 
-                <div className="pt-4" style={{ borderTop: '1px solid #27272a' }}>
-                  <Link
-                    href="/services"
-                    className="btn-interactive inline-flex items-center gap-2 text-sm font-bold group"
-                    style={{ color: '#ffffff' }}
-                  >
-                    <span>Explore All Services</span>
-                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                  </Link>
-                </div>
-              </motion.div>
+                  <div className="space-y-3">
+                    <h3
+                      className="text-2xl font-bold"
+                      style={{ color: '#ffffff', fontFamily: '"Outfit", "Inter", system-ui, sans-serif' }}
+                    >
+                      {services[activeTab].title}
+                    </h3>
+                    <p className="text-sm leading-relaxed" style={{ color: '#a1a1aa' }}>
+                      {services[activeTab].description || services[activeTab].shortDescription}
+                    </p>
+                  </div>
+
+                  <div className="space-y-3 pt-2">
+                    <span className="text-xs font-mono uppercase tracking-wider block font-semibold" style={{ color: '#ffffff' }}>Capabilities Included</span>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      {services[activeTab].features.map((feat, fIdx) => (
+                        <div 
+                          key={fIdx} 
+                          className="p-3 rounded-lg flex items-center gap-2 text-xs transition-colors hover:border-zinc-600 hover:text-white" 
+                          style={{ ...innerCardStyle, color: '#a1a1aa' }}
+                        >
+                          <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ backgroundColor: '#3b82f6' }} />
+                          <span>{feat}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="pt-4 flex items-center justify-between" style={{ borderTop: '1px solid #27272a' }}>
+                    <Link
+                      href={`/services/${services[activeTab].slug}`}
+                      className="btn-interactive inline-flex items-center gap-2 text-sm font-bold group"
+                      style={{ color: '#ffffff' }}
+                    >
+                      <span>Explore {services[activeTab].title} Details</span>
+                      <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                    </Link>
+                    <Link
+                      href="/services"
+                      className="text-xs font-mono text-zinc-400 hover:text-blue-400 transition-colors"
+                    >
+                      View All 15 Services &rarr;
+                    </Link>
+                  </div>
+                </motion.div>
+              )}
             </div>
 
           </div>

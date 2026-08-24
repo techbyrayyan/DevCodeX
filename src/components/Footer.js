@@ -113,13 +113,14 @@ export default function Footer() {
 
           {/* Services */}
           <div className="space-y-3">
-            <h4 className="text-xs font-semibold text-white uppercase tracking-wider">Services</h4>
+            <h4 className="text-xs font-semibold text-white uppercase tracking-wider">Core Services</h4>
             <ul className="space-y-2 text-xs">
-              <li><Link href="/services" className="hover:text-white transition-colors" style={{ color: '#a1a1aa' }}>Web Development</Link></li>
-              <li><Link href="/services" className="hover:text-white transition-colors" style={{ color: '#a1a1aa' }}>AI Solutions</Link></li>
-              <li><Link href="/services" className="hover:text-white transition-colors" style={{ color: '#a1a1aa' }}>Digital Marketing</Link></li>
-              <li><Link href="/services" className="hover:text-white transition-colors" style={{ color: '#a1a1aa' }}>Automation</Link></li>
-              <li><Link href="/services" className="hover:text-white transition-colors" style={{ color: '#a1a1aa' }}>UI/UX Design</Link></li>
+              <li><Link href="/services/next-js" className="hover:text-white transition-colors" style={{ color: '#a1a1aa' }}>Next.js &amp; React.js</Link></li>
+              <li><Link href="/services/ai-automation" className="hover:text-white transition-colors" style={{ color: '#a1a1aa' }}>AI &amp; Workflow Automation</Link></li>
+              <li><Link href="/services/figma" className="hover:text-white transition-colors" style={{ color: '#a1a1aa' }}>Figma &amp; UI/UX Design</Link></li>
+              <li><Link href="/services/node-js" className="hover:text-white transition-colors" style={{ color: '#a1a1aa' }}>Node.js &amp; Nest.js Backend</Link></li>
+              <li><Link href="/services/shopify" className="hover:text-white transition-colors" style={{ color: '#a1a1aa' }}>Shopify &amp; WordPress</Link></li>
+              <li><Link href="/services/aws" className="hover:text-white transition-colors" style={{ color: '#a1a1aa' }}>AWS &amp; Cloud DevOps</Link></li>
             </ul>
           </div>
 

@@ -124,7 +124,12 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <span className="block uppercase font-mono" style={{ color: '#a1a1aa' }}>General Inquiries</span>
-                      <span className="font-bold text-sm" style={{ color: '#ffffff' }}>hello@devcodex.com</span>
+                      <a 
+                        href="mailto:devcodex.agency@gmail.com" 
+                        className="font-bold text-sm text-white hover:text-blue-400 transition-colors"
+                      >
+                        devcodex.agency@gmail.com
+                      </a>
                     </div>
                   </div>
 
@@ -134,7 +139,14 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <span className="block uppercase font-mono" style={{ color: '#a1a1aa' }}>Direct Phone / WhatsApp</span>
-                      <span className="font-bold text-sm" style={{ color: '#ffffff' }}>+92 323 9724377</span>
+                      <a 
+                        href="https://wa.me/923239724377" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="font-bold text-sm text-white hover:text-emerald-400 transition-colors"
+                      >
+                        +92 323 9724377
+                      </a>
                     </div>
                   </div>
 

@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import PageTransition from '@/components/PageTransition';
 import SectionHeading from '@/components/SectionHeading';
+import TeamCard from '@/components/TeamCard';
 import { companyValues, workflowSteps, teamMembers } from '@/data/teamData';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
 
@@ -217,35 +218,15 @@ export default function AboutPage() {
           />
 
           <motion.div 
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: '-60px' }}
             variants={staggerContainer}
           >
             {teamMembers.map((member, i) => (
-              <motion.div key={i} variants={fadeInUp} custom={i} className="hover-card rounded-2xl p-6 space-y-5" style={cardStyle}>
-                <div className="flex items-center gap-4">
-                  <div
-                    className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden shrink-0"
-                    style={{ border: '1px solid #27272a', backgroundColor: '#050505' }}
-                  >
-                    <Image src={member.avatar} alt={member.name} fill className="object-cover" />
-                  </div>
-                  <div>
-                    <h4
-                      className="text-lg sm:text-xl font-bold"
-                      style={{ color: '#ffffff', fontFamily: '"Outfit", "Inter", system-ui, sans-serif' }}
-                    >
-                      {member.name}
-                    </h4>
-                    <p className="text-xs font-mono mt-0.5" style={{ color: '#3b82f6' }}>{member.role}</p>
-                  </div>
-                </div>
-
-                <p className="text-xs sm:text-sm leading-relaxed" style={{ color: '#a1a1aa' }}>
-                  {member.bio}
-                </p>
+              <motion.div key={member.id || i} variants={fadeInUp} custom={i} className="w-full">
+                <TeamCard member={member} index={i} />
               </motion.div>
             ))}
           </motion.div>

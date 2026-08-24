@@ -58,13 +58,8 @@ export default function BackgroundVideo() {
         loop
         muted
         playsInline
-        preload="auto"
+        preload="none"
         onCanPlay={(e) => {
-          e.currentTarget.defaultMuted = true;
-          e.currentTarget.muted = true;
-          e.currentTarget.play().catch(() => {});
-        }}
-        onLoadedData={(e) => {
           e.currentTarget.defaultMuted = true;
           e.currentTarget.muted = true;
           e.currentTarget.play().catch(() => {});

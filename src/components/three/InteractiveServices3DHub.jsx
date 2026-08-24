@@ -4,9 +4,15 @@ import { useState, useRef, useEffect } from 'react';
 import * as THREE from 'three';
 import Link from 'next/link';
 import { services } from '@/data/servicesData';
-import { Sparkles, ArrowRight, CheckCircle2, Code2, Cpu, Layers, ShoppingBag, TrendingUp, Palette, Server, Zap } from 'lucide-react';
+import { 
+  Sparkles, ArrowRight, CheckCircle2, Code2, Layout, Zap, Cpu, Layers, 
+  Server, Box, Database, Globe, ShoppingBag, Bot, Brain, Palette, Cloud, TrendingUp 
+} from 'lucide-react';
 
-const iconMap = { Code2, Cpu, Layers, ShoppingBag, TrendingUp, Palette, Server, Zap };
+const iconMap = { 
+  Code2, Layout, Sparkles, Zap, Cpu, Layers, 
+  Server, Box, Database, Globe, ShoppingBag, Bot, Brain, Palette, Cloud, TrendingUp 
+};
 
 function Central3DHubCanvas({ activeIndex }) {
   const containerRef = useRef(null);

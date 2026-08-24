@@ -43,9 +43,9 @@ export default function SettingsPage() {
   const [profile, setProfile] = useState<CompanyProfile>({
     name: 'DevCodex',
     email: 'devcodex.agency@gmail.com',
-    phone: '+923238418438',
+    phone: '+923239724377',
     website: 'https://devcodex.agency',
-    address: 'Suite 404, Tech Park, Karachi, Pakistan',
+    address: 'Suite 404, Tech Park, Lahore, Pakistan',
     country: 'Pakistan',
   });
 
