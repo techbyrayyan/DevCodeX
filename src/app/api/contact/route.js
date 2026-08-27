@@ -5,7 +5,7 @@ export async function POST(request) {
     const body = await request.json();
     const { name, email, company, service, message } = body;
 
-    // Server-side Validation
+    // Validation
     if (!name || !email || !message) {
       return NextResponse.json(
         { error: 'Missing required fields (Name, Email, and Message are mandatory).' },
@@ -21,28 +21,7 @@ export async function POST(request) {
       );
     }
 
-    // MongoDB mein save karo — optional (fail hone par bhi form chale)
-    try {
-      const connectToDatabase = (await import('@/lib/mongoose')).default;
-      const Contact = (await import('@/models/Contact')).default;
-
-      await connectToDatabase();
-      const contactEntry = await Contact.create({
-        name:    name.trim(),
-        email:   email.trim().toLowerCase(),
-        company: company ? company.trim() : '',
-        service: service || 'General Consultation',
-        message: message.trim(),
-        whatsappSent: true,
-        status: 'New',
-      });
-      console.log('Contact saved to MongoDB:', contactEntry._id.toString());
-    } catch (dbError) {
-      // MongoDB fail hone par sirf log karo, form band mat karo
-      console.warn('MongoDB save failed (non-critical):', dbError.message);
-    }
-
-    // WhatsApp URL banao
+    // WhatsApp URL pehle banao — ye hamesha fast hai
     const whatsappNumber = process.env.WHATSAPP_NUMBER || '923239724377';
     const companyText = company ? company : 'Not Specified';
     const serviceText = service ? service : 'General Consultation';
@@ -61,11 +40,36 @@ export async function POST(request) {
 
     const whatsappUrl = 'https://wa.me/' + whatsappNumber + '?text=' + encodeURIComponent(waText);
 
+    // MongoDB save — 3 second timeout ke sath, background mein
+    const dbTimeout = new Promise((_, reject) =>
+      setTimeout(() => reject(new Error('DB timeout')), 3000)
+    );
+
+    const dbSave = (async () => {
+      const connectToDatabase = (await import('@/lib/mongoose')).default;
+      const Contact = (await import('@/models/Contact')).default;
+      await connectToDatabase();
+      await Contact.create({
+        name:    name.trim(),
+        email:   email.trim().toLowerCase(),
+        company: company ? company.trim() : '',
+        service: service || 'General Consultation',
+        message: message.trim(),
+        whatsappSent: true,
+        status: 'New',
+      });
+    })();
+
+    Promise.race([dbSave, dbTimeout])
+      .then(() => console.log('Contact saved to MongoDB'))
+      .catch((err) => console.warn('MongoDB skipped:', err.message));
+
+    // Seedha response do — MongoDB ka wait mat karo
     return NextResponse.json(
       {
         success: true,
         whatsappUrl,
-        message: 'Your inquiry has been received. We will respond within 4 hours.',
+        message: 'Inquiry received! Redirecting to WhatsApp...',
       },
       { status: 200 }
     );
@@ -73,7 +77,7 @@ export async function POST(request) {
   } catch (error) {
     console.error('Contact Form Error:', error);
     return NextResponse.json(
-      { error: 'Internal server error. Please try again or email devcodex.agency@gmail.com directly.' },
+      { error: 'Something went wrong. Please try again.' },
       { status: 500 }
     );
   }
