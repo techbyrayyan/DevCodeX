@@ -1,6 +1,4 @@
-import { NextResponse } from 'next/server';
-import connectToDatabase from '@/lib/mongoose';
-import Contact from '@/models/Contact';
+﻿import { NextResponse } from 'next/server';
 
 export async function POST(request) {
   try {
@@ -23,20 +21,26 @@ export async function POST(request) {
       );
     }
 
-    // MongoDB mein save karo
-    await connectToDatabase();
+    // MongoDB mein save karo — optional (fail hone par bhi form chale)
+    try {
+      const connectToDatabase = (await import('@/lib/mongoose')).default;
+      const Contact = (await import('@/models/Contact')).default;
 
-    const contactEntry = await Contact.create({
-      name:    name.trim(),
-      email:   email.trim().toLowerCase(),
-      company: company ? company.trim() : '',
-      service: service || 'General Consultation',
-      message: message.trim(),
-      whatsappSent: true,
-      status: 'New',
-    });
-
-    console.log('Contact saved to MongoDB:', contactEntry._id.toString());
+      await connectToDatabase();
+      const contactEntry = await Contact.create({
+        name:    name.trim(),
+        email:   email.trim().toLowerCase(),
+        company: company ? company.trim() : '',
+        service: service || 'General Consultation',
+        message: message.trim(),
+        whatsappSent: true,
+        status: 'New',
+      });
+      console.log('Contact saved to MongoDB:', contactEntry._id.toString());
+    } catch (dbError) {
+      // MongoDB fail hone par sirf log karo, form band mat karo
+      console.warn('MongoDB save failed (non-critical):', dbError.message);
+    }
 
     // WhatsApp URL banao
     const whatsappNumber = process.env.WHATSAPP_NUMBER || '923239724377';
@@ -61,13 +65,13 @@ export async function POST(request) {
       {
         success: true,
         whatsappUrl,
-        message: 'Your inquiry has been saved and forwarded to WhatsApp. We will respond within 4 hours.',
+        message: 'Your inquiry has been received. We will respond within 4 hours.',
       },
       { status: 200 }
     );
 
   } catch (error) {
-    console.error('Contact Form Submission Error:', error);
+    console.error('Contact Form Error:', error);
     return NextResponse.json(
       { error: 'Internal server error. Please try again or email devcodex.agency@gmail.com directly.' },
       { status: 500 }
