@@ -33,35 +33,51 @@ const staggerContainer = {
 export default function ContactPage() {
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [whatsappLink, setWhatsappLink] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState('');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     company: '',
-    budget: '$5k - $15k',
     service: 'Web Development',
     message: '',
   });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setFormSubmitted(true);
+    setIsLoading(true);
+    setErrorMsg('');
 
-    const whatsappNumber = '923239724377';
-    const message = `*New Project Inquiry - DevCodeX*\n\n` +
-      `*Client Name:* ${formData.name}\n` +
-      `*Email Address:* ${formData.email}\n` +
-      `*Company:* ${formData.company || 'Not Specified'}\n` +
-      `*Budget Range:* ${formData.budget}\n` +
-      `*Service Required:* ${formData.service}\n\n` +
-      `*Project Scope & Requirements:*\n${formData.message}`;
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
 
-    const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-    setWhatsappLink(url);
+      const data = await res.json();
 
-    if (typeof window !== 'undefined') {
-      window.open(url, '_blank', 'noopener,noreferrer');
+      if (!res.ok) {
+        setErrorMsg(data.error || 'Something went wrong. Please try again.');
+        setIsLoading(false);
+        return;
+      }
+
+      // MongoDB save ho gaya — ab WhatsApp bhi open karo
+      setWhatsappLink(data.whatsappUrl);
+      setFormSubmitted(true);
+
+      if (typeof window !== 'undefined' && data.whatsappUrl) {
+        window.open(data.whatsappUrl, '_blank', 'noopener,noreferrer');
+      }
+    } catch (err) {
+      console.error('Submit error:', err);
+      setErrorMsg('Network error. Please check your connection and try again.');
+    } finally {
+      setIsLoading(false);
     }
   };
+
 
   const cardStyle = { backgroundColor: '#121212', border: '1px solid #27272a' };
   const inputStyle = { backgroundColor: '#050505', border: '1px solid #27272a', color: '#ffffff' };
@@ -290,10 +306,10 @@ export default function ContactPage() {
                         style={inputStyle}
                       >
                         <option value="Web Development">Web Development</option>
-                        <option value="AI & Automation">AI & Automation</option>
+                        <option value="AI & Automation">AI &amp; Automation</option>
                         <option value="Custom Web App">Custom SaaS Web App</option>
                         <option value="E-Commerce">E-Commerce Storefront</option>
-                        <option value="UI/UX Design">UI/UX & Design Systems</option>
+                        <option value="UI/UX Design">UI/UX &amp; Design Systems</option>
                       </select>
                     </div>
                   </div>
@@ -311,13 +327,36 @@ export default function ContactPage() {
                     />
                   </div>
 
+                  {/* Error message */}
+                  {errorMsg && (
+                    <div
+                      className="rounded-xl px-4 py-3 text-sm"
+                      style={{ backgroundColor: '#1a0000', border: '1px solid #7f1d1d', color: '#fca5a5' }}
+                    >
+                      {errorMsg}
+                    </div>
+                  )}
+
                   <button
                     type="submit"
-                    className="btn-interactive w-full font-medium text-sm py-4 rounded-full inline-flex items-center justify-center gap-2 cursor-pointer"
+                    disabled={isLoading}
+                    className="btn-interactive w-full font-medium text-sm py-4 rounded-full inline-flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
                     style={{ backgroundColor: '#ffffff', color: '#000000' }}
                   >
-                    <span>Submit Inquiry</span>
-                    <Send className="w-4 h-4" />
+                    {isLoading ? (
+                      <>
+                        <svg className="animate-spin w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z" />
+                        </svg>
+                        <span>Saving &amp; Sending...</span>
+                      </>
+                    ) : (
+                      <>
+                        <span>Submit Inquiry</span>
+                        <Send className="w-4 h-4" />
+                      </>
+                    )}
                   </button>
                 </form>
               )}

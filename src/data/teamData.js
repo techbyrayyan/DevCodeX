@@ -46,8 +46,8 @@ export const workflowSteps = [
 
 export const teamMembers = [
   {
-    id: "rayyan-ansari",
-    name: "Rayyan Ansari",
+    id: "talha mughal",
+    name: "Talha Mughal",
     role: "Full Stack Engineer",
     bio: "Specializing in high-speed Next.js applications, serverless architecture, microservices, and scalable enterprise REST/GraphQL APIs.",
     avatar: "/human1.jpeg",
@@ -56,51 +56,51 @@ export const teamMembers = [
     socials: { twitter: "#", linkedin: "#", github: "#" }
   },
   {
-    id: "hamza-tariq",
-    name: "Hamza Tariq",
+    id: "rayyan Khalid",
+    name: "Rayyan Khalid",
     role: "AI & ML Specialist",
     bio: "Engineering custom AI agents, fine-tuned language models, automated LLM workflows, and enterprise knowledge retrieval pipelines.",
-    avatar: "/human2.png",
+    avatar: "/human3.jpeg",
     skills: ["Python", "OpenAI", "LangChain", "Vector DBs", "FastAPI", "PyTorch"],
     experience: "4+ Years Exp",
     socials: { twitter: "#", linkedin: "#", github: "#" }
   },
   {
-    id: "daniyal-khan",
-    name: "Daniyal Khan",
+    id: "Saif kaleem",
+    name: "Saif Kaleem",
     role: "Lead UI/UX Designer",
     bio: "Crafting sleek dark-mode interfaces, interactive wireframes, custom design systems, and conversion-optimized user experiences.",
-    avatar: "/human3.jpeg",
+    avatar: "/img2.jpg",
     skills: ["Figma", "Design Systems", "Prototyping", "UI/UX", "User Research", "Wireframing"],
     experience: "3+ Years Exp",
     socials: { twitter: "#", linkedin: "#", github: "#" }
   },
   {
-    id: "zainab-malik",
-    name: "Zainab Malik",
+    id: "Syed Qamar Abbas",
+    name: "Syed Qamar Abbas",
     role: "Cloud & DevOps Architect",
     bio: "Managing high-availability cloud infrastructure, Docker containers, Kubernetes clusters, and automated CI/CD deployment pipelines.",
-    avatar: "/human4.jpeg",
+    avatar: "/img3.jpg",
     skills: ["AWS", "Docker", "Kubernetes", "CI/CD", "Terraform", "Vercel"],
     experience: "4+ Years Exp",
     socials: { twitter: "#", linkedin: "#", github: "#" }
   },
   {
-    id: "bilal-ahmed",
-    name: "Bilal Ahmed",
+    id: "Saqib mughal",
+    name: "Saqib Mughal",
     role: "Frontend & 3D Developer",
     bio: "Building immersive client-side WebGL graphics, 3D interactive canvases, micro-animations, and smooth responsive web interfaces.",
-    avatar: "/img2.jpg",
+    avatar: "/human2.png",
     skills: ["Three.js", "WebGL", "Framer Motion", "GLSL", "React 3D", "Tailwind CSS"],
     experience: "3+ Years Exp",
     socials: { twitter: "#", linkedin: "#", github: "#" }
   },
   {
-    id: "ayesha-siddiqui",
-    name: "Ayesha Siddiqui",
+    id: "Wasi Ahmad",
+    name: "Wasi Ahmad",
     role: "QA & Security Engineer",
     bio: "Ensuring zero-vulnerability codebases, automated end-to-end testing suites, penetration testing, and top-tier Lighthouse benchmarks.",
-    avatar: "/img3.jpg",
+    avatar: "/human4.jpeg",
     skills: ["Cypress", "Jest", "SOC2", "Pen Testing", "Postman", "CI Audits"],
     experience: "3+ Years Exp",
     socials: { twitter: "#", linkedin: "#", github: "#" }

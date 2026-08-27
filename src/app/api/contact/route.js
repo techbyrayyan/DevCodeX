@@ -1,9 +1,11 @@
 import { NextResponse } from 'next/server';
+import connectToDatabase from '@/lib/mongoose';
+import Contact from '@/models/Contact';
 
 export async function POST(request) {
   try {
     const body = await request.json();
-    const { name, email, company, service, budget, message } = body;
+    const { name, email, company, service, message } = body;
 
     // Server-side Validation
     if (!name || !email || !message) {
@@ -21,28 +23,53 @@ export async function POST(request) {
       );
     }
 
-    // Process inquiry logging or external email forwarding safely
-    console.log('Received DevCodeX Project Inquiry:', {
-      name,
-      email,
-      company: company || 'Not specified',
+    // MongoDB mein save karo
+    await connectToDatabase();
+
+    const contactEntry = await Contact.create({
+      name:    name.trim(),
+      email:   email.trim().toLowerCase(),
+      company: company ? company.trim() : '',
       service: service || 'General Consultation',
-      budget: budget || 'Undisclosed',
-      message,
-      timestamp: new Date().toISOString()
+      message: message.trim(),
+      whatsappSent: true,
+      status: 'New',
     });
+
+    console.log('Contact saved to MongoDB:', contactEntry._id.toString());
+
+    // WhatsApp URL banao
+    const whatsappNumber = process.env.WHATSAPP_NUMBER || '923239724377';
+    const companyText = company ? company : 'Not Specified';
+    const serviceText = service ? service : 'General Consultation';
+
+    const waText = [
+      '*New Project Inquiry - DevCodeX*',
+      '',
+      '*Client Name:* ' + name,
+      '*Email Address:* ' + email,
+      '*Company:* ' + companyText,
+      '*Service Required:* ' + serviceText,
+      '',
+      '*Project Scope & Requirements:*',
+      message,
+    ].join('\n');
+
+    const whatsappUrl = 'https://wa.me/' + whatsappNumber + '?text=' + encodeURIComponent(waText);
 
     return NextResponse.json(
       {
         success: true,
-        message: 'Thank you! Your project inquiry has been successfully received by DevCodeX. Our senior engineering team will respond within 24 hours.'
+        whatsappUrl,
+        message: 'Your inquiry has been saved and forwarded to WhatsApp. We will respond within 4 hours.',
       },
       { status: 200 }
     );
+
   } catch (error) {
     console.error('Contact Form Submission Error:', error);
     return NextResponse.json(
-      { error: 'Internal server error while submitting message. Please try again or email devcodex.agency@gmail.com directly.' },
+      { error: 'Internal server error. Please try again or email devcodex.agency@gmail.com directly.' },
       { status: 500 }
     );
   }

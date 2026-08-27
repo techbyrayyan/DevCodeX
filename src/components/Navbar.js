@@ -27,9 +27,9 @@ export default function Navbar() {
     { href: '/about', label: 'About' },
     { href: '/services', label: 'Services' },
     // { href: '/blog', label: 'Blog' },
-    { href: '/faq', label: 'FAQs' },
     { href: '/projects', label: 'Portfolio' },
-    { href: '/contact', label: 'Contact' },
+    // { href: '/lets talk', label: 'Lets Talk' },
+    { href: '/faq', label: 'FAQs' },
     { href: '/tools', label: 'Get Free Tools' },
   ];
 

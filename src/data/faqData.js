@@ -1,57 +1,69 @@
 export const faqCategories = [
-  { id: "general", label: "General & Process" },
-  { id: "tech", label: "Technologies & 3D" },
-  { id: "pricing", label: "Pricing & Contracts" },
-  { id: "maintenance", label: "Support & Maintenance" }
+  { id: "services", label: "Services" },
+  { id: "pricing", label: "Pricing & Timeline" },
+  { id: "technical", label: "Technical" },
+  { id: "support", label: "Support & Process" }
 ];
 
 export const faqs = [
   {
     id: 1,
-    category: "general",
-    question: "What makes DevCodeX different from traditional agencies?",
-    answer: "DevCodeX combines senior-level full-stack engineering with cutting-edge 3D motion design and AI integration. We don't use generic drag-and-drop templates. Every project is custom-coded with Next.js, built for speed, visual excellence, and measurable business growth."
+    category: "services",
+    question: "What services does DevCodeX provide?",
+    answer: "DevCodeX provides website development, e-commerce, WordPress, Shopify, mobile apps, UI/UX design, SEO, digital marketing, AI automation, and cloud solutions."
   },
   {
     id: 2,
-    category: "general",
-    question: "How long does a typical project take to build?",
-    answer: "Project timelines depend on scope. A corporate website typically takes 3 to 5 weeks. Complex web applications, AI dashboards, and multi-page custom platforms take 6 to 10 weeks. We provide clear milestone schedules and weekly demo video updates."
+    category: "services",
+    question: "Do you work with WordPress and Shopify?",
+    answer: "Yes. DevCodeX provides WordPress development, customization, migration, and maintenance, as well as Shopify store development and customization."
   },
   {
     id: 3,
-    category: "tech",
-    question: "Will 3D graphics slow down my website on mobile devices?",
-    answer: "No. Our 3D WebGL scenes are built with device pixel ratio limits, compressed GLTF models, geometry instancing, and mobile viewport detection. On mobile, we automatically optimize shader intensity or fall back gracefully to lightweight canvas effects."
+    category: "services",
+    question: "Can you build a website according to my business requirements?",
+    answer: "Yes. DevCodeX develops custom websites based on your business goals, branding, audience, and required features."
   },
   {
     id: 4,
-    category: "tech",
-    question: "What technology stack do you use?",
-    answer: "Our core stack includes Next.js, React, Three.js, React Three Fiber, Framer Motion, Tailwind CSS, Node.js, Express, MongoDB, PostgreSQL, and Python for AI workflows. We deploy on Vercel and AWS for maximum global availability."
+    category: "services",
+    question: "Can you integrate payment gateways, APIs, and other services?",
+    answer: "Yes. DevCodeX can integrate payment systems, APIs, authentication, email services, analytics, AI APIs, and other third-party services."
   },
   {
     id: 5,
     category: "pricing",
-    question: "Are there any hidden fees or recurring monthly agency costs?",
-    answer: "No hidden costs. We present transparent milestone pricing proposals upfront. You own 100% of the code, domain, and server assets upon project completion. Post-launch maintenance plans are optional."
+    question: "How much does a website cost?",
+    answer: "Pricing depends on your requirements, features, design, integrations, and project complexity. DevCodeX provides a customized quote after understanding your project."
   },
   {
     id: 6,
     category: "pricing",
-    question: "How do payment milestones work?",
-    answer: "Standard projects follow a 50% deposit and 50% upon final signoff & deployment structure. For larger enterprise builds, we support milestone-based payments (e.g. 40% initial, 30% alpha prototype, 30% launch)."
+    question: "How long will it take to build my website?",
+    answer: "The timeline depends on the project's size and complexity. After reviewing your requirements, DevCodeX can provide an estimated development timeline."
   },
   {
     id: 7,
-    category: "maintenance",
-    question: "What kind of support do you provide post-launch?",
-    answer: "Every package includes a dedicated post-launch support window (from 2 weeks to 3 months) covering bug fixes, server monitoring, and minor updates. We also offer monthly retainer plans for continuous feature development and maintenance."
+    category: "technical",
+    question: "Will my website work properly on mobile and tablet?",
+    answer: "Yes. Websites are developed with responsive design so they work across mobile, tablet, laptop, and desktop screens."
   },
   {
     id: 8,
-    category: "maintenance",
-    question: "Can our internal team easily update text and blog posts later?",
-    answer: "Yes! We can integrate headless CMS platforms (such as Sanity, Strapi, or MDX) so non-technical team members can publish articles, edit pricing, or add new projects without touch code."
+    category: "technical",
+    question: "Can you redesign my existing website?",
+    answer: "Yes. DevCodeX can redesign an outdated website with a modern UI, better user experience, improved responsiveness, and optimized performance."
+  },
+  {
+    id: 9,
+    category: "support",
+    question: "Do you provide website maintenance after launch?",
+    answer: "Yes. DevCodeX can provide ongoing maintenance, updates, bug fixing, security improvements, performance optimization, and new features."
+  },
+  {
+    id: 10,
+    category: "support",
+    question: "How can I start my project with DevCodeX?",
+    answer: "Contact DevCodeX with your project idea or requirements. The team will review your needs, discuss the solution, estimate the scope, and guide you through the development process."
   }
 ];
