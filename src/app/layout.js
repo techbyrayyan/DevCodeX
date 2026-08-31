@@ -4,6 +4,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import BackgroundVideo from '@/components/BackgroundVideo';
 import WhatsAppButton from '@/components/WhatsAppButton';
+import AIConsultantWidget from '@/components/chat/AIConsultantWidget';
 import IntroAnimation from '@/components/IntroAnimation';
 
 const inter = Inter({
@@ -55,6 +56,7 @@ export default function RootLayout({ children }) {
         <div className="relative z-10">
           <Footer />
         </div>
+        <AIConsultantWidget />
         <WhatsAppButton />
       </body>
     </html>

@@ -36,8 +36,6 @@ const SlugGeneratorPage         = dynamic(() => import('@/components/tools/SlugG
 const AISocialCaptionPage       = dynamic(() => import('@/components/tools/AISocialCaptionPage'),       { loading: () => <PageSkeleton /> });
 const ImageOCRPage              = dynamic(() => import('@/components/tools/ImageOCRPage'),              { loading: () => <PageSkeleton /> });
 
-const AIConsultantWidget  = dynamic(() => import('@/components/chat/AIConsultantWidget'),       { ssr: false });
-
 function AppRouter() {
   const { view } = useAuth();
 
@@ -77,7 +75,6 @@ export default function Page() {
   return (
     <AuthProvider>
       <AppRouter />
-      <AIConsultantWidget />
     </AuthProvider>
   );
 }

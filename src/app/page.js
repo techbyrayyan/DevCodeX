@@ -5,7 +5,10 @@ import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import PageTransition from '@/components/PageTransition';
+import SectionHeading from '@/components/SectionHeading';
+import TeamCard from '@/components/TeamCard';
 import { services } from '@/data/servicesData';
+import { teamMembers } from '@/data/teamData';
 
 const Hero3D = dynamic(() => import('@/components/Hero3D'), { ssr: false });
 import {
@@ -505,7 +508,34 @@ export default function HomePage() {
         </section>
 
 
-        {/* ══ 7. CTA BANNER SECTION ════════════════════════════════ */}
+        {/* ══ 7. OUR TEAM SECTION ═══════════════════════════════════ */}
+        <section className="py-24 relative" style={sectionBorder}>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+            <SectionHeading
+              badge="Our People"
+              title="Our Team Members"
+              subtitle="A multidisciplinary team of engineers, designers, and cloud architects building high-impact digital solutions."
+              center={true}
+            />
+
+            <motion.div 
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: '-60px' }}
+              variants={staggerContainer}
+            >
+              {teamMembers.map((member, i) => (
+                <motion.div key={member.id || i} variants={fadeInUp} custom={i} className="w-full">
+                  <TeamCard member={member} index={i} />
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
+        </section>
+
+
+        {/* ══ 8. CTA BANNER SECTION ════════════════════════════════ */}
         <section className="py-24 relative overflow-hidden">
           
           {/* Subtle Ambient Light Glow */}
