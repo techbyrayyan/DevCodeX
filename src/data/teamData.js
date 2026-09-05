@@ -61,7 +61,7 @@ export const teamMembers = [
     name: "Saif Kaleem",
     role: "Backend Developer", 
     bio: "Backend Developer specializing in Node.js, Express.js, and MongoDB. I build secure, scalable, and high-performance APIs and backend systems that power modern web applications.",
-    avatar: "/img2.jpg",
+    avatar: "/saif.jpeg",
     skills: ["Node.js", "Express.js", "MongoDB", "REST API Development", "Authentication & Authorization", "Database Management",],
     experience: "4+ Years Exp",
    
