@@ -10,13 +10,13 @@ import { projects } from '@/data/projectsData';
 import { ArrowRight, ExternalLink } from 'lucide-react';
 
 const fadeInUp = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 16 },
   visible: (custom = 0) => ({
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.6,
-      delay: custom * 0.1,
+      duration: 0.35,
+      delay: custom * 0.04,
       ease: [0.16, 1, 0.3, 1],
     },
   }),
@@ -27,8 +27,8 @@ const staggerContainer = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.05,
+      staggerChildren: 0.05,
+      delayChildren: 0.02,
     },
   },
 };

@@ -43,7 +43,7 @@ export default function BackgroundVideo() {
       window.removeEventListener('scroll', handleUserInteraction);
       window.removeEventListener('touchstart', handleUserInteraction);
     };
-  }, [pathname]);
+  }, []);
 
   // Strictly DO NOT render video background on /tools
   if (pathname?.startsWith('/tools')) {

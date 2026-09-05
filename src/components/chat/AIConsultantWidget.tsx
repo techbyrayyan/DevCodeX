@@ -89,8 +89,8 @@ export default function AIConsultantWidget() {
 
   return (
     <>
-      {/* Floating Action Button - Positioned directly above WhatsApp Button */}
-      <div className={`fixed bottom-[88px] right-6 z-50 flex items-center group transition-all duration-300 ${isOpen ? 'scale-0 opacity-0 pointer-events-none' : 'scale-100 opacity-100'}`}>
+      {/* Floating Action Button - Positioned directly above WhatsApp Button with ample spacing */}
+      <div className={`fixed bottom-[104px] right-6 z-50 flex items-center group transition-all duration-300 ${isOpen ? 'scale-0 opacity-0 pointer-events-none' : 'scale-100 opacity-100'}`}>
         {/* Tooltip on hover */}
         <span className="hidden sm:inline-block mr-3 px-3 py-1.5 rounded-xl text-xs font-semibold font-mono bg-zinc-900/90 text-white border border-zinc-700 shadow-2xl backdrop-blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap">
           Chat with AI Consultant
@@ -114,7 +114,7 @@ export default function AIConsultantWidget() {
       </div>
 
       {/* Chat Window */}
-      <div className={`fixed bottom-4 right-4 sm:bottom-6 sm:right-6 w-[calc(100vw-32px)] sm:w-[390px] h-[75vh] sm:h-[600px] sm:max-h-[85vh] flex flex-col bg-[#0d0d0e] border border-zinc-800 rounded-2xl sm:rounded-3xl shadow-2xl z-50 transition-all duration-500 transform origin-bottom-right overflow-hidden ${isOpen ? 'scale-100 opacity-100 pointer-events-auto' : 'scale-95 opacity-0 pointer-events-none'}`}>
+      <div className={`fixed bottom-4 right-4 sm:bottom-6 sm:right-6 w-[calc(100vw-32px)] sm:w-[390px] h-[75vh] sm:h-[600px] sm:max-h-[85vh] flex flex-col bg-[#0d0d0e] border border-zinc-800 rounded-2xl sm:rounded-3xl shadow-2xl z-[60] transition-all duration-500 transform origin-bottom-right overflow-hidden ${isOpen ? 'scale-100 opacity-100 pointer-events-auto' : 'scale-95 opacity-0 pointer-events-none'}`}>
         
         {/* Header */}
         <div className="flex items-center justify-between p-4 bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 text-white rounded-t-2xl sm:rounded-t-3xl border-b border-blue-500/20">

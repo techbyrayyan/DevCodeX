@@ -1,52 +1,16 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { GoogleGenerativeAI, SchemaType } from '@google/generative-ai';
+import { GoogleGenerativeAI } from '@google/generative-ai';
 import connectToDatabase from '@/lib/mongoose';
 import Lead from '@/models/Lead';
 import companyData from '@/lib/companyData.json';
 
-// Remove top-level instantiation
-
-// In-memory cache to reduce repeated search API calls (Requirement 10)
-const searchCache = new Map<string, { result: string; timestamp: number }>();
-
-async function performWebSearch(query: string): Promise<string | null> {
-  if (searchCache.has(query)) {
-    const cached = searchCache.get(query)!;
-    // Cache valid for 1 hour
-    if (Date.now() - cached.timestamp < 1000 * 60 * 60) {
-      console.log(`Using cached search result for: ${query}`);
-      return cached.result;
-    }
-  }
-
-  const apiKey = process.env.SEARCH_API_KEY;
-  if (!apiKey) {
-    console.warn("SEARCH_API_KEY is not set. Assuming fallback.");
-    return null;
-  }
-
-  try {
-    console.log(`Performing web search for: ${query}`);
-    // Using Tavily Search API (or compatible provider)
-    const response = await fetch("https://api.tavily.com/search", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ api_key: apiKey, query, search_depth: "basic" }),
-    });
-
-    if (!response.ok) return null;
-    const data = await response.json();
-    if (data && data.results && data.results.length > 0) {
-      const res = data.results.map((r: any) => `Title: ${r.title}\nContent: ${r.content}`).join('\n\n');
-      searchCache.set(query, { result: res, timestamp: Date.now() });
-      return res;
-    }
-    return "No relevant information found.";
-  } catch (error) {
-    console.error("Web Search Error:", error);
-    return null; // Graceful fallback
-  }
-}
+// Ultra-fast modern Gemini models (ordered by speed and reliability)
+const CHAT_MODELS = [
+  'gemini-3.5-flash-lite',
+  'gemini-flash-lite-latest',
+  'gemini-3.5-flash',
+  'gemini-3.6-flash',
+];
 
 const SYSTEM_PROMPT = `
 You are an elite AI Business Consultant and Support Agent for ${companyData.company_name}.
@@ -56,16 +20,16 @@ Contact Info: email: ${companyData.contact.email}, whatsapp: ${companyData.conta
 ${companyData.knowledge_base.map(q => `Q: ${q.question}\nA: ${q.answer}`).join('\n')}
 
 === GOALS ===
-Your goal is to accurately answer client questions using the Knowledge Base AND qualify the lead by extracting important business information, estimating project size, and guiding them through a professional consultation.
-Be engaging, polite, and advanced/professional. If the user uploads an image, describe and analyze it carefully as part of their project requirements or general inquiry.
-Try to ask ONLY 1 OR 2 QUESTIONS AT A TIME so you do not overwhelm the user. Do not give them a huge list to fill out all at once.
+Your goal is to accurately, concisely, and quickly answer client questions using the Knowledge Base AND qualify the lead by extracting important business information, estimating project size, and guiding them through a professional consultation.
+Be engaging, polite, and professional. Keep your replies direct, clear, and prompt. If the user uploads an image, describe and analyze it carefully as part of their project requirements.
+Ask only 1 or 2 focused questions at a time.
 
 Important things to discover during the chat (if not already known):
 1. Business Name & Industry (e.g. Healthcare, Real Estate, Ecommerce)
 2. Project Type (e.g. Website, App, CRM, AI Solution)
 3. Budget and Timeline
 4. Required Features
-5. User's Name and Email (crucial for follow up)
+5. User's Name and Email (for follow up)
 
 At the end of your response, ALWAYS append a JSON block inside triple backticks like this:
 \`\`\`json
@@ -83,60 +47,50 @@ At the end of your response, ALWAYS append a JSON block inside triple backticks 
 }
 \`\`\`
 The leadScore should be dynamically generated based on: high budget + clear timeline + email provided = higher score (up to 100). If it's a new interaction, give a baseline of 10. Update the score as you get more info.
-Keep the JSON structured exactly like that so the backend can parse it and update the CRM database.
 `;
+
+function getApiKeys(req: NextRequest, body: any): string[] {
+  const headerApiKey = req.headers.get('x-gemini-api-key') || req.headers.get('authorization')?.replace('Bearer ', '');
+  const candidates = [
+    process.env.GOOGLE_API_KEY,
+    process.env.GEMINI_API_KEY,
+    process.env.NEXT_PUBLIC_GOOGLE_API_KEY,
+    process.env.GOOGLE_API_KEY_2,
+    headerApiKey,
+    body?.apiKey,
+  ];
+
+  const keys: string[] = [];
+  for (const k of candidates) {
+    const trimmed = k?.trim();
+    if (trimmed && !keys.includes(trimmed)) {
+      keys.push(trimmed);
+    }
+  }
+  return keys;
+}
 
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json().catch(() => ({}));
     const { messages, leadId } = body;
 
-    if (!messages || !Array.isArray(messages)) {
+    if (!messages || !Array.isArray(messages) || messages.length === 0) {
       return NextResponse.json({ error: 'Messages are required' }, { status: 400 });
     }
 
-    const headerApiKey = req.headers.get('x-gemini-api-key') || req.headers.get('authorization')?.replace('Bearer ', '');
-    const apiKey = headerApiKey || body?.apiKey || process.env.GOOGLE_API_KEY || process.env.GEMINI_API_KEY || process.env.NEXT_PUBLIC_GOOGLE_API_KEY;
-
-    if (!apiKey) {
+    const keys = getApiKeys(req, body);
+    if (keys.length === 0) {
       return NextResponse.json(
-        { error: 'Service not configured. Please add your Gemini API Key in Settings or set GOOGLE_API_KEY in .env.local.' },
+        { error: 'Service not configured. Please add your Gemini API Key in .env.local or Settings.' },
         { status: 503 }
       );
     }
 
-    await connectToDatabase();
-
-    const genAI = new GoogleGenerativeAI(apiKey);
-    const model = genAI.getGenerativeModel({ 
-      model: "gemini-1.5-flash",
-      tools: [
-        {
-          functionDeclarations: [
-            {
-              name: "search_web",
-              description: "Search the internet for up-to-date information, news, weather, prices, sports, or anything not in your knowledge base.",
-              parameters: {
-                type: SchemaType.OBJECT,
-                properties: {
-                  query: {
-                    type: SchemaType.STRING,
-                    description: "The targeted search query, e.g. 'latest news on AI' or 'weather in New York'.",
-                  },
-                },
-                required: ["query"],
-              },
-            },
-          ],
-        },
-      ]
-    });
-
     // Format chat history
     const history = messages.slice(0, -1).map((msg: any) => {
-      const parts: any[] = [{ text: msg.content }];
+      const parts: any[] = [{ text: msg.content || '' }];
       if (msg.image) {
-        // Remove the data:image/[type];base64, prefix if present
         const base64Data = msg.image.split('base64,')[1] || msg.image;
         const mimeType = msg.image.match(/data:(image\/[a-zA-Z0-9]+);base64,/)?.[1] || "image/jpeg";
         parts.push({
@@ -152,17 +106,8 @@ export async function POST(req: NextRequest) {
       };
     });
 
-    // Start chat
-    const chat = model.startChat({
-      history: [
-        { role: 'user', parts: [{ text: SYSTEM_PROMPT }] },
-        { role: 'model', parts: [{ text: "Understood. I will act as the AI console, answer based on the knowledge base, and always return the JSON extraction at the end." }] },
-        ...history
-      ]
-    });
-
     const lastMsg = messages[messages.length - 1];
-    const userParts: any[] = [{ text: lastMsg.content || "Here is an image for you." }];
+    const userParts: any[] = [{ text: lastMsg.content || "Here is my inquiry." }];
     
     if (lastMsg.image) {
       const base64Data = lastMsg.image.split('base64,')[1] || lastMsg.image;
@@ -175,37 +120,61 @@ export async function POST(req: NextRequest) {
       });
     }
 
-    const result = await chat.sendMessage(userParts);
-    let responseText = "";
+    let responseText = '';
+    let lastError: any = null;
 
-    const response = result.response;
-    const functionCalls = response.functionCalls ? response.functionCalls() : [];
+    // Try keys and fast models
+    keyLoop: for (const apiKey of keys) {
+      const genAI = new GoogleGenerativeAI(apiKey);
 
-    if (functionCalls && functionCalls.length > 0) {
-      const call = functionCalls[0];
-      if (call.name === "search_web" && call.args) {
-        const query = (call.args as any).query as string;
-        const searchResult = await performWebSearch(query);
-        
-        // Return search result back to the AI
-        const secondResult = await chat.sendMessage([{
-          functionResponse: {
-            name: "search_web",
-            response: {
-              content: searchResult || "Cannot reach search API or no results. Please rely on your knowledge base gracefully."
+      for (const modelName of CHAT_MODELS) {
+        try {
+          const model = genAI.getGenerativeModel({ 
+            model: modelName,
+            generationConfig: {
+              temperature: 0.7,
+              maxOutputTokens: 1024,
             }
+          });
+
+          const chat = model.startChat({
+            history: [
+              { role: 'user', parts: [{ text: SYSTEM_PROMPT }] },
+              { role: 'model', parts: [{ text: "Understood. I will act as the DevCodeX AI Consultant, answering questions accurately and concisely while qualifying leads." }] },
+              ...history
+            ]
+          });
+
+          const result = await chat.sendMessage(userParts);
+          const rawText = result.response.text();
+
+          if (rawText && rawText.trim()) {
+            responseText = rawText;
+            break keyLoop;
           }
-        }]);
-        responseText = secondResult.response.text();
-      } else {
-        responseText = response.text();
+        } catch (err: any) {
+          lastError = err;
+          const errMsg = String(err?.message || '').toLowerCase();
+          console.warn(`[AI Chat] Model ${modelName} failed:`, err?.message || err);
+
+          // If auth error, skip to next key
+          if (errMsg.includes('api key') || errMsg.includes('401') || errMsg.includes('403')) {
+            continue keyLoop;
+          }
+        }
       }
-    } else {
-      responseText = response.text();
+    }
+
+    if (!responseText) {
+      console.error('[AI Chat] All models and keys failed:', lastError);
+      return NextResponse.json(
+        { error: lastError?.message || 'AI service temporarily unavailable. Please try again.' },
+        { status: 500 }
+      );
     }
 
     // Parse the JSON block from responseText
-    let extractedData = {};
+    let extractedData: Record<string, any> = {};
     let leadScore = 10;
     let cleanResponseText = responseText;
 
@@ -227,16 +196,22 @@ export async function POST(req: NextRequest) {
       try {
         const parsed = JSON.parse(jsonStr);
         if (parsed.extractedData) {
-          extractedData = Object.fromEntries(Object.entries(parsed.extractedData).filter(([_, v]) => v !== null));
+          extractedData = Object.fromEntries(
+            Object.entries(parsed.extractedData).filter(([_, v]) => v !== null && v !== 'null')
+          );
         }
-        if (parsed.leadScore) leadScore = parsed.leadScore;
-        // Clean the text to send to user
+        if (typeof parsed.leadScore === 'number') {
+          leadScore = parsed.leadScore;
+        }
         cleanResponseText = responseText.replace(matchStr, '').trim();
       } catch (e) {
         console.error("Failed to parse JSON from AI", e);
-        // Attempt to hide the broken JSON anyway
         cleanResponseText = responseText.replace(matchStr, '').trim();
       }
+    }
+
+    if (!cleanResponseText) {
+      cleanResponseText = responseText;
     }
 
     // Determine Status
@@ -245,38 +220,42 @@ export async function POST(req: NextRequest) {
     else if (leadScore > 40) status = 'Warm';
     else if (leadScore > 20) status = 'Cold';
 
-    // Update or Create Lead
-    let currentLead;
-    if (leadId) {
-      currentLead = await Lead.findById(leadId);
-    }
-    
-    const contentToSave = lastMsg.image ? lastMsg.content + '\n[Image Uploaded]' : lastMsg.content;
+    // Update or Create Lead asynchronously without blocking/crashing on DB errors
+    let savedLeadId = leadId || null;
+    try {
+      await connectToDatabase();
+      const contentToSave = lastMsg.image ? (lastMsg.content || '') + '\n[Image Uploaded]' : (lastMsg.content || '');
 
-    if (currentLead) {
-      // Update
-      Object.assign(currentLead, extractedData);
-      currentLead.leadScore = leadScore;
-      currentLead.status = status;
-      currentLead.conversations.push({ role: 'user', content: contentToSave });
-      currentLead.conversations.push({ role: 'assistant', content: cleanResponseText });
-      await currentLead.save();
-    } else {
-      // Create
-      currentLead = await Lead.create({
-        ...extractedData,
-        leadScore,
-        status,
-        conversations: [
-          { role: 'user', content: contentToSave },
-          { role: 'assistant', content: cleanResponseText }
-        ]
-      });
+      if (leadId) {
+        const currentLead = await Lead.findById(leadId);
+        if (currentLead) {
+          Object.assign(currentLead, extractedData);
+          currentLead.leadScore = leadScore;
+          currentLead.status = status;
+          currentLead.conversations.push({ role: 'user', content: contentToSave });
+          currentLead.conversations.push({ role: 'assistant', content: cleanResponseText });
+          await currentLead.save();
+          savedLeadId = currentLead._id;
+        }
+      } else {
+        const currentLead = await Lead.create({
+          ...extractedData,
+          leadScore,
+          status,
+          conversations: [
+            { role: 'user', content: contentToSave },
+            { role: 'assistant', content: cleanResponseText }
+          ]
+        });
+        savedLeadId = currentLead._id;
+      }
+    } catch (dbErr) {
+      console.warn('[AI Chat] MongoDB storage skipped or unavailable:', dbErr);
     }
 
     return NextResponse.json({
       text: cleanResponseText,
-      leadId: currentLead._id,
+      leadId: savedLeadId,
       leadScore,
       extractedData
     });
@@ -286,3 +265,4 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: error.message || 'Error processing request' }, { status: 500 });
   }
 }
+

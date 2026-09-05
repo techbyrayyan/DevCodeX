@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import PageTransition from '@/components/PageTransition';
 import SectionHeading from '@/components/SectionHeading';
@@ -16,13 +17,13 @@ const iconMap = {
 };
 
 const fadeInUp = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 16 },
   visible: (custom = 0) => ({
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.6,
-      delay: custom * 0.1,
+      duration: 0.35,
+      delay: custom * 0.04,
       ease: [0.16, 1, 0.3, 1],
     },
   }),
@@ -33,13 +34,14 @@ const staggerContainer = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.05,
+      staggerChildren: 0.05,
+      delayChildren: 0.02,
     },
   },
 };
 
 export default function ServicesPage() {
+  const router = useRouter();
   const cardStyle = { backgroundColor: '#121212', border: '1px solid #27272a' };
   const iconBoxStyle = { backgroundColor: '#050505', border: '1px solid #27272a' };
 
@@ -79,7 +81,7 @@ export default function ServicesPage() {
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: '-60px' }}
+            viewport={{ once: true }}
             variants={staggerContainer}
           >
             {services.map((service, idx) => {
@@ -89,52 +91,60 @@ export default function ServicesPage() {
                   key={service.id}
                   variants={fadeInUp}
                   custom={idx}
-                  className="hover-card rounded-2xl p-8 space-y-6 flex flex-col justify-between group cursor-pointer"
-                  style={cardStyle}
+                  className="h-full"
                 >
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between">
-                      <div className="p-3 rounded-xl flex items-center justify-center group-hover:border-blue-500/50 transition-colors" style={iconBoxStyle}>
-                        <IconComponent className="w-6 h-6 group-hover:text-blue-400 transition-colors" style={{ color: '#ffffff' }} />
-                      </div>
-                      <span
-                        className="text-xs font-mono px-3 py-1 rounded-full"
-                        style={{ backgroundColor: '#050505', border: '1px solid #27272a', color: '#3b82f6' }}
-                      >
-                        {service.badge}
-                      </span>
-                    </div>
-
-                    <h3
-                      className="text-2xl font-bold group-hover:text-white transition-colors"
-                      style={{ color: '#ffffff', fontFamily: '"Outfit", "Inter", system-ui, sans-serif' }}
-                    >
-                      {service.title}
-                    </h3>
-                    <p className="text-sm leading-relaxed" style={{ color: '#a1a1aa' }}>
-                      {service.shortDescription}
-                    </p>
-
-                    <div className="space-y-2 pt-2">
-                      {service.features.slice(0, 4).map((feat, i) => (
-                        <div key={i} className="flex items-center gap-2 text-xs" style={{ color: '#a1a1aa' }}>
-                          <CheckCircle2 className="w-3.5 h-3.5 shrink-0" style={{ color: '#3b82f6' }} />
-                          <span>{feat}</span>
+                  <Link
+                    href={`/services/${service.slug}`}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      router.push(`/services/${service.slug}`);
+                    }}
+                    className="hover-card hover-glow rounded-2xl p-8 space-y-6 flex flex-col justify-between h-full group cursor-pointer border transition-all duration-300 block"
+                    style={cardStyle}
+                  >
+                    <div className="space-y-4">
+                      <div className="flex items-center justify-between">
+                        <div className="p-3 rounded-xl flex items-center justify-center group-hover:border-blue-500/50 transition-colors" style={iconBoxStyle}>
+                          <IconComponent className="w-6 h-6 group-hover:text-blue-400 group-hover:scale-110 transition-all" style={{ color: '#ffffff' }} />
                         </div>
-                      ))}
-                    </div>
-                  </div>
+                        <span
+                          className="text-xs font-mono px-3 py-1 rounded-full uppercase tracking-wider"
+                          style={{ backgroundColor: '#050505', border: '1px solid #27272a', color: '#3b82f6' }}
+                        >
+                          {service.badge}
+                        </span>
+                      </div>
 
-                  <div className="pt-4" style={{ borderTop: '1px solid #27272a' }}>
-                    <Link
-                      href={`/services/${service.slug}`}
-                      className="btn-interactive inline-flex items-center justify-between w-full text-xs font-bold font-mono group/btn"
-                      style={{ color: '#ffffff' }}
-                    >
-                      <span>Explore Service Details</span>
-                      <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
-                    </Link>
-                  </div>
+                      <h3
+                        className="text-2xl font-bold group-hover:text-blue-400 transition-colors"
+                        style={{ color: '#ffffff', fontFamily: '"Outfit", "Inter", system-ui, sans-serif' }}
+                      >
+                        {service.title}
+                      </h3>
+                      <p className="text-sm leading-relaxed" style={{ color: '#a1a1aa' }}>
+                        {service.shortDescription}
+                      </p>
+
+                      <div className="space-y-2 pt-2">
+                        {service.features.slice(0, 4).map((feat, i) => (
+                          <div key={i} className="flex items-center gap-2 text-xs" style={{ color: '#a1a1aa' }}>
+                            <CheckCircle2 className="w-3.5 h-3.5 shrink-0" style={{ color: '#3b82f6' }} />
+                            <span>{feat}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="pt-4" style={{ borderTop: '1px solid #27272a' }}>
+                      <div
+                        className="btn-interactive inline-flex items-center justify-between w-full text-xs font-bold font-mono group/btn group-hover:text-blue-400 transition-colors"
+                        style={{ color: '#ffffff' }}
+                      >
+                        <span>Explore Service Details</span>
+                        <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                      </div>
+                    </div>
+                  </Link>
                 </motion.div>
               );
             })}

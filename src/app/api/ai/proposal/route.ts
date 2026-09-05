@@ -3,10 +3,10 @@ import { GoogleGenerativeAI, GoogleGenerativeAIError } from '@google/generative-
 
 // ─────────────────────────────────────────────────────────────────────────────
 const MODELS_TO_TRY = [
+  'gemini-3.5-flash-lite',
   'gemini-flash-lite-latest',
-  'gemini-3.1-flash-lite',
-  'gemini-2.0-flash',
-  'gemini-1.5-flash-8b',
+  'gemini-3.5-flash',
+  'gemini-3.6-flash',
 ] as const;
 
 // Per-request timeout in ms (must fit within Vercel's 60s function limit)

@@ -28,6 +28,7 @@ export default function TeamCard({ member, index }) {
 
   return (
     <div
+      suppressHydrationWarning
       className="group perspective-1000 w-full h-[470px] cursor-pointer select-none"
       onClick={() => setIsFlipped(!isFlipped)}
       onMouseEnter={() => setIsFlipped(true)}
@@ -160,7 +161,7 @@ export default function TeamCard({ member, index }) {
               <span>Tech Stack &amp; Expertise</span>
             </div>
 
-            <div className="flex flex-wrap gap-1.5">
+            <div className="flex flex-wrap gap-1.5" suppressHydrationWarning>
               {member.skills?.map((skill, sIdx) => (
                 <span
                   key={sIdx}

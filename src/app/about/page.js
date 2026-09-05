@@ -7,16 +7,16 @@ import PageTransition from '@/components/PageTransition';
 import SectionHeading from '@/components/SectionHeading';
 import TeamCard from '@/components/TeamCard';
 import { companyValues, workflowSteps, teamMembers } from '@/data/teamData';
-import { ArrowRight, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, CheckCircle2, Sparkles, Zap, Cpu, Layers, ShieldCheck } from 'lucide-react';
 
 const fadeInUp = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 16 },
   visible: (custom = 0) => ({
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.6,
-      delay: custom * 0.1,
+      duration: 0.35,
+      delay: custom * 0.04,
       ease: [0.16, 1, 0.3, 1],
     },
   }),
@@ -27,8 +27,8 @@ const staggerContainer = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.05,
+      staggerChildren: 0.05,
+      delayChildren: 0.02,
     },
   },
 };
@@ -97,35 +97,80 @@ export default function AboutPage() {
               </motion.div>
             </div>
 
-            {/* Right Visual Card */}
+            {/* Right Visual Card - Next-Gen Lab & Highlights */}
             <motion.div 
-              className="lg:col-span-5 rounded-2xl p-8 space-y-6 hover-card" 
+              className="lg:col-span-5 rounded-2xl p-7 space-y-5 hover-card relative overflow-hidden group" 
               style={cardStyle}
               variants={fadeInUp}
             >
-              <div className="flex items-center justify-between pb-4" style={{ borderBottom: '1px solid #27272a' }}>
-                <span className="text-xs font-mono uppercase tracking-wider font-semibold" style={{ color: '#3b82f6' }}>
-                  Engineering Studio
+              {/* Subtle ambient light glow */}
+              <div className="absolute -top-16 -right-16 w-36 h-36 bg-blue-500/10 rounded-full blur-2xl pointer-events-none group-hover:bg-blue-500/20 transition-all duration-500" />
+
+              {/* Header with Live Status */}
+              <div className="flex items-center justify-between pb-3.5" style={{ borderBottom: '1px solid #27272a' }}>
+                <span className="text-xs font-mono uppercase tracking-wider font-semibold flex items-center gap-2" style={{ color: '#3b82f6' }}>
+                  <Sparkles className="w-3.5 h-3.5 text-blue-400" />
+                  <span>Engineering & Innovation Lab</span>
                 </span>
-                <span className="w-2 h-2 rounded-full" style={{ backgroundColor: '#3b82f6' }} />
+                <span className="flex items-center gap-1.5 text-[11px] font-mono text-emerald-400 bg-emerald-500/10 px-2.5 py-0.5 rounded-full border border-emerald-500/20">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                  Active
+                </span>
               </div>
 
-              <div className="space-y-4">
+              {/* Title & Compelling Statement */}
+              <div className="space-y-2.5">
                 <h3
-                  className="text-xl font-bold"
+                  className="text-xl font-bold tracking-tight"
                   style={{ color: '#ffffff', fontFamily: '"Outfit", "Inter", system-ui, sans-serif' }}
                 >
-                  Full-Stack Digital Craftsmen
+                  Architects of the Future Web
                 </h3>
                 <p className="text-xs leading-relaxed" style={{ color: '#a1a1aa' }}>
-                  We craft custom software, high-speed Next.js web applications, and autonomous workflow engines designed for enterprise reliability.
+                  We blend cutting-edge 3D WebGL visuals, ultra-fast cloud architectures, and autonomous AI pipelines to build industry-defining platforms that scale effortlessly.
                 </p>
               </div>
 
-              <div className="space-y-2 text-xs font-mono pt-2" style={{ borderTop: '1px solid #27272a', color: '#a1a1aa' }}>
-                <div className="flex justify-between py-1"><span>Founded</span> <span className="font-bold" style={{ color: '#ffffff' }}>2026</span></div>
-                <div className="flex justify-between py-1"><span>Global Clients</span> <span className="font-bold" style={{ color: '#ffffff' }}>10+ Worldwide</span></div>
-                <div className="flex justify-between py-1"><span>Projects Delivered</span> <span className="font-bold" style={{ color: '#ffffff' }}>40+ Completed</span></div>
+              {/* Dynamic Capability Badges */}
+              <div className="grid grid-cols-2 gap-2 pt-1">
+                {[
+                  { icon: Zap, label: 'Sub-Second Speed', sub: '99+ Lighthouse Score' },
+                  { icon: Cpu, label: 'Autonomous AI', sub: 'Smart Agents & Workflows' },
+                  { icon: Layers, label: 'Immersive 3D', sub: 'WebGL & Three.js' },
+                  { icon: ShieldCheck, label: 'Zero-Downtime', sub: 'Enterprise Reliability' },
+                ].map((item, idx) => {
+                  const Icon = item.icon;
+                  return (
+                    <div 
+                      key={idx} 
+                      className="p-2.5 rounded-xl border border-zinc-800/80 bg-zinc-950/60 hover:border-zinc-700 transition-colors flex items-start gap-2.5"
+                    >
+                      <div className="w-6 h-6 rounded-md bg-blue-500/10 border border-blue-500/20 flex items-center justify-center shrink-0 mt-0.5">
+                        <Icon className="w-3.5 h-3.5 text-blue-400" />
+                      </div>
+                      <div>
+                        <p className="text-[11px] font-semibold text-white leading-tight">{item.label}</p>
+                        <p className="text-[10px] text-zinc-400 font-mono leading-tight mt-0.5">{item.sub}</p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+
+              {/* Performance & Quality Metrics */}
+              <div className="pt-3 border-t border-zinc-800/80 grid grid-cols-3 gap-2 text-center">
+                <div className="p-2 rounded-lg bg-zinc-900/40 border border-zinc-800/50">
+                  <p className="text-xs font-bold font-mono text-white">99.4%</p>
+                  <p className="text-[10px] text-zinc-400 font-mono mt-0.5">Satisfaction</p>
+                </div>
+                <div className="p-2 rounded-lg bg-zinc-900/40 border border-zinc-800/50">
+                  <p className="text-xs font-bold font-mono text-white">100%</p>
+                  <p className="text-[10px] text-zinc-400 font-mono mt-0.5">On-Time</p>
+                </div>
+                <div className="p-2 rounded-lg bg-zinc-900/40 border border-zinc-800/50">
+                  <p className="text-xs font-bold font-mono text-white">24/7</p>
+                  <p className="text-[10px] text-zinc-400 font-mono mt-0.5">Support</p>
+                </div>
               </div>
             </motion.div>
 

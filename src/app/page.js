@@ -7,6 +7,7 @@ import { motion } from 'framer-motion';
 import PageTransition from '@/components/PageTransition';
 import SectionHeading from '@/components/SectionHeading';
 import TeamCard from '@/components/TeamCard';
+import ServicesSection from '@/components/ServicesSection';
 import { services } from '@/data/servicesData';
 import { teamMembers } from '@/data/teamData';
 
@@ -20,13 +21,13 @@ import {
 
 /* Animation Variants */
 const fadeInUp = {
-  hidden: { opacity: 0, y: 24 },
+  hidden: { opacity: 0, y: 16 },
   visible: (custom = 0) => ({
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.6,
-      delay: custom * 0.1,
+      duration: 0.35,
+      delay: custom * 0.04,
       ease: [0.16, 1, 0.3, 1],
     },
   }),
@@ -37,8 +38,8 @@ const staggerContainer = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.12,
-      delayChildren: 0.1,
+      staggerChildren: 0.05,
+      delayChildren: 0.02,
     },
   },
 };
@@ -160,7 +161,7 @@ export default function HomePage() {
                 className="lg:col-span-5 space-y-6"
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, margin: '-80px' }}
+                viewport={{ once: true }}
                 variants={staggerContainer}
               >
                 <motion.div variants={fadeInUp} className="text-xs font-mono font-semibold uppercase tracking-widest" style={{ color: '#3b82f6' }}>
@@ -196,7 +197,7 @@ export default function HomePage() {
                 className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4"
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, margin: '-80px' }}
+                viewport={{ once: true }}
                 variants={staggerContainer}
               >
                 {[
@@ -307,12 +308,14 @@ export default function HomePage() {
                   </div>
 
                   <div className="space-y-3">
-                    <h3
-                      className="text-2xl font-bold"
-                      style={{ color: '#ffffff', fontFamily: '"Outfit", "Inter", system-ui, sans-serif' }}
-                    >
-                      {services[activeTab].title}
-                    </h3>
+                    <Link href={`/services/${services[activeTab].slug}`} className="block group">
+                      <h3
+                        className="text-2xl font-bold text-white group-hover:text-blue-400 transition-colors"
+                        style={{ fontFamily: '"Outfit", "Inter", system-ui, sans-serif' }}
+                      >
+                        {services[activeTab].title}
+                      </h3>
+                    </Link>
                     <p className="text-sm leading-relaxed" style={{ color: '#a1a1aa' }}>
                       {services[activeTab].description || services[activeTab].shortDescription}
                     </p>
@@ -384,7 +387,7 @@ export default function HomePage() {
               className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4"
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, margin: '-60px' }}
+              viewport={{ once: true }}
               variants={staggerContainer}
             >
               {[
@@ -427,7 +430,7 @@ export default function HomePage() {
                 className="lg:col-span-6 space-y-6"
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, margin: '-60px' }}
+                viewport={{ once: true }}
                 variants={staggerContainer}
               >
                 <motion.div variants={fadeInUp} className="text-xs font-mono font-semibold uppercase tracking-widest" style={{ color: '#3b82f6' }}>
@@ -476,7 +479,7 @@ export default function HomePage() {
                 style={cardStyle}
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, margin: '-60px' }}
+                viewport={{ once: true }}
                 variants={fadeInUp}
               >
                 <h3
@@ -508,6 +511,10 @@ export default function HomePage() {
         </section>
 
 
+        {/* ══ SERVICES SHOWCASE SLIDER SECTION ═════════════════════ */}
+        <ServicesSection />
+
+
         {/* ══ 7. OUR TEAM SECTION ═══════════════════════════════════ */}
         <section className="py-24 relative" style={sectionBorder}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
@@ -522,7 +529,7 @@ export default function HomePage() {
               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, margin: '-60px' }}
+              viewport={{ once: true }}
               variants={staggerContainer}
             >
               {teamMembers.map((member, i) => (

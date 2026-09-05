@@ -32,13 +32,13 @@ async function discoverModels(apiKey: string): Promise<string[]> {
       .map((m: any) => m.name.replace('models/', ''));
 
     const prioritized = [];
+    if (validModels.includes('gemini-3.5-flash-lite')) prioritized.push('gemini-3.5-flash-lite');
     if (validModels.includes('gemini-flash-lite-latest')) prioritized.push('gemini-flash-lite-latest');
-    if (validModels.includes('gemini-3.1-flash-lite')) prioritized.push('gemini-3.1-flash-lite');
-    if (validModels.includes('gemini-2.0-flash')) prioritized.push('gemini-2.0-flash');
-    if (validModels.includes('gemini-1.5-flash-8b')) prioritized.push('gemini-1.5-flash-8b');
+    if (validModels.includes('gemini-3.5-flash')) prioritized.push('gemini-3.5-flash');
+    if (validModels.includes('gemini-3.6-flash')) prioritized.push('gemini-3.6-flash');
     
     for (const model of validModels) {
-      if (!prioritized.includes(model) && !model.includes("vision") && !model.includes("embedding")) {
+      if (!prioritized.includes(model) && !model.includes("vision") && !model.includes("embedding") && !model.includes("image")) {
         prioritized.push(model);
       }
     }
@@ -48,7 +48,7 @@ async function discoverModels(apiKey: string): Promise<string[]> {
     return prioritized;
   } catch (error) {
     console.warn("[Model Discovery] Failed, falling back to safe defaults.", error);
-    return ["gemini-flash-lite-latest", "gemini-3.1-flash-lite", "gemini-2.0-flash"];
+    return ["gemini-3.5-flash-lite", "gemini-flash-lite-latest", "gemini-3.5-flash", "gemini-3.6-flash"];
   }
 }
 

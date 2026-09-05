@@ -17,22 +17,31 @@ export default function IntroAnimation() {
       return;
     }
 
-    // Auto dismiss after 3 seconds
+    setIsVisible(true);
+    setIsFadingOut(false);
+
+    // Auto-dismiss after 1.8s with smooth fadeout
     const timer = setTimeout(() => {
       setIsFadingOut(true);
       setTimeout(() => {
         setIsVisible(false);
-      }, 600);
-    }, 3000);
+      }, 400);
+    }, 1800);
 
-    return () => clearTimeout(timer);
+    const handleKey = () => handleDismiss();
+    window.addEventListener('keydown', handleKey, { once: true });
+
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('keydown', handleKey);
+    };
   }, [isTools]);
 
   const handleDismiss = () => {
     setIsFadingOut(true);
     setTimeout(() => {
       setIsVisible(false);
-    }, 600);
+    }, 300);
   };
 
   if (!isVisible || isTools) return null;
@@ -64,11 +73,12 @@ export default function IntroAnimation() {
 
   return (
     <div
-      className="intro-popup fixed inset-0 z-[99999] flex flex-col items-center justify-center text-white select-none overflow-hidden"
+      onClick={handleDismiss}
+      className="intro-popup fixed inset-0 z-[99999] flex flex-col items-center justify-center text-white select-none overflow-hidden cursor-pointer"
       style={{
         backgroundColor: '#050505',
         opacity: isFadingOut ? 0 : 1,
-        transition: 'opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
+        transition: 'opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1)',
       }}
     >
       {/* ══ BACKGROUND CIRCUIT SVG ══ */}

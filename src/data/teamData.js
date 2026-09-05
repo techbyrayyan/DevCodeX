@@ -45,45 +45,36 @@ export const workflowSteps = [
 ];
 
 export const teamMembers = [
-  {
-    id: "talha mughal",
-    name: "Talha Mughal",
-    role: "Full Stack Engineer",
-    bio: "Specializing in high-speed Next.js applications, serverless architecture, microservices, and scalable enterprise REST/GraphQL APIs.",
-    avatar: "/human1.jpeg",
-    skills: ["Next.js", "React", "Node.js", "TypeScript", "PostgreSQL", "Tailwind CSS"],
-    experience: "3+ Years Exp",
-    socials: { twitter: "#", linkedin: "#", github: "#" }
-  },
+  
   {
     id: "rayyan Khalid",
     name: "Rayyan Khalid",
-    role: "AI & ML Specialist",
-    bio: "Engineering custom AI agents, fine-tuned language models, automated LLM workflows, and enterprise knowledge retrieval pipelines.",
-    avatar: "/human3.jpeg",
-    skills: ["Python", "OpenAI", "LangChain", "Vector DBs", "FastAPI", "PyTorch"],
+    role: "Cloud & DevOps Architect",
+    bio: "Managing high-availability cloud infrastructure, Docker containers, Kubernetes clusters, and automated CI/CD deployment pipelines.",
+    avatar: "/rayyan.png",
+    skills: ["AWS", "Docker", "Kubernetes", "CI/CD", "Terraform", "Vercel" ],
     experience: "4+ Years Exp",
-    socials: { twitter: "#", linkedin: "#", github: "#" }
+  
   },
   {
-    id: "Saif kaleem",
+    id: "Saif Kaleem",
     name: "Saif Kaleem",
-    role: "Lead UI/UX Designer",
-    bio: "Crafting sleek dark-mode interfaces, interactive wireframes, custom design systems, and conversion-optimized user experiences.",
+    role: "Backend Developer", 
+    bio: "Backend Developer specializing in Node.js, Express.js, and MongoDB. I build secure, scalable, and high-performance APIs and backend systems that power modern web applications.",
     avatar: "/img2.jpg",
-    skills: ["Figma", "Design Systems", "Prototyping", "UI/UX", "User Research", "Wireframing"],
-    experience: "3+ Years Exp",
-    socials: { twitter: "#", linkedin: "#", github: "#" }
+    skills: ["Node.js", "Express.js", "MongoDB", "REST API Development", "Authentication & Authorization", "Database Management",],
+    experience: "4+ Years Exp",
+   
   },
   {
     id: "Syed Qamar Abbas",
     name: "Syed Qamar Abbas",
-    role: "Cloud & DevOps Architect",
-    bio: "Managing high-availability cloud infrastructure, Docker containers, Kubernetes clusters, and automated CI/CD deployment pipelines.",
-    avatar: "/img3.jpg",
-    skills: ["AWS", "Docker", "Kubernetes", "CI/CD", "Terraform", "Vercel"],
-    experience: "4+ Years Exp",
-    socials: { twitter: "#", linkedin: "#", github: "#" }
+    role: "Lead UI/UX Designer",
+    bio: "Crafting sleek dark-mode interfaces, interactive wireframes, custom design systems, and conversion-optimized user experiences.",
+    avatar: "/qamar.png",
+    skills: ["Figma", "Design Systems", "Prototyping", "UI/UX", "User Research", "Wireframing"],
+    experience: "3+ Years Exp",
+   
   },
   {
     id: "Saqib mughal",
@@ -93,17 +84,17 @@ export const teamMembers = [
     avatar: "/human2.png",
     skills: ["Three.js", "WebGL", "Framer Motion", "GLSL", "React 3D", "Tailwind CSS"],
     experience: "3+ Years Exp",
-    socials: { twitter: "#", linkedin: "#", github: "#" }
+   
   },
   {
     id: "Wasi Ahmad",
     name: "Wasi Ahmad",
-    role: "QA & Security Engineer",
-    bio: "Ensuring zero-vulnerability codebases, automated end-to-end testing suites, penetration testing, and top-tier Lighthouse benchmarks.",
+    role: "Graphic Designing & Digital Marketing",
+    bio: "Creative Graphic Designer and Digital Marketer skilled in creating engaging visual designs and effective digital marketing strategies. I help brands build a strong online presence through creative content, branding, social media, and targeted marketing..",
     avatar: "/human4.jpeg",
-    skills: ["Cypress", "Jest", "SOC2", "Pen Testing", "Postman", "CI Audits"],
+    skills: ["Graphic Design", "Adobe Photoshop", "Adobe Illustrator", "Social Media Marketing", "SEO & Content Marketing", "Branding & Visual Identity"],
     experience: "3+ Years Exp",
-    socials: { twitter: "#", linkedin: "#", github: "#" }
+   
   }
 ];
 

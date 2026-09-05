@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Disable the development indicator ("N" badge)
+  devIndicators: false,
+
   // Compress responses
   compress: true,
 

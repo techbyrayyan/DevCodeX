@@ -3,12 +3,10 @@ import { GoogleGenerativeAI } from '@google/generative-ai';
 
 // ─── Latest valid Gemini models (ordered by preference) ───────────────────
 const MODELS_TO_TRY = [
-  'gemini-2.5-flash',
-  'gemini-2.5-flash-lite',
-  'gemini-flash-latest',
-  'gemini-2.0-flash',
-  'gemini-2.0-flash-lite',
-  'gemini-1.5-flash',
+  'gemini-3.5-flash-lite',
+  'gemini-flash-lite-latest',
+  'gemini-3.5-flash',
+  'gemini-3.6-flash',
 ];
 
 

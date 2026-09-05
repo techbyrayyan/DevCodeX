@@ -1,8 +1,7 @@
 'use client';
 
-import { use } from 'react';
 import Link from 'next/link';
-import { notFound } from 'next/navigation';
+import { useParams, notFound } from 'next/navigation';
 import PageTransition from '@/components/PageTransition';
 import SectionHeading from '@/components/SectionHeading';
 import { services } from '@/data/servicesData';
@@ -16,12 +15,13 @@ const iconMap = {
   Server, Box, Database, Globe, ShoppingBag, Bot, Brain, Palette, Cloud, TrendingUp 
 };
 
-export default function ServiceDetailPage({ params }) {
-  const resolvedParams = use(params);
-  const service = services.find((s) => s.slug === resolvedParams.slug);
+export default function ServiceDetailPage() {
+  const params = useParams();
+  const slug = params?.slug;
+  const service = services.find((s) => s.slug === slug);
 
   if (!service) {
-    notFound();
+    return notFound();
   }
 
   const IconComponent = iconMap[service.icon] || Code2;
