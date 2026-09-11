@@ -30,13 +30,13 @@ export default function IntroAnimation() {
     setIsVisible(true);
     setIsFadingOut(false);
 
-    // Fast auto-dismiss (850ms) with smooth 250ms fadeout
+    // Auto-dismiss after 3s (3000ms) with smooth 400ms fadeout
     const timer = setTimeout(() => {
       setIsFadingOut(true);
       setTimeout(() => {
         setIsVisible(false);
-      }, 250);
-    }, 850);
+      }, 400);
+    }, 3000);
 
     const handleKey = () => handleDismiss();
     window.addEventListener('keydown', handleKey, { once: true });
@@ -51,7 +51,7 @@ export default function IntroAnimation() {
     setIsFadingOut(true);
     setTimeout(() => {
       setIsVisible(false);
-    }, 200);
+    }, 300);
   };
 
   if (!isVisible || isTools) return null;
@@ -88,7 +88,7 @@ export default function IntroAnimation() {
       style={{
         backgroundColor: '#050505',
         opacity: isFadingOut ? 0 : 1,
-        transition: 'opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1)',
+        transition: 'opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
       }}
     >
       {/* ══ BACKGROUND CIRCUIT SVG ══ */}
