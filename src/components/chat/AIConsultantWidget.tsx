@@ -22,11 +22,6 @@ export default function AIConsultantWidget() {
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  // Do not render on /tools
-  if (pathname?.startsWith('/tools')) {
-    return null;
-  }
-
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -34,6 +29,11 @@ export default function AIConsultantWidget() {
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
+
+  // Do not render on /tools
+  if (pathname?.startsWith('/tools')) {
+    return null;
+  }
 
   const handleImageSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
