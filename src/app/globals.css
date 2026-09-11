@@ -132,37 +132,82 @@ html {
 
 /* Card & Button Smooth Hover Transitions */
 .hover-card {
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
-              border-color 0.3s ease, 
-              box-shadow 0.3s ease,
-              background-color 0.3s ease;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 0.35s ease, 
+              box-shadow 0.35s ease,
+              background 0.35s ease;
 }
 
 .hover-card:hover {
-  transform: translateY(-4px);
-  border-color: #3b82f6 !important;
-  box-shadow: 0 12px 30px -10px rgba(59, 130, 246, 0.15);
+  transform: translateY(-5px);
+  border-color: rgba(59, 130, 246, 0.6) !important;
+  box-shadow: 0 16px 35px -10px rgba(59, 130, 246, 0.25), 0 0 15px rgba(99, 102, 241, 0.15);
 }
 
 .hover-glow:hover {
-  border-color: #52525b !important;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+  border-color: rgba(59, 130, 246, 0.5) !important;
+  box-shadow: 0 12px 30px -10px rgba(59, 130, 246, 0.2), 0 0 20px rgba(59, 130, 246, 0.1);
 }
 
 .btn-interactive {
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.2s ease,
-              background-color 0.2s ease,
-              color 0.2s ease;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.25s ease,
+              background-color 0.25s ease,
+              border-color 0.25s ease,
+              color 0.25s ease;
 }
 
 .btn-interactive:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.15);
 }
 
 .btn-interactive:active {
   transform: translateY(0);
+}
+
+/* Vibrant Glowing Gradient CTA Buttons */
+.btn-gradient-primary {
+  background: linear-gradient(135deg, #2563eb 0%, #4f46e5 50%, #3b82f6 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(147, 197, 253, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-gradient-primary:hover {
+  background: linear-gradient(135deg, #3b82f6 0%, #6366f1 50%, #2563eb 100%);
+  box-shadow: 0 6px 28px rgba(59, 130, 246, 0.6), 0 0 15px rgba(99, 102, 241, 0.4);
+  transform: translateY(-2px);
+}
+
+.btn-glass-secondary {
+  background: rgba(255, 255, 255, 0.03);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.btn-glass-secondary:hover {
+  background: rgba(59, 130, 246, 0.1);
+  border-color: rgba(59, 130, 246, 0.5);
+  color: #93c5fd;
+  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Modern Card Glass Backdrop with Subtle Ambient Glow */
+.card-glass {
+  background: linear-gradient(180deg, rgba(20, 20, 24, 0.8) 0%, rgba(12, 12, 14, 0.9) 100%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.card-glass:hover {
+  border-color: rgba(59, 130, 246, 0.4);
+  box-shadow: 0 14px 35px -10px rgba(59, 130, 246, 0.18);
 }
 
 /* Ambient Floating Keyframes */

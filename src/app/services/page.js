@@ -42,8 +42,8 @@ const staggerContainer = {
 
 export default function ServicesPage() {
   const router = useRouter();
-  const cardStyle = { backgroundColor: '#121212', border: '1px solid #27272a' };
-  const iconBoxStyle = { backgroundColor: '#050505', border: '1px solid #27272a' };
+  const cardStyle = { backgroundColor: 'rgba(16, 16, 20, 0.75)', border: '1px solid rgba(255, 255, 255, 0.08)', backdropFilter: 'blur(16px)' };
+  const iconBoxStyle = { backgroundColor: 'rgba(255, 255, 255, 0.04)', border: '1px solid rgba(255, 255, 255, 0.08)' };
 
   return (
     <PageTransition>

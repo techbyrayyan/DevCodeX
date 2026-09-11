@@ -7,71 +7,112 @@ export default function BackgroundVideo() {
   const pathname = usePathname();
   const videoRef = useRef(null);
 
+  // Exclude background video on /tools
+  const isToolsPage = Boolean(pathname?.startsWith('/tools'));
+
+  // 1. Core setup and auto-play listeners (runs once on mount)
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
 
-    // Force DOM-level muted properties for strict browser autoplay compatibility
-    video.defaultMuted = true;
     video.muted = true;
-    video.playbackRate = 1.0;
+    video.defaultMuted = true;
+    video.playsInline = true;
+    video.setAttribute('muted', '');
+    video.setAttribute('playsinline', '');
+    video.setAttribute('autoplay', '');
 
-    const playVideo = () => {
+    const tryPlay = () => {
       if (video && video.paused) {
-        video.play().catch(() => {
-          // Autoplay blocked by browser policy until interaction
-        });
+        video.muted = true;
+        const playPromise = video.play();
+        if (playPromise !== undefined && typeof playPromise.catch === 'function') {
+          playPromise.catch(() => {});
+        }
       }
     };
 
-    playVideo();
+    tryPlay();
 
-    // Wake up on first user gesture if browser blocked zero-interaction autoplay
-    const handleUserInteraction = () => {
-      playVideo();
-      window.removeEventListener('click', handleUserInteraction);
-      window.removeEventListener('scroll', handleUserInteraction);
-      window.removeEventListener('touchstart', handleUserInteraction);
+    // Interaction fallback for browsers blocking autoplay
+    const handleInteraction = () => tryPlay();
+    const interactionEvents = ['click', 'touchstart', 'scroll', 'mousemove', 'keydown'];
+    interactionEvents.forEach((evt) => {
+      window.addEventListener(evt, handleInteraction, { passive: true });
+    });
+
+    // Auto-resume when tab is visible
+    const handleVisibility = () => {
+      if (document.visibilityState === 'visible') {
+        tryPlay();
+      }
     };
+    document.addEventListener('visibilitychange', handleVisibility);
 
-    window.addEventListener('click', handleUserInteraction, { passive: true });
-    window.addEventListener('scroll', handleUserInteraction, { passive: true });
-    window.addEventListener('touchstart', handleUserInteraction, { passive: true });
+    video.addEventListener('pause', tryPlay);
+    video.addEventListener('waiting', tryPlay);
+    video.addEventListener('ended', tryPlay);
+    video.addEventListener('canplay', tryPlay);
+
+    // Heartbeat to keep video playing
+    const intervalId = setInterval(() => {
+      if (video && video.paused && document.visibilityState === 'visible') {
+        tryPlay();
+      }
+    }, 1500);
 
     return () => {
-      window.removeEventListener('click', handleUserInteraction);
-      window.removeEventListener('scroll', handleUserInteraction);
-      window.removeEventListener('touchstart', handleUserInteraction);
+      interactionEvents.forEach((evt) => {
+        window.removeEventListener(evt, handleInteraction);
+      });
+      document.removeEventListener('visibilitychange', handleVisibility);
+      video.removeEventListener('pause', tryPlay);
+      video.removeEventListener('waiting', tryPlay);
+      video.removeEventListener('ended', tryPlay);
+      video.removeEventListener('canplay', tryPlay);
+      clearInterval(intervalId);
     };
   }, []);
 
-  // Strictly DO NOT render video background on /tools
-  if (pathname?.startsWith('/tools')) {
+  // 2. Route change effect: triggers play on navigation across pages
+  useEffect(() => {
+    if (isToolsPage) return;
+    const video = videoRef.current;
+    if (video) {
+      video.muted = true;
+      if (video.paused) {
+        const p = video.play();
+        if (p && typeof p.catch === 'function') {
+          p.catch(() => {});
+        }
+      }
+    }
+  }, [pathname]);
+
+  if (isToolsPage) {
     return null;
   }
 
   return (
-    <div className="fixed inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
+    <div
+      aria-hidden="true"
+      className="fixed inset-0 w-full h-full overflow-hidden pointer-events-none select-none z-0"
+    >
       <video
         ref={videoRef}
+        src="/bg.mp4"
         autoPlay
         loop
         muted
         playsInline
-        preload="none"
-        onCanPlay={(e) => {
-          e.currentTarget.defaultMuted = true;
-          e.currentTarget.muted = true;
-          e.currentTarget.play().catch(() => {});
-        }}
-        className="absolute top-0 left-0 w-full h-full object-cover opacity-60"
+        preload="auto"
+        className="absolute top-0 left-0 w-full h-full object-cover opacity-80 pointer-events-none"
       >
         <source src="/bg.mp4" type="video/mp4" />
       </video>
-      {/* Semi-transparent dark overlay for high contrast */}
-      <div 
-        className="absolute inset-0 bg-[#050505]/40 backdrop-blur-[0.5px]"
-      />
+
+      {/* Subtle translucent dark overlay */}
+      <div className="absolute inset-0 bg-[#050505]/30 pointer-events-none" />
     </div>
   );
 }

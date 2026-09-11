@@ -54,8 +54,7 @@ export default function TeamCard({ member, index }) {
                 src={member.avatar}
                 alt={member.name}
                 fill
-                unoptimized
-                priority={index < 3}
+                loading="lazy"
                 onError={() => setImgError(true)}
                 className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"

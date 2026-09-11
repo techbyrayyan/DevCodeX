@@ -17,16 +17,26 @@ export default function IntroAnimation() {
       return;
     }
 
+    // Only show once per session so navigating pages is instant
+    if (typeof window !== 'undefined' && sessionStorage.getItem('dx_intro_seen')) {
+      setIsVisible(false);
+      return;
+    }
+
+    try {
+      sessionStorage.setItem('dx_intro_seen', '1');
+    } catch {}
+
     setIsVisible(true);
     setIsFadingOut(false);
 
-    // Auto-dismiss after 1.8s with smooth fadeout
+    // Fast auto-dismiss (850ms) with smooth 250ms fadeout
     const timer = setTimeout(() => {
       setIsFadingOut(true);
       setTimeout(() => {
         setIsVisible(false);
-      }, 400);
-    }, 1800);
+      }, 250);
+    }, 850);
 
     const handleKey = () => handleDismiss();
     window.addEventListener('keydown', handleKey, { once: true });
@@ -41,7 +51,7 @@ export default function IntroAnimation() {
     setIsFadingOut(true);
     setTimeout(() => {
       setIsVisible(false);
-    }, 300);
+    }, 200);
   };
 
   if (!isVisible || isTools) return null;

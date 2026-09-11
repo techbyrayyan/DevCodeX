@@ -4,8 +4,9 @@ export default function SectionHeading({ badge, title, subtitle, center = false 
   return (
     <div className={`space-y-4 max-w-3xl ${center ? 'mx-auto text-center' : ''}`}>
       {badge && (
-        <div className={`text-[#3b82f6] text-xs font-mono font-semibold uppercase tracking-widest ${center ? 'mx-auto' : ''}`}>
-          + {badge}
+        <div className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-blue-500/30 bg-blue-500/10 text-xs font-mono font-semibold uppercase tracking-widest text-blue-400 shadow-[0_0_15px_rgba(59,130,246,0.2)] ${center ? 'mx-auto' : ''}`}>
+          <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-pulse" />
+          <span>+ {badge}</span>
         </div>
       )}
 

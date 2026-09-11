@@ -71,7 +71,7 @@ export default function Navbar() {
               >
                 <span>{link.label}</span>
                 {isActive && (
-                  <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-blue-500 rounded-full" />
+                  <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full shadow-[0_0_10px_rgba(59,130,246,0.8)]" />
                 )}
               </Link>
             );
@@ -82,8 +82,7 @@ export default function Navbar() {
         <div className="flex items-center gap-3">
           <Link
             href="/contact"
-            className="btn-interactive hidden sm:inline-flex items-center gap-2 font-medium text-xs sm:text-sm px-5 py-2.5 rounded-full cursor-pointer"
-            style={{ backgroundColor: '#ffffff', color: '#000000' }}
+            className="btn-interactive btn-gradient-primary hidden sm:inline-flex items-center gap-2 font-semibold text-xs sm:text-sm px-5 py-2.5 rounded-full cursor-pointer transition-all duration-200"
           >
             <span>Let&apos;s Talk</span>
             <ArrowRight className="w-3.5 h-3.5" />
@@ -129,8 +128,7 @@ export default function Navbar() {
             <Link
               href="/contact"
               onClick={() => setIsMobileMenuOpen(false)}
-              className="btn-interactive w-full py-3.5 rounded-full font-medium text-sm flex items-center justify-center gap-2"
-              style={{ backgroundColor: '#ffffff', color: '#000000' }}
+              className="btn-interactive btn-gradient-primary w-full py-3.5 rounded-full font-semibold text-sm flex items-center justify-center gap-2"
             >
               <span>Let&apos;s Talk</span>
               <ArrowRight className="w-4 h-4" />

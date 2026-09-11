@@ -28,9 +28,61 @@ export default function ServicesSection() {
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
 
-  const cardStyle = { backgroundColor: '#121212', border: '1px solid #27272a' };
-  const iconBoxStyle = { backgroundColor: '#050505', border: '1px solid #27272a' };
-  const innerCardStyle = { backgroundColor: 'rgba(0,0,0,0.4)', border: '1px solid #27272a' };
+  const cardStyle = { 
+    backgroundColor: 'rgba(16, 16, 20, 0.75)', 
+    border: '1px solid rgba(255, 255, 255, 0.08)',
+    backdropFilter: 'blur(16px)'
+  };
+  const iconBoxStyle = { 
+    backgroundColor: 'rgba(255, 255, 255, 0.04)', 
+    border: '1px solid rgba(255, 255, 255, 0.08)' 
+  };
+  const innerCardStyle = { 
+    backgroundColor: 'rgba(255, 255, 255, 0.03)', 
+    border: '1px solid rgba(255, 255, 255, 0.07)' 
+  };
+
+  const getServiceColor = (badge = '') => {
+    const b = badge.toLowerCase();
+    if (b.includes('ai') || b.includes('smart') || b.includes('workflow')) {
+      return {
+        badgeClass: 'border-purple-500/30 bg-purple-500/10 text-purple-400',
+        iconClass: 'text-purple-400',
+        iconBoxClass: 'bg-purple-500/10 border-purple-500/25',
+        hoverBorder: 'hover:border-purple-500/40 hover:shadow-[0_12px_30px_-10px_rgba(168,85,247,0.2)]'
+      };
+    }
+    if (b.includes('commerce') || b.includes('cms') || b.includes('growth') || b.includes('portal')) {
+      return {
+        badgeClass: 'border-emerald-500/30 bg-emerald-500/10 text-emerald-400',
+        iconClass: 'text-emerald-400',
+        iconBoxClass: 'bg-emerald-500/10 border-emerald-500/25',
+        hoverBorder: 'hover:border-emerald-500/40 hover:shadow-[0_12px_30px_-10px_rgba(16,185,129,0.2)]'
+      };
+    }
+    if (b.includes('frontend') || b.includes('styling') || b.includes('ui') || b.includes('css')) {
+      return {
+        badgeClass: 'border-cyan-500/30 bg-cyan-500/10 text-cyan-400',
+        iconClass: 'text-cyan-400',
+        iconBoxClass: 'bg-cyan-500/10 border-cyan-500/25',
+        hoverBorder: 'hover:border-cyan-500/40 hover:shadow-[0_12px_30px_-10px_rgba(6,182,212,0.2)]'
+      };
+    }
+    if (b.includes('cloud') || b.includes('devops') || b.includes('design') || b.includes('prototyping')) {
+      return {
+        badgeClass: 'border-amber-500/30 bg-amber-500/10 text-amber-400',
+        iconClass: 'text-amber-400',
+        iconBoxClass: 'bg-amber-500/10 border-amber-500/25',
+        hoverBorder: 'hover:border-amber-500/40 hover:shadow-[0_12px_30px_-10px_rgba(245,158,11,0.2)]'
+      };
+    }
+    return {
+      badgeClass: 'border-blue-500/30 bg-blue-500/10 text-blue-400',
+      iconClass: 'text-blue-400',
+      iconBoxClass: 'bg-blue-500/10 border-blue-500/25',
+      hoverBorder: 'hover:border-blue-500/40 hover:shadow-[0_12px_30px_-10px_rgba(59,130,246,0.2)]'
+    };
+  };
 
   // Calculate items visible per view responsively
   useEffect(() => {
@@ -165,14 +217,14 @@ export default function ServicesSection() {
               <button
                 onClick={handlePrev}
                 aria-label="Previous Service Card"
-                className="w-11 h-11 rounded-full flex items-center justify-center border border-zinc-700 bg-zinc-900 hover:bg-white hover:text-black text-white shadow-lg transition-all duration-200 cursor-pointer active:scale-95"
+                className="w-11 h-11 rounded-full flex items-center justify-center border border-white/10 bg-zinc-900/80 hover:border-blue-500/50 hover:bg-gradient-to-tr hover:from-blue-600 hover:to-indigo-600 hover:text-white text-zinc-300 shadow-md transition-all duration-300 cursor-pointer active:scale-95 hover:shadow-[0_0_20px_rgba(59,130,246,0.4)]"
               >
                 <ChevronLeft className="w-5 h-5" />
               </button>
               <button
                 onClick={handleNext}
                 aria-label="Next Service Card"
-                className="w-11 h-11 rounded-full flex items-center justify-center border border-zinc-700 bg-zinc-900 hover:bg-white hover:text-black text-white shadow-lg transition-all duration-200 cursor-pointer active:scale-95"
+                className="w-11 h-11 rounded-full flex items-center justify-center border border-white/10 bg-zinc-900/80 hover:border-blue-500/50 hover:bg-gradient-to-tr hover:from-blue-600 hover:to-indigo-600 hover:text-white text-zinc-300 shadow-md transition-all duration-300 cursor-pointer active:scale-95 hover:shadow-[0_0_20px_rgba(59,130,246,0.4)]"
               >
                 <ChevronRight className="w-5 h-5" />
               </button>
@@ -200,6 +252,8 @@ export default function ServicesSection() {
           >
             {extendedServices.map((service, idx) => {
               const IconComponent = iconMap[service.icon] || Code2;
+              const { badgeClass, iconClass, iconBoxClass, hoverBorder } = getServiceColor(service.badge);
+
               return (
                 <div
                   key={`${service.id}-${idx}`}
@@ -211,7 +265,7 @@ export default function ServicesSection() {
                       e.stopPropagation();
                       router.push(`/services/${service.slug}`);
                     }}
-                    className="block h-full rounded-2xl p-6 flex flex-col justify-between hover-card hover-glow border transition-all duration-300 group cursor-pointer"
+                    className={`block h-full rounded-2xl p-6 flex flex-col justify-between hover-card border transition-all duration-300 group cursor-pointer ${hoverBorder}`}
                     style={cardStyle}
                   >
                     {/* Card Top Section */}
@@ -219,13 +273,12 @@ export default function ServicesSection() {
                       {/* Icon & Badge */}
                       <div className="flex items-center justify-between">
                         <div 
-                          className="w-11 h-11 rounded-xl flex items-center justify-center group-hover:border-blue-500/50 transition-colors" 
-                          style={iconBoxStyle}
+                          className={`w-11 h-11 rounded-xl flex items-center justify-center border transition-all duration-300 group-hover:scale-110 ${iconBoxClass}`} 
                         >
-                          <IconComponent className="w-5 h-5 text-blue-400 group-hover:scale-110 transition-transform" />
+                          <IconComponent className={`w-5 h-5 ${iconClass}`} />
                         </div>
                         <span
-                          className="text-[10px] font-mono px-2.5 py-0.5 rounded-full border border-blue-500/20 bg-blue-500/10 text-blue-400 font-semibold uppercase tracking-wider"
+                          className={`text-[10px] font-mono px-2.5 py-0.5 rounded-full border font-semibold uppercase tracking-wider ${badgeClass}`}
                         >
                           {service.badge}
                         </span>
@@ -234,12 +287,12 @@ export default function ServicesSection() {
                       {/* Title & Short Description */}
                       <div className="space-y-2">
                         <h3
-                          className="text-lg font-bold text-white group-hover:text-blue-400 transition-colors line-clamp-1"
+                          className="text-lg font-bold text-white group-hover:text-blue-300 transition-colors line-clamp-1"
                           style={{ fontFamily: '"Outfit", "Inter", system-ui, sans-serif' }}
                         >
                           {service.title}
                         </h3>
-                        <p className="text-xs leading-relaxed line-clamp-3" style={{ color: '#a1a1aa' }}>
+                        <p className="text-xs leading-relaxed line-clamp-3 text-zinc-300">
                           {service.shortDescription || service.description}
                         </p>
                       </div>
@@ -247,8 +300,8 @@ export default function ServicesSection() {
                       {/* Feature Bullet Points */}
                       <div className="space-y-1.5 pt-2">
                         {service.features.slice(0, 3).map((feat, i) => (
-                          <div key={i} className="flex items-center gap-2 text-[11px]" style={{ color: '#a1a1aa' }}>
-                            <CheckCircle2 className="w-3.5 h-3.5 text-blue-400 shrink-0" />
+                          <div key={i} className="flex items-center gap-2 text-[11px] text-zinc-400">
+                            <CheckCircle2 className={`w-3.5 h-3.5 shrink-0 ${iconClass}`} />
                             <span className="truncate">{feat}</span>
                           </div>
                         ))}
@@ -256,9 +309,9 @@ export default function ServicesSection() {
                     </div>
 
                     {/* Card Bottom CTA Link */}
-                    <div className="pt-4 mt-5" style={{ borderTop: '1px solid #27272a' }}>
+                    <div className="pt-4 mt-5 border-t border-white/5">
                       <div
-                        className="btn-interactive inline-flex items-center justify-between w-full text-xs font-bold font-mono group/btn text-white group-hover:text-blue-400 transition-colors"
+                        className="btn-interactive inline-flex items-center justify-between w-full text-xs font-bold font-mono group/btn text-zinc-300 group-hover:text-blue-300 transition-colors"
                       >
                         <span>Explore Details</span>
                         <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />

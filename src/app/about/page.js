@@ -1,286 +1,253 @@
 'use client';
 
-import Image from 'next/image';
-import Link from 'next/link';
 import { motion } from 'framer-motion';
 import PageTransition from '@/components/PageTransition';
-import SectionHeading from '@/components/SectionHeading';
 import TeamCard from '@/components/TeamCard';
-import { companyValues, workflowSteps, teamMembers } from '@/data/teamData';
-import { ArrowRight, CheckCircle2, Sparkles, Zap, Cpu, Layers, ShieldCheck } from 'lucide-react';
+import { teamMembers } from '@/data/teamData';
 
-const fadeInUp = {
-  hidden: { opacity: 0, y: 16 },
-  visible: (custom = 0) => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.35,
-      delay: custom * 0.04,
-      ease: [0.16, 1, 0.3, 1],
-    },
-  }),
-};
-
-const staggerContainer = {
+/* ── Smooth Scroll & Load Animation Variants ── */
+const sectionContainer = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.05,
-      delayChildren: 0.02,
+      staggerChildren: 0.18,
+      delayChildren: 0.08,
     },
   },
 };
 
-const TwitterIcon = () => (
-  <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
-    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.259 5.632L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z" />
-  </svg>
-);
+const slideUp = {
+  hidden: { opacity: 0, y: 35, filter: 'blur(4px)' },
+  visible: {
+    opacity: 1,
+    y: 0,
+    filter: 'blur(0px)',
+    transition: {
+      duration: 0.75,
+      ease: [0.16, 1, 0.3, 1],
+    },
+  },
+};
 
-const LinkedinIcon = () => (
-  <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
-    <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.75a1.4 1.4 0 1 0 0 2.8 1.4 1.4 0 0 0 0-2.8z" />
-  </svg>
-);
+const teamGridVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.1,
+    },
+  },
+};
 
-const GithubIcon = () => (
-  <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
-    <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
-  </svg>
-);
+const teamCardItem = {
+  hidden: { opacity: 0, y: 45, scale: 0.94 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.7,
+      ease: [0.16, 1, 0.3, 1],
+    },
+  },
+};
 
 export default function AboutPage() {
-  const cardStyle = { backgroundColor: '#121212', border: '1px solid #27272a' };
-  const innerCardStyle = { backgroundColor: 'rgba(0,0,0,0.4)', border: '1px solid #27272a' };
-
   return (
     <PageTransition>
-      <div className="space-y-24 pb-24 font-sans" style={{ backgroundColor: 'transparent', color: '#ffffff' }}>
-        
-        {/* About Hero */}
-        <section className="pt-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
-            className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center"
+      <div className="font-sans text-white pb-28 pt-10 sm:pt-16 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24 sm:space-y-32">
+
+          {/* ══════════════════════════════════════════════════════════
+              1. HISTORY OF DEVCODEX (INITIAL PAGE LOAD ANIMATION)
+          ══════════════════════════════════════════════════════════ */}
+          <motion.section
             initial="hidden"
             animate="visible"
-            variants={staggerContainer}
+            variants={sectionContainer}
+            className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start"
           >
-            
-            <div className="lg:col-span-7 space-y-6">
-              <motion.div variants={fadeInUp} className="text-xs font-mono font-semibold uppercase tracking-widest" style={{ color: '#3b82f6' }}>
-                + ABOUT DEVCODEX
-              </motion.div>
-
-              <motion.h1
-                variants={fadeInUp}
-                className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight"
-                style={{ color: '#ffffff', fontFamily: '"Outfit", "Inter", system-ui, sans-serif' }}
-              >
-                Building Digital Experiences That <span style={{ color: '#a1a1aa' }}>Matter</span>
-              </motion.h1>
-
-              <motion.p variants={fadeInUp} className="text-base leading-relaxed" style={{ color: '#a1a1aa' }}>
-                DevCodeX is a premier software development studio and 3D web engineering agency. We bridge the gap between creative interactive design, artificial intelligence, and enterprise-grade code architecture.
-              </motion.p>
-
-              <motion.div variants={fadeInUp} className="pt-2 flex items-center gap-4">
-                <Link
-                  href="/contact"
-                  className="btn-interactive inline-flex items-center gap-2 font-medium text-sm px-6 py-3 rounded-full"
-                  style={{ backgroundColor: '#ffffff', color: '#000000' }}
-                >
-                  <span>Work With Us</span>
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
-              </motion.div>
-            </div>
-
-            {/* Right Visual Card - Next-Gen Lab & Highlights */}
-            <motion.div 
-              className="lg:col-span-5 rounded-2xl p-7 space-y-5 hover-card relative overflow-hidden group" 
-              style={cardStyle}
-              variants={fadeInUp}
+            {/* Left Column: Heading */}
+            <motion.div
+              variants={slideUp}
+              className="lg:col-span-5 space-y-3 pt-8 sm:pt-16 lg:pt-24 pl-0 sm:pl-6 lg:pl-12 xl:pl-16"
             >
-              {/* Subtle ambient light glow */}
-              <div className="absolute -top-16 -right-16 w-36 h-36 bg-blue-500/10 rounded-full blur-2xl pointer-events-none group-hover:bg-blue-500/20 transition-all duration-500" />
-
-              {/* Header with Live Status */}
-              <div className="flex items-center justify-between pb-3.5" style={{ borderBottom: '1px solid #27272a' }}>
-                <span className="text-xs font-mono uppercase tracking-wider font-semibold flex items-center gap-2" style={{ color: '#3b82f6' }}>
-                  <Sparkles className="w-3.5 h-3.5 text-blue-400" />
-                  <span>Engineering & Innovation Lab</span>
-                </span>
-                <span className="flex items-center gap-1.5 text-[11px] font-mono text-emerald-400 bg-emerald-500/10 px-2.5 py-0.5 rounded-full border border-emerald-500/20">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                  Active
-                </span>
-              </div>
-
-              {/* Title & Compelling Statement */}
-              <div className="space-y-2.5">
-                <h3
-                  className="text-xl font-bold tracking-tight"
-                  style={{ color: '#ffffff', fontFamily: '"Outfit", "Inter", system-ui, sans-serif' }}
-                >
-                  Architects of the Future Web
-                </h3>
-                <p className="text-xs leading-relaxed" style={{ color: '#a1a1aa' }}>
-                  We blend cutting-edge 3D WebGL visuals, ultra-fast cloud architectures, and autonomous AI pipelines to build industry-defining platforms that scale effortlessly.
-                </p>
-              </div>
-
-              {/* Dynamic Capability Badges */}
-              <div className="grid grid-cols-2 gap-2 pt-1">
-                {[
-                  { icon: Zap, label: 'Sub-Second Speed', sub: '99+ Lighthouse Score' },
-                  { icon: Cpu, label: 'Autonomous AI', sub: 'Smart Agents & Workflows' },
-                  { icon: Layers, label: 'Immersive 3D', sub: 'WebGL & Three.js' },
-                  { icon: ShieldCheck, label: 'Zero-Downtime', sub: 'Enterprise Reliability' },
-                ].map((item, idx) => {
-                  const Icon = item.icon;
-                  return (
-                    <div 
-                      key={idx} 
-                      className="p-2.5 rounded-xl border border-zinc-800/80 bg-zinc-950/60 hover:border-zinc-700 transition-colors flex items-start gap-2.5"
-                    >
-                      <div className="w-6 h-6 rounded-md bg-blue-500/10 border border-blue-500/20 flex items-center justify-center shrink-0 mt-0.5">
-                        <Icon className="w-3.5 h-3.5 text-blue-400" />
-                      </div>
-                      <div>
-                        <p className="text-[11px] font-semibold text-white leading-tight">{item.label}</p>
-                        <p className="text-[10px] text-zinc-400 font-mono leading-tight mt-0.5">{item.sub}</p>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-
-              {/* Performance & Quality Metrics */}
-              <div className="pt-3 border-t border-zinc-800/80 grid grid-cols-3 gap-2 text-center">
-                <div className="p-2 rounded-lg bg-zinc-900/40 border border-zinc-800/50">
-                  <p className="text-xs font-bold font-mono text-white">99.4%</p>
-                  <p className="text-[10px] text-zinc-400 font-mono mt-0.5">Satisfaction</p>
-                </div>
-                <div className="p-2 rounded-lg bg-zinc-900/40 border border-zinc-800/50">
-                  <p className="text-xs font-bold font-mono text-white">100%</p>
-                  <p className="text-[10px] text-zinc-400 font-mono mt-0.5">On-Time</p>
-                </div>
-                <div className="p-2 rounded-lg bg-zinc-900/40 border border-zinc-800/50">
-                  <p className="text-xs font-bold font-mono text-white">24/7</p>
-                  <p className="text-[10px] text-zinc-400 font-mono mt-0.5">Support</p>
-                </div>
-              </div>
+              <h1
+                className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white capitalize"
+                style={{ fontFamily: 'var(--font-display), "Outfit", serif' }}
+              >
+                about
+              </h1>
+              <p className="text-xl sm:text-2xl font-medium text-zinc-300 tracking-tight leading-snug">
+                the story &amp; history of devcodex
+              </p>
             </motion.div>
 
-          </motion.div>
-        </section>
+            {/* Right Column: Narrative Content */}
+            <motion.div
+              variants={slideUp}
+              className="lg:col-span-7 space-y-5 text-zinc-300 text-base sm:text-lg leading-relaxed font-normal pt-2 sm:pt-6"
+            >
+              <p>
+                DevCodeX was founded with a singular ambition: to bridge the gap between creative digital design and industrial-grade software engineering. In an industry crowded with slow, template-driven agencies, our founders—a collective of senior cloud architects and developers—set out to build a modern studio committed to custom Next.js architectures, sub-second speeds, and uncompromising code quality.
+              </p>
+              <p>
+                Since our launch in 2025, DevCodeX has grown into a trusted global technology partner, delivering over 150+ high-performance web applications, interactive 3D WebGL experiences, and autonomous AI systems. We work as a dedicated extension of your leadership team, turning ambitious ideas into scalable digital products with zero bloat and 100% full source code ownership.
+              </p>
+            </motion.div>
+          </motion.section>
 
-
-        {/* Mission & Core Values */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
-          <SectionHeading
-            badge="Values & Standards"
-            title="What Drives Our Work"
-            subtitle="We adhere to non-negotiable principles of code quality, visual prestige, and speed."
-            center={true}
+          {/* Clean Thin Divider with Scroll Fade */}
+          <motion.div
+            initial={{ opacity: 0, scaleX: 0 }}
+            whileInView={{ opacity: 1, scaleX: 1 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="w-full border-t border-zinc-800/80 origin-left"
           />
 
-          <motion.div 
-            className="grid grid-cols-1 md:grid-cols-2 gap-6"
+          {/* ══════════════════════════════════════════════════════════
+              2. OUR MISSION (SCROLL REVEAL ANIMATION)
+          ══════════════════════════════════════════════════════════ */}
+          <motion.section
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: '-60px' }}
-            variants={staggerContainer}
+            viewport={{ once: true, amount: 0.25 }}
+            variants={sectionContainer}
+            className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start"
           >
-            {companyValues.map((val, i) => (
-              <motion.div key={i} variants={fadeInUp} custom={i} className="hover-card rounded-2xl p-8 space-y-4" style={cardStyle}>
-                <h3
-                  className="text-xl font-bold flex items-center gap-3"
-                  style={{ color: '#ffffff', fontFamily: '"Outfit", "Inter", system-ui, sans-serif' }}
+            {/* Left Column: Heading */}
+            <motion.div
+              variants={slideUp}
+              className="lg:col-span-5 space-y-3 pt-8 sm:pt-14 lg:pt-20 pl-0 sm:pl-6 lg:pl-12 xl:pl-16"
+            >
+              <h2
+                className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white capitalize"
+                style={{ fontFamily: 'var(--font-display), "Outfit", serif' }}
+              >
+                our mission
+              </h2>
+              <p className="text-xl sm:text-2xl font-medium text-zinc-300 tracking-tight leading-snug">
+                purpose beyond code
+              </p>
+            </motion.div>
+
+            {/* Right Column: Narrative Content */}
+            <motion.div
+              variants={slideUp}
+              className="lg:col-span-7 space-y-5 text-zinc-300 text-base sm:text-lg leading-relaxed font-normal pt-2 sm:pt-4"
+            >
+              <p>
+                Our mission at DevCodeX is to empower startups, visionary founders, and established enterprises to dominate their markets through custom, high-velocity digital solutions. We reject fragile shortcuts, bloated frameworks, and vendor lock-in. Instead, we architect scalable cloud backends, fluid user experiences, and intelligent AI integrations that solve real-world problems and deliver measurable business growth.
+              </p>
+              <p>
+                Every solution we engineer adheres to non-negotiable principles: sub-second page performance, 100% client source code ownership, zero technical debt, and transparent, direct collaboration with senior architects every step of the way.
+              </p>
+            </motion.div>
+          </motion.section>
+
+          {/* Clean Thin Divider with Scroll Fade */}
+          <motion.div
+            initial={{ opacity: 0, scaleX: 0 }}
+            whileInView={{ opacity: 1, scaleX: 1 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="w-full border-t border-zinc-800/80 origin-left"
+          />
+
+          {/* ══════════════════════════════════════════════════════════
+              3. OUR VISION (SCROLL REVEAL ANIMATION)
+          ══════════════════════════════════════════════════════════ */}
+          <motion.section
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.25 }}
+            variants={sectionContainer}
+            className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start"
+          >
+            {/* Left Column: Heading */}
+            <motion.div
+              variants={slideUp}
+              className="lg:col-span-5 space-y-3 pt-8 sm:pt-14 lg:pt-20 pl-0 sm:pl-6 lg:pl-12 xl:pl-16"
+            >
+              <h2
+                className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white capitalize"
+                style={{ fontFamily: 'var(--font-display), "Outfit", serif' }}
+              >
+                our vision
+              </h2>
+              <p className="text-xl sm:text-2xl font-medium text-zinc-300 tracking-tight leading-snug">
+                architecting the future web
+              </p>
+            </motion.div>
+
+            {/* Right Column: Narrative Content */}
+            <motion.div
+              variants={slideUp}
+              className="lg:col-span-7 space-y-5 text-zinc-300 text-base sm:text-lg leading-relaxed font-normal pt-2 sm:pt-4"
+            >
+              <p>
+                Our vision is to stand as the global benchmark in next-generation software development and interactive digital engineering. We believe the future of the web belongs to living, intelligent platforms that seamlessly unite immersive 3D WebGL graphics, autonomous AI agents, and instantaneous edge computing.
+              </p>
+              <p>
+                DevCodeX aims to lead this evolution, inspiring organizations across industries to elevate their digital standards and build resilient, future-ready products that withstand the test of time.
+              </p>
+            </motion.div>
+          </motion.section>
+
+          {/* Clean Thin Divider with Scroll Fade */}
+          <motion.div
+            initial={{ opacity: 0, scaleX: 0 }}
+            whileInView={{ opacity: 1, scaleX: 1 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="w-full border-t border-zinc-800/80 origin-left"
+          />
+
+          {/* ══════════════════════════════════════════════════════════
+              4. OUR TEAM (STAGGERED CARDS REVEAL ANIMATION)
+          ══════════════════════════════════════════════════════════ */}
+          <motion.section
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={sectionContainer}
+            className="space-y-12"
+          >
+            {/* Team Section Title */}
+            <motion.div variants={slideUp} className="space-y-3">
+              <h2
+                className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white capitalize"
+                style={{ fontFamily: 'var(--font-display), "Outfit", serif' }}
+              >
+                our team
+              </h2>
+              <p className="text-lg sm:text-xl text-zinc-400 font-normal">
+                The engineers, architects, and designers driving innovation at DevCodeX.
+              </p>
+            </motion.div>
+
+            {/* Staggered Team Cards Grid */}
+            <motion.div
+              variants={teamGridVariants}
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 pt-4"
+            >
+              {teamMembers.map((member, i) => (
+                <motion.div
+                  key={member.id || i}
+                  variants={teamCardItem}
+                  className="w-full"
                 >
-                  <span className="w-2 h-2 rounded-full" style={{ backgroundColor: '#3b82f6' }} />
-                  <span>{val.title}</span>
-                </h3>
-                <p className="text-sm leading-relaxed" style={{ color: '#a1a1aa' }}>
-                  {val.description}
-                </p>
-              </motion.div>
-            ))}
-          </motion.div>
-        </section>
+                  <TeamCard member={member} index={i} />
+                </motion.div>
+              ))}
+            </motion.div>
+          </motion.section>
 
-
-        {/* Development Workflow / How We Deliver */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
-          <SectionHeading
-            badge="How We Work"
-            title="Our Engineering Workflow"
-            subtitle="A structured, transparent development lifecycle designed for predictable delivery and quality."
-            center={true}
-          />
-
-          <motion.div 
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: '-60px' }}
-            variants={staggerContainer}
-          >
-            {workflowSteps.map((step, i) => (
-              <motion.div key={i} variants={fadeInUp} custom={i} className="hover-card rounded-2xl p-6 space-y-4" style={cardStyle}>
-                <div className="flex items-center justify-between pb-3" style={{ borderBottom: '1px solid #27272a' }}>
-                  <span className="text-2xl font-extrabold font-mono" style={{ color: '#3b82f6' }}>
-                    {step.step}
-                  </span>
-                  <span className="w-2 h-2 rounded-full bg-blue-500/50" />
-                </div>
-                <div className="space-y-2">
-                  <h4
-                    className="text-lg font-bold"
-                    style={{ color: '#ffffff', fontFamily: '"Outfit", "Inter", system-ui, sans-serif' }}
-                  >
-                    {step.title}
-                  </h4>
-                  <p className="text-xs leading-relaxed" style={{ color: '#a1a1aa' }}>
-                    {step.desc}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </section>
-
-
-        {/* Our Team Members (6 Cards) */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
-          <SectionHeading
-            badge="Our People"
-            title="Our Team Members"
-            subtitle="A multidisciplinary team of engineers, designers, and cloud architects building high-impact digital solutions."
-            center={true}
-          />
-
-          <motion.div 
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: '-60px' }}
-            variants={staggerContainer}
-          >
-            {teamMembers.map((member, i) => (
-              <motion.div key={member.id || i} variants={fadeInUp} custom={i} className="w-full">
-                <TeamCard member={member} index={i} />
-              </motion.div>
-            ))}
-          </motion.div>
-        </section>
-
+        </div>
       </div>
     </PageTransition>
   );
 }
-
-
-

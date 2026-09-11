@@ -51,7 +51,7 @@ export const teamMembers = [
     name: "Rayyan Khalid",
     role: "Cloud & DevOps Architect",
     bio: "Managing high-availability cloud infrastructure, Docker containers, Kubernetes clusters, and automated CI/CD deployment pipelines.",
-    avatar: "/rayyan.png",
+    avatar: "/new rayyan.png",
     skills: ["AWS", "Docker", "Kubernetes", "CI/CD", "Terraform", "Vercel" ],
     experience: "4+ Years Exp",
   
@@ -71,21 +71,12 @@ export const teamMembers = [
     name: "Syed Qamar Abbas",
     role: "Lead UI/UX Designer",
     bio: "Crafting sleek dark-mode interfaces, interactive wireframes, custom design systems, and conversion-optimized user experiences.",
-    avatar: "/qamar.png",
+    avatar: "/new qamar.png",
     skills: ["Figma", "Design Systems", "Prototyping", "UI/UX", "User Research", "Wireframing"],
     experience: "3+ Years Exp",
    
   },
-  {
-    id: "Saqib mughal",
-    name: "Saqib Mughal",
-    role: "Frontend & 3D Developer",
-    bio: "Building immersive client-side WebGL graphics, 3D interactive canvases, micro-animations, and smooth responsive web interfaces.",
-    avatar: "/human2.png",
-    skills: ["Three.js", "WebGL", "Framer Motion", "GLSL", "React 3D", "Tailwind CSS"],
-    experience: "3+ Years Exp",
-   
-  },
+ 
   {
     id: "Wasi Ahmad",
     name: "Wasi Ahmad",

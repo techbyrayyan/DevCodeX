@@ -48,10 +48,20 @@ export default function HomePage() {
   const [activeTab, setActiveTab] = useState(0);
 
   /* ── Shared inline style constants ── */
-  const cardStyle = { backgroundColor: '#121212', border: '1px solid #27272a' };
-  const innerCardStyle = { backgroundColor: 'rgba(0,0,0,0.4)', border: '1px solid #27272a' };
-  const sectionBorder = { borderBottom: '1px solid #27272a' };
-  const iconBoxStyle = { backgroundColor: '#050505', border: '1px solid #27272a' };
+  const cardStyle = { 
+    backgroundColor: 'rgba(16, 16, 20, 0.75)', 
+    border: '1px solid rgba(255, 255, 255, 0.08)', 
+    backdropFilter: 'blur(16px)' 
+  };
+  const innerCardStyle = { 
+    backgroundColor: 'rgba(255, 255, 255, 0.03)', 
+    border: '1px solid rgba(255, 255, 255, 0.07)' 
+  };
+  const sectionBorder = { borderBottom: '1px solid rgba(255, 255, 255, 0.06)' };
+  const iconBoxStyle = { 
+    backgroundColor: 'rgba(255, 255, 255, 0.04)', 
+    border: '1px solid rgba(255, 255, 255, 0.08)' 
+  };
 
   return (
     <PageTransition>
@@ -60,6 +70,11 @@ export default function HomePage() {
         {/* ══ 1. HERO SECTION ════════════════════════════════════════ */}
         <section className="relative min-h-[90vh] flex items-center pt-12 pb-20" style={sectionBorder}>
           
+          {/* Subtle Ambient Background Gradients */}
+          <div className="absolute top-1/4 left-1/4 w-[420px] h-[420px] bg-blue-600/10 rounded-full blur-[120px] pointer-events-none -z-10" />
+          <div className="absolute bottom-10 right-1/4 w-[360px] h-[360px] bg-indigo-600/10 rounded-full blur-[100px] pointer-events-none -z-10" />
+          <div className="absolute top-12 left-10 w-[280px] h-[280px] bg-emerald-500/5 rounded-full blur-[90px] pointer-events-none -z-10" />
+
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
 
             {/* Left Column: Text, Buttons, Static Stat Counters */}
@@ -69,8 +84,8 @@ export default function HomePage() {
               animate="visible"
               variants={staggerContainer}
             >
-              <motion.div variants={fadeInUp} custom={0} className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-blue-500/30 bg-blue-500/10 text-xs font-mono font-semibold uppercase tracking-widest" style={{ color: '#3b82f6' }}>
-                <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-ping" />
+              <motion.div variants={fadeInUp} custom={0} className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-blue-500/30 bg-blue-500/10 text-xs font-mono font-semibold uppercase tracking-widest text-blue-400 shadow-[0_0_15px_rgba(59,130,246,0.15)]">
+                <span className="w-1.5 h-1.5 rounded-full bg-blue-400 animate-ping" />
                 <span>+ DIGITAL TRANSFORMATION</span>
               </motion.div>
 
@@ -81,7 +96,7 @@ export default function HomePage() {
                 style={{ color: '#ffffff', fontFamily: '"Outfit", "Inter", system-ui, sans-serif' }}
               >
                 We Turn Ideas Into<br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-zinc-200 via-zinc-400 to-zinc-500">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-200 to-cyan-300 drop-shadow-[0_0_30px_rgba(59,130,246,0.3)]">
                   Powerful Digital Solutions
                 </span>
               </motion.h1>
@@ -89,8 +104,7 @@ export default function HomePage() {
               <motion.p 
                 variants={fadeInUp} 
                 custom={2}
-                className="text-base leading-relaxed max-w-xl" 
-                style={{ color: '#a1a1aa' }}
+                className="text-base leading-relaxed max-w-xl text-zinc-300" 
               >
                 At DevcodeX, we don&apos;t just write code — we craft digital experiences that help businesses grow, scale and lead in the digital world.
               </motion.p>
@@ -98,16 +112,14 @@ export default function HomePage() {
               <motion.div variants={fadeInUp} custom={3} className="pt-2 flex flex-wrap gap-4 items-center">
                 <Link
                   href="/contact"
-                  className="btn-interactive inline-flex items-center gap-2 font-medium text-sm px-6 py-3 rounded-full cursor-pointer"
-                  style={{ backgroundColor: '#ffffff', color: '#000000' }}
+                  className="btn-interactive btn-gradient-primary inline-flex items-center gap-2 font-semibold text-sm px-7 py-3.5 rounded-full cursor-pointer transition-all duration-300"
                 >
                   <span>Let&apos;s Work Together</span>
                   <ArrowRight className="w-4 h-4" />
                 </Link>
                 <Link
                   href="/services"
-                  className="btn-interactive inline-flex items-center gap-2 font-medium text-sm px-6 py-3 rounded-full cursor-pointer hover:border-zinc-500"
-                  style={{ backgroundColor: 'transparent', color: '#ffffff', border: '1px solid #27272a' }}
+                  className="btn-interactive btn-glass-secondary inline-flex items-center gap-2 font-medium text-sm px-6 py-3.5 rounded-full cursor-pointer transition-all duration-300"
                 >
                   <span>Our Services</span>
                 </Link>
@@ -115,21 +127,24 @@ export default function HomePage() {
 
               {/* Stats Bar */}
               <motion.div variants={fadeInUp} custom={4} className="pt-8">
-                <div className="rounded-2xl p-6 grid grid-cols-2 sm:grid-cols-4 gap-6 hover-glow" style={cardStyle}>
+                <div className="rounded-2xl p-6 grid grid-cols-2 sm:grid-cols-4 gap-6 hover-card relative overflow-hidden" style={cardStyle}>
+                  {/* Subtle top accent bar */}
+                  <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-blue-500/40 to-transparent" />
+
                   {[
-                    { value: '150+', label: 'Projects Delivered' },
-                    { value: '98%',  label: 'Client Satisfaction' },
-                    { value: '50+',  label: 'Worldwide Clients' },
-                    { value: '3+',   label: 'Years Experience' },
+                    { value: '150+', label: 'Projects Delivered', color: 'from-blue-400 to-cyan-400' },
+                    { value: '98%',  label: 'Client Satisfaction', color: 'from-emerald-400 to-teal-300' },
+                    { value: '50+',  label: 'Worldwide Clients', color: 'from-indigo-400 to-violet-400' },
+                    { value: '3+',   label: 'Years Experience', color: 'from-amber-400 to-orange-400' },
                   ].map((s, idx) => (
                     <div key={s.label} className="text-left group">
                       <p
-                        className="text-2xl sm:text-3xl font-extrabold font-mono transition-transform duration-200 group-hover:scale-105"
-                        style={{ color: '#ffffff', fontFamily: '"Outfit", "Inter", system-ui, sans-serif' }}
+                        className={`text-2xl sm:text-3xl font-extrabold font-mono transition-transform duration-200 group-hover:scale-105 text-transparent bg-clip-text bg-gradient-to-r ${s.color}`}
+                        style={{ fontFamily: '"Outfit", "Inter", system-ui, sans-serif' }}
                       >
                         {s.value}
                       </p>
-                      <p className="text-xs mt-1 leading-tight group-hover:text-white transition-colors" style={{ color: '#a1a1aa' }}>{s.label}</p>
+                      <p className="text-xs mt-1 leading-tight text-zinc-400 group-hover:text-zinc-200 transition-colors">{s.label}</p>
                     </div>
                   ))}
                 </div>
@@ -164,8 +179,9 @@ export default function HomePage() {
                 viewport={{ once: true }}
                 variants={staggerContainer}
               >
-                <motion.div variants={fadeInUp} className="text-xs font-mono font-semibold uppercase tracking-widest" style={{ color: '#3b82f6' }}>
-                  + WHO WE ARE
+                <motion.div variants={fadeInUp} className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-blue-500/30 bg-blue-500/10 text-xs font-mono font-semibold uppercase tracking-widest text-blue-400 shadow-[0_0_15px_rgba(59,130,246,0.15)]">
+                  <span className="w-1.5 h-1.5 rounded-full bg-blue-400" />
+                  <span>+ WHO WE ARE</span>
                 </motion.div>
                 <motion.h2
                   variants={fadeInUp}
@@ -174,17 +190,16 @@ export default function HomePage() {
                 >
                   A Digital Agency That Cares About Your Success
                 </motion.h2>
-                <motion.p variants={fadeInUp} className="text-sm leading-relaxed" style={{ color: '#a1a1aa' }}>
+                <motion.p variants={fadeInUp} className="text-sm leading-relaxed text-zinc-300">
                   DevcodeX is a full-service digital agency delivering websites, AI solutions, automation systems and digital marketing services that drive real business results.
                 </motion.p>
-                <motion.p variants={fadeInUp} className="text-sm leading-relaxed" style={{ color: '#a1a1aa' }}>
+                <motion.p variants={fadeInUp} className="text-sm leading-relaxed text-zinc-400">
                   Our team of passionate developers, designers and strategists work together to turn your ideas into powerful digital products.
                 </motion.p>
                 <motion.div variants={fadeInUp} className="pt-2">
                   <Link
                     href="/about"
-                    className="btn-interactive inline-flex items-center gap-2 font-medium text-xs sm:text-sm px-6 py-2.5 rounded-full"
-                    style={{ backgroundColor: '#ffffff', color: '#000000' }}
+                    className="btn-interactive btn-glass-secondary inline-flex items-center gap-2 font-semibold text-xs sm:text-sm px-6 py-3 rounded-full hover:border-blue-500/50 hover:bg-blue-500/10 hover:text-white transition-all duration-300"
                   >
                     <span>Our Journey</span>
                     <ArrowRight className="w-3.5 h-3.5" />
@@ -204,36 +219,48 @@ export default function HomePage() {
                   {
                     icon: Target,
                     title: 'Our Mission',
-                    desc: 'To empower businesses with innovative digital solutions that drive growth and success.'
+                    desc: 'To empower businesses with innovative digital solutions that drive growth and success.',
+                    iconBg: 'bg-cyan-500/10 border-cyan-500/25',
+                    iconColor: 'text-cyan-400',
+                    borderHover: 'hover:border-cyan-500/40 hover:shadow-[0_10px_30px_-10px_rgba(6,182,212,0.15)]'
                   },
                   {
                     icon: Eye,
                     title: 'Our Vision',
-                    desc: 'To be a global leader in digital innovation, recognized for quality, creativity and impact.'
+                    desc: 'To be a global leader in digital innovation, recognized for quality, creativity and impact.',
+                    iconBg: 'bg-indigo-500/10 border-indigo-500/25',
+                    iconColor: 'text-indigo-400',
+                    borderHover: 'hover:border-indigo-500/40 hover:shadow-[0_10px_30px_-10px_rgba(99,102,241,0.15)]'
                   },
                   {
                     icon: Code2,
                     title: 'Our Approach',
-                    desc: 'We combine creativity, technology and strategy to build solutions that make a difference.'
+                    desc: 'We combine creativity, technology and strategy to build solutions that make a difference.',
+                    iconBg: 'bg-blue-500/10 border-blue-500/25',
+                    iconColor: 'text-blue-400',
+                    borderHover: 'hover:border-blue-500/40 hover:shadow-[0_10px_30px_-10px_rgba(59,130,246,0.15)]'
                   },
                   {
                     icon: ShieldCheck,
                     title: 'Why Choose Us?',
-                    desc: 'We deliver on time, with quality code, transparent communication and long-term support.'
+                    desc: 'We deliver on time, with quality code, transparent communication and long-term support.',
+                    iconBg: 'bg-emerald-500/10 border-emerald-500/25',
+                    iconColor: 'text-emerald-400',
+                    borderHover: 'hover:border-emerald-500/40 hover:shadow-[0_10px_30px_-10px_rgba(16,185,129,0.15)]'
                   }
-                ].map(({ icon: Icon, title, desc }, i) => (
+                ].map(({ icon: Icon, title, desc, iconBg, iconColor, borderHover }, i) => (
                   <motion.div
                     key={i}
                     variants={fadeInUp}
                     custom={i}
-                    className="hover-card rounded-2xl p-6 space-y-3 cursor-pointer group"
+                    className={`hover-card rounded-2xl p-6 space-y-3 cursor-pointer group ${borderHover}`}
                     style={cardStyle}
                   >
-                    <div className="w-10 h-10 rounded-xl flex items-center justify-center group-hover:border-blue-500/50 transition-colors" style={iconBoxStyle}>
-                      <Icon className="w-5 h-5 group-hover:text-blue-400 transition-colors" style={{ color: '#ffffff' }} />
+                    <div className={`w-11 h-11 rounded-xl flex items-center justify-center border transition-all duration-300 group-hover:scale-110 ${iconBg}`}>
+                      <Icon className={`w-5 h-5 ${iconColor}`} />
                     </div>
-                    <h3 className="text-base font-bold group-hover:text-white transition-colors" style={{ color: '#ffffff', fontFamily: '"Outfit", "Inter", system-ui, sans-serif' }}>{title}</h3>
-                    <p className="text-xs leading-relaxed" style={{ color: '#a1a1aa' }}>{desc}</p>
+                    <h3 className="text-base font-bold text-white group-hover:text-blue-300 transition-colors" style={{ fontFamily: '"Outfit", "Inter", system-ui, sans-serif' }}>{title}</h3>
+                    <p className="text-xs leading-relaxed text-zinc-400 group-hover:text-zinc-300 transition-colors">{desc}</p>
                   </motion.div>
                 ))}
               </motion.div>
@@ -253,8 +280,9 @@ export default function HomePage() {
               viewport={{ once: true }}
               variants={fadeInUp}
             >
-              <div className="text-xs font-mono font-semibold uppercase tracking-widest" style={{ color: '#3b82f6' }}>
-                + OUR EXPERTISE
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-blue-500/30 bg-blue-500/10 text-xs font-mono font-semibold uppercase tracking-widest text-blue-400 shadow-[0_0_15px_rgba(59,130,246,0.15)]">
+                <span className="w-1.5 h-1.5 rounded-full bg-blue-400" />
+                <span>+ OUR EXPERTISE</span>
               </div>
               <h2
                 className="text-3xl sm:text-4xl font-extrabold"
@@ -274,15 +302,25 @@ export default function HomePage() {
                     onClick={() => setActiveTab(index)}
                     className="w-full text-left p-3.5 rounded-xl text-sm font-semibold flex items-center justify-between transition-all duration-300 cursor-pointer"
                     style={{
-                      backgroundColor: activeTab === index ? '#121212' : 'transparent',
+                      background: activeTab === index 
+                        ? 'linear-gradient(135deg, rgba(37,99,235,0.18) 0%, rgba(99,102,241,0.12) 100%)' 
+                        : 'transparent',
                       color: activeTab === index ? '#ffffff' : '#a1a1aa',
-                      border: activeTab === index ? '1px solid #3b82f6' : '1px solid transparent',
+                      border: activeTab === index ? '1px solid rgba(59, 130, 246, 0.6)' : '1px solid transparent',
                       transform: activeTab === index ? 'translateX(6px)' : 'none',
-                      boxShadow: activeTab === index ? '0 4px 20px -5px rgba(59, 130, 246, 0.2)' : 'none',
+                      boxShadow: activeTab === index ? '0 4px 20px -5px rgba(59, 130, 246, 0.35)' : 'none',
                     }}
                   >
                     <span className="truncate pr-2">{serv.title}</span>
-                    <span className="text-[11px] font-mono shrink-0" style={{ color: activeTab === index ? '#3b82f6' : '#71717a' }}>{serv.badge}</span>
+                    <span 
+                      className="text-[11px] font-mono shrink-0 px-2 py-0.5 rounded-md"
+                      style={{ 
+                        color: activeTab === index ? '#93c5fd' : '#71717a',
+                        backgroundColor: activeTab === index ? 'rgba(59,130,246,0.15)' : 'transparent' 
+                      }}
+                    >
+                      {serv.badge}
+                    </span>
                   </button>
                 ))}
               </div>
@@ -294,15 +332,18 @@ export default function HomePage() {
                   initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                  className="lg:col-span-8 rounded-2xl p-8 space-y-6 hover-glow" 
+                  className="lg:col-span-8 rounded-2xl p-8 space-y-6 hover-card relative overflow-hidden" 
                   style={cardStyle}
                 >
-                  <div className="flex items-center justify-between pb-4" style={{ borderBottom: '1px solid #27272a' }}>
-                    <span className="text-xs font-mono uppercase tracking-wider font-semibold flex items-center gap-2" style={{ color: '#3b82f6' }}>
-                      <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
+                  {/* Subtle top color sheen */}
+                  <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-blue-500/60 via-indigo-500/60 to-transparent" />
+
+                  <div className="flex items-center justify-between pb-4 border-b border-white/5">
+                    <span className="text-xs font-mono uppercase tracking-wider font-semibold flex items-center gap-2 text-blue-400">
+                      <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
                       {services[activeTab].badge}
                     </span>
-                    <span className="text-xs font-mono" style={{ color: '#a1a1aa' }}>
+                    <span className="text-xs font-mono text-zinc-400">
                       {activeTab + 1 < 10 ? `0${activeTab + 1}` : activeTab + 1} / {services.length < 10 ? `0${services.length}` : services.length}
                     </span>
                   </div>
@@ -310,38 +351,37 @@ export default function HomePage() {
                   <div className="space-y-3">
                     <Link href={`/services/${services[activeTab].slug}`} className="block group">
                       <h3
-                        className="text-2xl font-bold text-white group-hover:text-blue-400 transition-colors"
+                        className="text-2xl sm:text-3xl font-bold text-white group-hover:text-blue-300 transition-colors"
                         style={{ fontFamily: '"Outfit", "Inter", system-ui, sans-serif' }}
                       >
                         {services[activeTab].title}
                       </h3>
                     </Link>
-                    <p className="text-sm leading-relaxed" style={{ color: '#a1a1aa' }}>
+                    <p className="text-sm leading-relaxed text-zinc-300">
                       {services[activeTab].description || services[activeTab].shortDescription}
                     </p>
                   </div>
 
                   <div className="space-y-3 pt-2">
-                    <span className="text-xs font-mono uppercase tracking-wider block font-semibold" style={{ color: '#ffffff' }}>Capabilities Included</span>
+                    <span className="text-xs font-mono uppercase tracking-wider block font-semibold text-zinc-300">Capabilities Included</span>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                       {services[activeTab].features.map((feat, fIdx) => (
                         <div 
                           key={fIdx} 
-                          className="p-3 rounded-lg flex items-center gap-2 text-xs transition-colors hover:border-zinc-600 hover:text-white" 
-                          style={{ ...innerCardStyle, color: '#a1a1aa' }}
+                          className="p-3 rounded-xl flex items-center gap-2.5 text-xs transition-colors hover:border-blue-500/40 hover:text-white" 
+                          style={{ ...innerCardStyle, color: '#d4d4d8' }}
                         >
-                          <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ backgroundColor: '#3b82f6' }} />
+                          <span className="w-1.5 h-1.5 rounded-full shrink-0 bg-blue-400 shadow-[0_0_8px_rgba(59,130,246,0.8)]" />
                           <span>{feat}</span>
                         </div>
                       ))}
                     </div>
                   </div>
 
-                  <div className="pt-4 flex items-center justify-between" style={{ borderTop: '1px solid #27272a' }}>
+                  <div className="pt-4 flex items-center justify-between border-t border-white/5">
                     <Link
                       href={`/services/${services[activeTab].slug}`}
-                      className="btn-interactive inline-flex items-center gap-2 text-sm font-bold group"
-                      style={{ color: '#ffffff' }}
+                      className="btn-interactive btn-gradient-primary inline-flex items-center gap-2 text-sm font-semibold px-5 py-2.5 rounded-full group"
                     >
                       <span>Explore {services[activeTab].title} Details</span>
                       <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -372,8 +412,9 @@ export default function HomePage() {
               viewport={{ once: true }}
               variants={fadeInUp}
             >
-              <div className="text-xs font-mono font-semibold uppercase tracking-widest" style={{ color: '#3b82f6' }}>
-                + OUR VALUES
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-blue-500/30 bg-blue-500/10 text-xs font-mono font-semibold uppercase tracking-widest text-blue-400 shadow-[0_0_15px_rgba(59,130,246,0.15)]">
+                <span className="w-1.5 h-1.5 rounded-full bg-blue-400" />
+                <span>+ OUR VALUES</span>
               </div>
               <h2
                 className="text-3xl sm:text-4xl font-extrabold"
@@ -391,24 +432,59 @@ export default function HomePage() {
               variants={staggerContainer}
             >
               {[
-                { icon: Lightbulb, title: 'Innovation', desc: 'We embrace new ideas and technologies to solve real world problems.' },
-                { icon: Gem,       title: 'Quality',     desc: 'We follow best practices to deliver clean, scalable and reliable solutions.' },
-                { icon: Eye,       title: 'Transparency', desc: 'We believe in clear communication and honest partnerships.' },
-                { icon: Handshake, title: 'Commitment',  desc: "We are committed to our clients' success and long-term growth." },
-                { icon: Star,      title: 'Excellence',  desc: 'We strive for excellence in every line of code and every design we create.' },
-              ].map(({ icon: Icon, title, desc }, i) => (
+                { 
+                  icon: Lightbulb, 
+                  title: 'Innovation', 
+                  desc: 'We embrace new ideas and technologies to solve real world problems.',
+                  iconBg: 'bg-amber-500/10 border-amber-500/25',
+                  iconColor: 'text-amber-400',
+                  hoverGlow: 'hover:border-amber-500/40 hover:shadow-[0_10px_30px_-10px_rgba(245,158,11,0.2)]'
+                },
+                { 
+                  icon: Gem,       
+                  title: 'Quality',     
+                  desc: 'We follow best practices to deliver clean, scalable and reliable solutions.',
+                  iconBg: 'bg-emerald-500/10 border-emerald-500/25',
+                  iconColor: 'text-emerald-400',
+                  hoverGlow: 'hover:border-emerald-500/40 hover:shadow-[0_10px_30px_-10px_rgba(16,185,129,0.2)]'
+                },
+                { 
+                  icon: Eye,       
+                  title: 'Transparency', 
+                  desc: 'We believe in clear communication and honest partnerships.',
+                  iconBg: 'bg-cyan-500/10 border-cyan-500/25',
+                  iconColor: 'text-cyan-400',
+                  hoverGlow: 'hover:border-cyan-500/40 hover:shadow-[0_10px_30px_-10px_rgba(6,182,212,0.2)]'
+                },
+                { 
+                  icon: Handshake, 
+                  title: 'Commitment',  
+                  desc: "We are committed to our clients' success and long-term growth.",
+                  iconBg: 'bg-indigo-500/10 border-indigo-500/25',
+                  iconColor: 'text-indigo-400',
+                  hoverGlow: 'hover:border-indigo-500/40 hover:shadow-[0_10px_30px_-10px_rgba(99,102,241,0.2)]'
+                },
+                { 
+                  icon: Star,      
+                  title: 'Excellence',  
+                  desc: 'We strive for excellence in every line of code and every design we create.',
+                  iconBg: 'bg-purple-500/10 border-purple-500/25',
+                  iconColor: 'text-purple-400',
+                  hoverGlow: 'hover:border-purple-500/40 hover:shadow-[0_10px_30px_-10px_rgba(168,85,247,0.2)]'
+                },
+              ].map(({ icon: Icon, title, desc, iconBg, iconColor, hoverGlow }, i) => (
                 <motion.div
                   key={i}
                   variants={fadeInUp}
                   custom={i}
-                  className="hover-card rounded-2xl p-5 space-y-3 cursor-pointer group"
+                  className={`hover-card rounded-2xl p-5 space-y-3 cursor-pointer group ${hoverGlow}`}
                   style={cardStyle}
                 >
-                  <div className="w-10 h-10 rounded-xl flex items-center justify-center group-hover:border-blue-500/50 transition-colors" style={iconBoxStyle}>
-                    <Icon className="w-5 h-5 group-hover:text-blue-400 transition-colors" style={{ color: '#ffffff' }} />
+                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center border transition-transform duration-300 group-hover:scale-110 ${iconBg}`}>
+                    <Icon className={`w-5 h-5 ${iconColor}`} />
                   </div>
-                  <h3 className="text-sm font-bold group-hover:text-white transition-colors" style={{ color: '#ffffff', fontFamily: '"Outfit", "Inter", system-ui, sans-serif' }}>{title}</h3>
-                  <p className="text-xs leading-relaxed" style={{ color: '#a1a1aa' }}>{desc}</p>
+                  <h3 className="text-sm font-bold text-white group-hover:text-blue-200 transition-colors" style={{ fontFamily: '"Outfit", "Inter", system-ui, sans-serif' }}>{title}</h3>
+                  <p className="text-xs leading-relaxed text-zinc-400 group-hover:text-zinc-300 transition-colors">{desc}</p>
                 </motion.div>
               ))}
             </motion.div>
@@ -433,8 +509,9 @@ export default function HomePage() {
                 viewport={{ once: true }}
                 variants={staggerContainer}
               >
-                <motion.div variants={fadeInUp} className="text-xs font-mono font-semibold uppercase tracking-widest" style={{ color: '#3b82f6' }}>
-                  + WHAT DRIVES US
+                <motion.div variants={fadeInUp} className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-blue-500/30 bg-blue-500/10 text-xs font-mono font-semibold uppercase tracking-widest text-blue-400 shadow-[0_0_15px_rgba(59,130,246,0.15)]">
+                  <span className="w-1.5 h-1.5 rounded-full bg-blue-400" />
+                  <span>+ WHAT DRIVES US</span>
                 </motion.div>
 
                 <motion.h2
@@ -445,28 +522,28 @@ export default function HomePage() {
                   Passion. Purpose. Performance.
                 </motion.h2>
 
-                <motion.p variants={fadeInUp} className="text-sm leading-relaxed" style={{ color: '#a1a1aa' }}>
+                <motion.p variants={fadeInUp} className="text-sm leading-relaxed text-zinc-300">
                   We are driven by the passion to create, the purpose to solve real problems, and the performance to deliver results that matter. At DevcodeX, your success is our mission.
                 </motion.p>
 
                 <motion.div variants={fadeInUp} className="grid grid-cols-2 gap-4 pt-2">
                   {[
-                    { icon: Target,    title: 'Client First',     sub: 'Approach' },
-                    { icon: BarChart2, title: 'Result Driven',    sub: 'Solutions' },
-                    { icon: Settings,  title: 'Agile & Modern',   sub: 'Methodology' },
-                    { icon: Shield,    title: 'Long Term',        sub: 'Partnership' },
-                  ].map(({ icon: Icon, title, sub }, i) => (
+                    { icon: Target,    title: 'Client First',     sub: 'Approach',    iconBg: 'bg-blue-500/10 border-blue-500/25', iconColor: 'text-blue-400' },
+                    { icon: BarChart2, title: 'Result Driven',    sub: 'Solutions',   iconBg: 'bg-emerald-500/10 border-emerald-500/25', iconColor: 'text-emerald-400' },
+                    { icon: Settings,  title: 'Agile & Modern',   sub: 'Methodology', iconBg: 'bg-cyan-500/10 border-cyan-500/25', iconColor: 'text-cyan-400' },
+                    { icon: Shield,    title: 'Long Term',        sub: 'Partnership', iconBg: 'bg-indigo-500/10 border-indigo-500/25', iconColor: 'text-indigo-400' },
+                  ].map(({ icon: Icon, title, sub, iconBg, iconColor }, i) => (
                     <div
                       key={i}
                       className="hover-card rounded-xl p-4 flex items-center gap-3 cursor-pointer group"
                       style={cardStyle}
                     >
-                      <div className="w-9 h-9 rounded-lg flex items-center justify-center shrink-0 group-hover:border-blue-500/50 transition-colors" style={iconBoxStyle}>
-                        <Icon className="w-4 h-4 group-hover:text-blue-400 transition-colors" style={{ color: '#ffffff' }} />
+                      <div className={`w-10 h-10 rounded-lg flex items-center justify-center shrink-0 border transition-transform duration-200 group-hover:scale-110 ${iconBg}`}>
+                        <Icon className={`w-4 h-4 ${iconColor}`} />
                       </div>
                       <div>
-                        <p className="text-xs font-bold leading-tight group-hover:text-white transition-colors" style={{ color: '#ffffff' }}>{title}</p>
-                        <p className="text-[11px]" style={{ color: '#a1a1aa' }}>{sub}</p>
+                        <p className="text-xs font-bold leading-tight text-white group-hover:text-blue-300 transition-colors">{title}</p>
+                        <p className="text-[11px] text-zinc-400">{sub}</p>
                       </div>
                     </div>
                   ))}
@@ -475,32 +552,37 @@ export default function HomePage() {
 
               {/* Right Column */}
               <motion.div 
-                className="lg:col-span-6 rounded-2xl p-8 space-y-6 hover-glow" 
+                className="lg:col-span-6 rounded-2xl p-8 space-y-6 hover-card relative overflow-hidden" 
                 style={cardStyle}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
                 variants={fadeInUp}
               >
+                <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-blue-500/50 via-indigo-500/50 to-transparent" />
+
                 <h3
-                  className="text-xl font-bold"
-                  style={{ color: '#ffffff', fontFamily: '"Outfit", "Inter", system-ui, sans-serif' }}
+                  className="text-xl font-bold text-white"
+                  style={{ fontFamily: '"Outfit", "Inter", system-ui, sans-serif' }}
                 >
                   Our Engineering Standards
                 </h3>
                 <div className="space-y-4">
                   {[
-                    { label: 'Code Quality', desc: 'Strict TypeScript, clean component architecture, and automated test coverage.' },
-                    { label: 'Performance First', desc: 'Zero-lag page renders, fast server responses, and 95+ Lighthouse benchmark performance.' },
-                    { label: 'Dedicated Support', desc: 'Continuous SLA maintenance, proactive security patches, and direct developer communication.' },
-                  ].map(({ label, desc }) => (
+                    { label: 'Code Quality', desc: 'Strict TypeScript, clean component architecture, and automated test coverage.', color: 'text-blue-400', dot: 'bg-blue-400' },
+                    { label: 'Performance First', desc: 'Zero-lag page renders, fast server responses, and 95+ Lighthouse benchmark performance.', color: 'text-emerald-400', dot: 'bg-emerald-400' },
+                    { label: 'Dedicated Support', desc: 'Continuous SLA maintenance, proactive security patches, and direct developer communication.', color: 'text-cyan-400', dot: 'bg-cyan-400' },
+                  ].map(({ label, desc, color, dot }) => (
                     <div 
                       key={label} 
-                      className="p-4 rounded-xl space-y-1 transition-all duration-200 hover:border-zinc-600 hover:bg-zinc-900/50" 
+                      className="p-4 rounded-xl space-y-1.5 transition-all duration-200 hover:border-blue-500/30 hover:bg-zinc-900/60 border border-white/5" 
                       style={innerCardStyle}
                     >
-                      <span className="text-xs font-mono uppercase" style={{ color: '#3b82f6' }}>{label}</span>
-                      <p className="text-xs" style={{ color: '#a1a1aa' }}>{desc}</p>
+                      <div className="flex items-center gap-2">
+                        <span className={`w-1.5 h-1.5 rounded-full ${dot}`} />
+                        <span className={`text-xs font-mono uppercase font-semibold ${color}`}>{label}</span>
+                      </div>
+                      <p className="text-xs text-zinc-300 pl-3.5">{desc}</p>
                     </div>
                   ))}
                 </div>
@@ -545,9 +627,9 @@ export default function HomePage() {
         {/* ══ 8. CTA BANNER SECTION ════════════════════════════════ */}
         <section className="py-24 relative overflow-hidden">
           
-          {/* Subtle Ambient Light Glow */}
+          {/* Subtle Ambient Light Glows */}
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-            <div className="w-[600px] h-[250px] bg-blue-600/10 rounded-full blur-3xl animate-glow-ambient" />
+            <div className="w-[600px] h-[280px] bg-gradient-to-r from-blue-600/15 via-indigo-600/15 to-emerald-500/10 rounded-full blur-3xl animate-glow-ambient" />
           </div>
 
           <motion.div 
@@ -558,21 +640,24 @@ export default function HomePage() {
             variants={fadeInUp}
           >
             <div
-              className="rounded-2xl p-8 sm:p-12 flex flex-col md:flex-row items-center justify-between gap-6 hover-glow transition-all duration-300"
-              style={{ ...cardStyle, border: '1px solid #27272a' }}
+              className="rounded-2xl p-8 sm:p-12 flex flex-col md:flex-row items-center justify-between gap-6 hover-card relative overflow-hidden transition-all duration-300"
+              style={cardStyle}
             >
+              {/* Top ambient color edge */}
+              <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-blue-500/60 via-indigo-500/60 to-emerald-500/60" />
+
               <div className="flex items-center gap-5 text-center md:text-left">
-                <div className="w-14 h-14 rounded-full flex items-center justify-center shrink-0 mx-auto md:mx-0 animate-float-gentle" style={iconBoxStyle}>
-                  <Send className="w-6 h-6 text-blue-400" />
+                <div className="w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 mx-auto md:mx-0 bg-gradient-to-tr from-blue-600 to-indigo-600 shadow-[0_0_20px_rgba(59,130,246,0.4)] text-white animate-float-gentle">
+                  <Send className="w-6 h-6 text-white" />
                 </div>
                 <div className="space-y-1">
                   <h3
-                    className="text-xl sm:text-2xl font-extrabold"
-                    style={{ color: '#ffffff', fontFamily: '"Outfit", "Inter", system-ui, sans-serif' }}
+                    className="text-xl sm:text-2xl font-extrabold text-white"
+                    style={{ fontFamily: '"Outfit", "Inter", system-ui, sans-serif' }}
                   >
                     Let&apos;s Build Something Amazing Together
                   </h3>
-                  <p className="text-xs sm:text-sm" style={{ color: '#a1a1aa' }}>
+                  <p className="text-xs sm:text-sm text-zinc-300">
                     Have a project in mind? Let&apos;s turn your ideas into reality.
                   </p>
                 </div>
@@ -581,8 +666,7 @@ export default function HomePage() {
               <div className="shrink-0">
                 <Link
                   href="/contact"
-                  className="btn-interactive inline-flex items-center gap-2 font-medium text-xs sm:text-sm px-7 py-3.5 rounded-full cursor-pointer"
-                  style={{ backgroundColor: '#ffffff', color: '#000000' }}
+                  className="btn-interactive btn-gradient-primary inline-flex items-center gap-2 font-semibold text-xs sm:text-sm px-8 py-4 rounded-full cursor-pointer shadow-[0_0_25px_rgba(59,130,246,0.4)] hover:shadow-[0_0_35px_rgba(59,130,246,0.6)] transition-all duration-300"
                 >
                   <span>Start Your Project</span>
                   <ArrowRight className="w-4 h-4" />

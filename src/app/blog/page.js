@@ -37,7 +37,7 @@ export default function BlogPage() {
 
   return (
     <PageTransition>
-      <div className="space-y-20 pb-24 font-sans" style={{ backgroundColor: '#050505', color: '#ffffff' }}>
+      <div className="space-y-20 pb-24 font-sans" style={{ backgroundColor: 'transparent', color: '#ffffff' }}>
         
         {/* Blog Hero */}
         <section className="pt-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">

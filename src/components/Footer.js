@@ -42,11 +42,11 @@ export default function Footer() {
   if (pathname?.startsWith('/tools')) return null;
 
   const socialLinks = [
-    { name: 'Facebook', href: 'https://www.facebook.com/profile.php?id=61593387100056', icon: FacebookIcon },
-    { name: 'Instagram', href: 'https://www.instagram.com/devcodex.solution/', icon: InstagramIcon },
-    { name: 'TikTok', href: 'https://www.tiktok.com/@devc_odex?is_from_webapp=1&sender_device=pc', icon: TikTokIcon },
-    { name: 'YouTube', href: 'https://youtube.com/@devcodexsolution?si=ymxIdjapoX5gl0-7', icon: YouTubeIcon },
-    { name: 'LinkedIn', href: 'https://www.linkedin.com/company/117244460/', icon: LinkedInIcon },
+    { name: 'Facebook', href: 'https://www.facebook.com/profile.php?id=61593387100056', icon: FacebookIcon, hoverClass: 'hover:border-[#1877F2]/60 hover:text-[#1877F2] hover:bg-[#1877F2]/10 hover:shadow-[0_0_15px_rgba(24,119,242,0.35)]' },
+    { name: 'Instagram', href: 'https://www.instagram.com/devcodex.solution/', icon: InstagramIcon, hoverClass: 'hover:border-[#E4405F]/60 hover:text-[#E4405F] hover:bg-[#E4405F]/10 hover:shadow-[0_0_15px_rgba(228,64,95,0.35)]' },
+    { name: 'TikTok', href: 'https://www.tiktok.com/@devc_odex?is_from_webapp=1&sender_device=pc', icon: TikTokIcon, hoverClass: 'hover:border-[#00f2fe]/60 hover:text-[#00f2fe] hover:bg-[#00f2fe]/10 hover:shadow-[0_0_15px_rgba(0,242,254,0.35)]' },
+    { name: 'YouTube', href: 'https://youtube.com/@devcodexsolution?si=ymxIdjapoX5gl0-7', icon: YouTubeIcon, hoverClass: 'hover:border-[#FF0000]/60 hover:text-[#FF0000] hover:bg-[#FF0000]/10 hover:shadow-[0_0_15px_rgba(255,0,0,0.35)]' },
+    { name: 'LinkedIn', href: 'https://www.linkedin.com/company/117244460/', icon: LinkedInIcon, hoverClass: 'hover:border-[#0A66C2]/60 hover:text-[#0A66C2] hover:bg-[#0A66C2]/10 hover:shadow-[0_0_15px_rgba(10,102,194,0.35)]' },
   ];
 
   return (
@@ -88,8 +88,7 @@ export default function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={social.name}
-                    className="btn-interactive w-8 h-8 rounded-full flex items-center justify-center cursor-pointer hover:border-zinc-500 hover:text-white transition-colors"
-                    style={{ backgroundColor: '#121212', border: '1px solid #27272a', color: '#a1a1aa' }}
+                    className={`btn-interactive w-8 h-8 rounded-full flex items-center justify-center cursor-pointer text-zinc-400 border border-white/10 bg-zinc-900/80 transition-all duration-300 ${social.hoverClass}`}
                   >
                     <Icon />
                   </a>
@@ -102,12 +101,12 @@ export default function Footer() {
           <div className="space-y-3">
             <h4 className="text-xs font-semibold text-white uppercase tracking-wider">Quick Links</h4>
             <ul className="space-y-2 text-xs">
-              <li><Link href="/" className="hover:text-white transition-colors" style={{ color: '#a1a1aa' }}>Home</Link></li>
-              <li><Link href="/about" className="hover:text-white transition-colors" style={{ color: '#a1a1aa' }}>About Us</Link></li>
-              <li><Link href="/services" className="hover:text-white transition-colors" style={{ color: '#a1a1aa' }}>Services</Link></li>
-              <li><Link href="/projects" className="hover:text-white transition-colors" style={{ color: '#a1a1aa' }}>Portfolio</Link></li>
-              <li><Link href="/tools" className="hover:text-white transition-colors" style={{ color: '#a1a1aa' }}>Get Free Tools</Link></li>
-              <li><Link href="/blog" className="hover:text-white transition-colors" style={{ color: '#a1a1aa' }}>Blog</Link></li>
+              <li><Link href="/" className="hover:text-blue-400 transition-colors" style={{ color: '#a1a1aa' }}>Home</Link></li>
+              <li><Link href="/about" className="hover:text-blue-400 transition-colors" style={{ color: '#a1a1aa' }}>About Us</Link></li>
+              <li><Link href="/services" className="hover:text-blue-400 transition-colors" style={{ color: '#a1a1aa' }}>Services</Link></li>
+              <li><Link href="/projects" className="hover:text-blue-400 transition-colors" style={{ color: '#a1a1aa' }}>Portfolio</Link></li>
+              <li><Link href="/tools" className="hover:text-blue-400 transition-colors" style={{ color: '#a1a1aa' }}>Get Free Tools</Link></li>
+              <li><Link href="/blog" className="hover:text-blue-400 transition-colors" style={{ color: '#a1a1aa' }}>Blog</Link></li>
             </ul>
           </div>
 
@@ -115,12 +114,12 @@ export default function Footer() {
           <div className="space-y-3">
             <h4 className="text-xs font-semibold text-white uppercase tracking-wider">Core Services</h4>
             <ul className="space-y-2 text-xs">
-              <li><Link href="/services/next-js" className="hover:text-white transition-colors" style={{ color: '#a1a1aa' }}>Next.js &amp; React.js</Link></li>
-              <li><Link href="/services/ai-automation" className="hover:text-white transition-colors" style={{ color: '#a1a1aa' }}>AI &amp; Workflow Automation</Link></li>
-              <li><Link href="/services/figma" className="hover:text-white transition-colors" style={{ color: '#a1a1aa' }}>Figma &amp; UI/UX Design</Link></li>
-              <li><Link href="/services/node-js" className="hover:text-white transition-colors" style={{ color: '#a1a1aa' }}>Node.js &amp; Nest.js Backend</Link></li>
-              <li><Link href="/services/shopify" className="hover:text-white transition-colors" style={{ color: '#a1a1aa' }}>Shopify &amp; WordPress</Link></li>
-              <li><Link href="/services/aws" className="hover:text-white transition-colors" style={{ color: '#a1a1aa' }}>AWS &amp; Cloud DevOps</Link></li>
+              <li><Link href="/services/next-js" className="hover:text-blue-400 transition-colors" style={{ color: '#a1a1aa' }}>Next.js &amp; React.js</Link></li>
+              <li><Link href="/services/ai-automation" className="hover:text-blue-400 transition-colors" style={{ color: '#a1a1aa' }}>AI &amp; Workflow Automation</Link></li>
+              <li><Link href="/services/figma" className="hover:text-blue-400 transition-colors" style={{ color: '#a1a1aa' }}>Figma &amp; UI/UX Design</Link></li>
+              <li><Link href="/services/node-js" className="hover:text-blue-400 transition-colors" style={{ color: '#a1a1aa' }}>Node.js &amp; Nest.js Backend</Link></li>
+              <li><Link href="/services/shopify" className="hover:text-blue-400 transition-colors" style={{ color: '#a1a1aa' }}>Shopify &amp; WordPress</Link></li>
+              <li><Link href="/services/aws" className="hover:text-blue-400 transition-colors" style={{ color: '#a1a1aa' }}>AWS &amp; Cloud DevOps</Link></li>
             </ul>
           </div>
 
@@ -128,11 +127,11 @@ export default function Footer() {
           <div className="space-y-3">
             <h4 className="text-xs font-semibold text-white uppercase tracking-wider">Resources</h4>
             <ul className="space-y-2 text-xs">
-              <li><Link href="/faq" className="hover:text-white transition-colors" style={{ color: '#a1a1aa' }}>FAQs</Link></li>
-              <li><Link href="/projects" className="hover:text-white transition-colors" style={{ color: '#a1a1aa' }}>Case Studies</Link></li>
-              <li><Link href="/blog" className="hover:text-white transition-colors" style={{ color: '#a1a1aa' }}>Blog</Link></li>
-              <li><Link href="/privacy" className="hover:text-white transition-colors" style={{ color: '#a1a1aa' }}>Privacy Policy</Link></li>
-              <li><Link href="/terms" className="hover:text-white transition-colors" style={{ color: '#a1a1aa' }}>Terms &amp; Conditions</Link></li>
+              <li><Link href="/faq" className="hover:text-blue-400 transition-colors" style={{ color: '#a1a1aa' }}>FAQs</Link></li>
+              <li><Link href="/projects" className="hover:text-blue-400 transition-colors" style={{ color: '#a1a1aa' }}>Case Studies</Link></li>
+              <li><Link href="/blog" className="hover:text-blue-400 transition-colors" style={{ color: '#a1a1aa' }}>Blog</Link></li>
+              <li><Link href="/privacy" className="hover:text-blue-400 transition-colors" style={{ color: '#a1a1aa' }}>Privacy Policy</Link></li>
+              <li><Link href="/terms" className="hover:text-blue-400 transition-colors" style={{ color: '#a1a1aa' }}>Terms &amp; Conditions</Link></li>
             </ul>
           </div>
 
