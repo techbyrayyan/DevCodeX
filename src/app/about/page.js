@@ -61,7 +61,7 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24 sm:space-y-32">
 
           {/* ══════════════════════════════════════════════════════════
-              1. HISTORY OF DEVCODEX (INITIAL PAGE LOAD ANIMATION)
+              1. HISTORY OF DEVCODEX (PERFECTLY ALIGNED)
           ══════════════════════════════════════════════════════════ */}
           <motion.section
             initial="hidden"
@@ -72,7 +72,7 @@ export default function AboutPage() {
             {/* Left Column: Heading */}
             <motion.div
               variants={slideUp}
-              className="lg:col-span-5 space-y-3 pt-8 sm:pt-16 lg:pt-24 pl-0 sm:pl-6 lg:pl-12 xl:pl-16"
+              className="lg:col-span-5 space-y-2"
             >
               <h1
                 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white capitalize"
@@ -88,18 +88,18 @@ export default function AboutPage() {
             {/* Right Column: Narrative Content */}
             <motion.div
               variants={slideUp}
-              className="lg:col-span-7 space-y-5 text-zinc-300 text-base sm:text-lg leading-relaxed font-normal pt-2 sm:pt-6"
+              className="lg:col-span-7 space-y-5 text-zinc-300 text-base sm:text-lg leading-relaxed font-normal"
             >
               <p>
                 DevCodeX was founded with a singular ambition: to bridge the gap between creative digital design and industrial-grade software engineering. In an industry crowded with slow, template-driven agencies, our founders—a collective of senior cloud architects and developers—set out to build a modern studio committed to custom Next.js architectures, sub-second speeds, and uncompromising code quality.
               </p>
               <p>
-                Since our launch in 2025, DevCodeX has grown into a trusted global technology partner, delivering over 150+ high-performance web applications, interactive 3D WebGL experiences, and autonomous AI systems. We work as a dedicated extension of your leadership team, turning ambitious ideas into scalable digital products with zero bloat and 100% full source code ownership.
+                Since our launch in 2022, DevCodeX has grown into a trusted global technology partner, delivering over 150+ high-performance web applications, interactive 3D WebGL experiences, and autonomous AI systems. We work as a dedicated extension of your leadership team, turning ambitious ideas into scalable digital products with zero bloat and 100% full source code ownership.
               </p>
             </motion.div>
           </motion.section>
 
-          {/* Clean Thin Divider with Scroll Fade */}
+          {/* Clean Thin Divider */}
           <motion.div
             initial={{ opacity: 0, scaleX: 0 }}
             whileInView={{ opacity: 1, scaleX: 1 }}
@@ -109,56 +109,7 @@ export default function AboutPage() {
           />
 
           {/* ══════════════════════════════════════════════════════════
-              2. OUR MISSION (HEADING & PARAGRAPH SWAPPED)
-          ══════════════════════════════════════════════════════════ */}
-          <motion.section
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.25 }}
-            variants={sectionContainer}
-            className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start"
-          >
-            {/* Left Column: Narrative Content */}
-            <motion.div
-              variants={slideUp}
-              className="lg:col-span-7 order-2 lg:order-1 space-y-5 text-zinc-300 text-base sm:text-lg leading-relaxed font-normal pt-2 sm:pt-6"
-            >
-              <p>
-                Our mission at DevCodeX is to empower startups, visionary founders, and established enterprises to dominate their markets through custom, high-velocity digital solutions. We reject fragile shortcuts, bloated frameworks, and vendor lock-in. Instead, we architect scalable cloud backends, fluid user experiences, and intelligent AI integrations that solve real-world problems and deliver measurable business growth.
-              </p>
-              <p>
-                Every solution we engineer adheres to non-negotiable principles: sub-second page performance, 100% client source code ownership, zero technical debt, and transparent, direct collaboration with senior architects every step of the way.
-              </p>
-            </motion.div>
-
-            {/* Right Column: Heading */}
-            <motion.div
-              variants={slideUp}
-              className="lg:col-span-5 order-1 lg:order-2 space-y-3 pt-8 sm:pt-14 lg:pt-20 pl-0 sm:pl-6 lg:pl-10 xl:pl-12"
-            >
-              <h2
-                className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white capitalize"
-                style={{ fontFamily: 'var(--font-display), "Outfit", serif' }}
-              >
-                our mission
-              </h2>
-              <p className="text-xl sm:text-2xl font-medium text-zinc-300 tracking-tight leading-snug">
-                purpose beyond code
-              </p>
-            </motion.div>
-          </motion.section>
-
-          {/* Clean Thin Divider with Scroll Fade */}
-          <motion.div
-            initial={{ opacity: 0, scaleX: 0 }}
-            whileInView={{ opacity: 1, scaleX: 1 }}
-            viewport={{ once: true, amount: 0.5 }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="w-full border-t border-zinc-800/80 origin-left"
-          />
-
-          {/* ══════════════════════════════════════════════════════════
-              3. OUR VISION (SCROLL REVEAL ANIMATION)
+              2. OUR MISSION (PERFECTLY ALIGNED)
           ══════════════════════════════════════════════════════════ */}
           <motion.section
             initial="hidden"
@@ -170,7 +121,56 @@ export default function AboutPage() {
             {/* Left Column: Heading */}
             <motion.div
               variants={slideUp}
-              className="lg:col-span-5 space-y-3 pt-8 sm:pt-14 lg:pt-20 pl-0 sm:pl-6 lg:pl-12 xl:pl-16"
+              className="lg:col-span-5 space-y-2"
+            >
+              <h2
+                className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white capitalize"
+                style={{ fontFamily: 'var(--font-display), "Outfit", serif' }}
+              >
+                our mission
+              </h2>
+              <p className="text-xl sm:text-2xl font-medium text-zinc-300 tracking-tight leading-snug">
+                purpose beyond code
+              </p>
+            </motion.div>
+
+            {/* Right Column: Narrative Content */}
+            <motion.div
+              variants={slideUp}
+              className="lg:col-span-7 space-y-5 text-zinc-300 text-base sm:text-lg leading-relaxed font-normal"
+            >
+              <p>
+                Our mission at DevCodeX is to empower startups, visionary founders, and established enterprises to dominate their markets through custom, high-velocity digital solutions. We reject fragile shortcuts, bloated frameworks, and vendor lock-in. Instead, we architect scalable cloud backends, fluid user experiences, and intelligent AI integrations that solve real-world problems and deliver measurable business growth.
+              </p>
+              <p>
+                Every solution we engineer adheres to non-negotiable principles: sub-second page performance, 100% client source code ownership, zero technical debt, and transparent, direct collaboration with senior architects every step of the way.
+              </p>
+            </motion.div>
+          </motion.section>
+
+          {/* Clean Thin Divider */}
+          <motion.div
+            initial={{ opacity: 0, scaleX: 0 }}
+            whileInView={{ opacity: 1, scaleX: 1 }}
+            viewport={{ once: true, amount: 0.5 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="w-full border-t border-zinc-800/80 origin-left"
+          />
+
+          {/* ══════════════════════════════════════════════════════════
+              3. OUR VISION (PERFECTLY ALIGNED)
+          ══════════════════════════════════════════════════════════ */}
+          <motion.section
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.25 }}
+            variants={sectionContainer}
+            className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start"
+          >
+            {/* Left Column: Heading */}
+            <motion.div
+              variants={slideUp}
+              className="lg:col-span-5 space-y-2"
             >
               <h2
                 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white capitalize"
@@ -186,7 +186,7 @@ export default function AboutPage() {
             {/* Right Column: Narrative Content */}
             <motion.div
               variants={slideUp}
-              className="lg:col-span-7 space-y-5 text-zinc-300 text-base sm:text-lg leading-relaxed font-normal pt-2 sm:pt-4"
+              className="lg:col-span-7 space-y-5 text-zinc-300 text-base sm:text-lg leading-relaxed font-normal"
             >
               <p>
                 Our vision is to stand as the global benchmark in next-generation software development and interactive digital engineering. We believe the future of the web belongs to living, intelligent platforms that seamlessly unite immersive 3D WebGL graphics, autonomous AI agents, and instantaneous edge computing.
@@ -197,7 +197,7 @@ export default function AboutPage() {
             </motion.div>
           </motion.section>
 
-          {/* Clean Thin Divider with Scroll Fade */}
+          {/* Clean Thin Divider */}
           <motion.div
             initial={{ opacity: 0, scaleX: 0 }}
             whileInView={{ opacity: 1, scaleX: 1 }}
@@ -207,7 +207,7 @@ export default function AboutPage() {
           />
 
           {/* ══════════════════════════════════════════════════════════
-              4. OUR TEAM (STAGGERED CARDS REVEAL ANIMATION)
+              4. OUR TEAM (PERFECTLY ALIGNED)
           ══════════════════════════════════════════════════════════ */}
           <motion.section
             initial="hidden"
@@ -217,7 +217,7 @@ export default function AboutPage() {
             className="space-y-12"
           >
             {/* Team Section Title */}
-            <motion.div variants={slideUp} className="space-y-3">
+            <motion.div variants={slideUp} className="space-y-2">
               <h2
                 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white capitalize"
                 style={{ fontFamily: 'var(--font-display), "Outfit", serif' }}
@@ -232,7 +232,7 @@ export default function AboutPage() {
             {/* Staggered Team Cards Grid */}
             <motion.div
               variants={teamGridVariants}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 pt-4"
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 pt-2"
             >
               {teamMembers.map((member, i) => (
                 <motion.div
