@@ -61,7 +61,7 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24 sm:space-y-32">
 
           {/* ══════════════════════════════════════════════════════════
-              1. HISTORY OF DEVCODEX (PERFECTLY ALIGNED)
+              1. HISTORY OF DEVCODEX
           ══════════════════════════════════════════════════════════ */}
           <motion.section
             initial="hidden"
@@ -69,10 +69,10 @@ export default function AboutPage() {
             variants={sectionContainer}
             className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start"
           >
-            {/* Left Column: Heading */}
+            {/* Left Column: Heading centered vertically & shifted inward */}
             <motion.div
               variants={slideUp}
-              className="lg:col-span-5 space-y-2"
+              className="lg:col-span-5 space-y-3 pt-6 sm:pt-12 lg:pt-16 pl-0 sm:pl-6 lg:pl-12 xl:pl-16"
             >
               <h1
                 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white capitalize"
@@ -88,7 +88,7 @@ export default function AboutPage() {
             {/* Right Column: Narrative Content */}
             <motion.div
               variants={slideUp}
-              className="lg:col-span-7 space-y-5 text-zinc-300 text-base sm:text-lg leading-relaxed font-normal"
+              className="lg:col-span-7 space-y-5 text-zinc-300 text-base sm:text-lg leading-relaxed font-normal pt-2 sm:pt-6"
             >
               <p>
                 DevCodeX was founded with a singular ambition: to bridge the gap between creative digital design and industrial-grade software engineering. In an industry crowded with slow, template-driven agencies, our founders—a collective of senior cloud architects and developers—set out to build a modern studio committed to custom Next.js architectures, sub-second speeds, and uncompromising code quality.
@@ -109,7 +109,7 @@ export default function AboutPage() {
           />
 
           {/* ══════════════════════════════════════════════════════════
-              2. OUR MISSION (PARAGRAPH LEFT, HEADING RIGHT)
+              2. OUR MISSION (PARAGRAPH LEFT, HEADING RIGHT & CENTERED)
           ══════════════════════════════════════════════════════════ */}
           <motion.section
             initial="hidden"
@@ -121,7 +121,7 @@ export default function AboutPage() {
             {/* Left Column: Narrative Content */}
             <motion.div
               variants={slideUp}
-              className="lg:col-span-7 order-2 lg:order-1 space-y-5 text-zinc-300 text-base sm:text-lg leading-relaxed font-normal"
+              className="lg:col-span-7 order-2 lg:order-1 space-y-5 text-zinc-300 text-base sm:text-lg leading-relaxed font-normal pt-2 sm:pt-6"
             >
               <p>
                 Our mission at DevCodeX is to empower startups, visionary founders, and established enterprises to dominate their markets through custom, high-velocity digital solutions. We reject fragile shortcuts, bloated frameworks, and vendor lock-in. Instead, we architect scalable cloud backends, fluid user experiences, and intelligent AI integrations that solve real-world problems and deliver measurable business growth.
@@ -131,10 +131,10 @@ export default function AboutPage() {
               </p>
             </motion.div>
 
-            {/* Right Column: Heading */}
+            {/* Right Column: Heading centered vertically & shifted inward */}
             <motion.div
               variants={slideUp}
-              className="lg:col-span-5 order-1 lg:order-2 space-y-2"
+              className="lg:col-span-5 order-1 lg:order-2 space-y-3 pt-6 sm:pt-12 lg:pt-16 pl-0 sm:pl-6 lg:pl-12 xl:pl-16"
             >
               <h2
                 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white capitalize"
@@ -158,7 +158,7 @@ export default function AboutPage() {
           />
 
           {/* ══════════════════════════════════════════════════════════
-              3. OUR VISION (PERFECTLY ALIGNED)
+              3. OUR VISION (HEADING CENTERED VERTICALLY & SHIFTED)
           ══════════════════════════════════════════════════════════ */}
           <motion.section
             initial="hidden"
@@ -167,10 +167,10 @@ export default function AboutPage() {
             variants={sectionContainer}
             className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start"
           >
-            {/* Left Column: Heading */}
+            {/* Left Column: Heading centered vertically & shifted inward */}
             <motion.div
               variants={slideUp}
-              className="lg:col-span-5 space-y-2"
+              className="lg:col-span-5 space-y-3 pt-6 sm:pt-12 lg:pt-16 pl-0 sm:pl-6 lg:pl-12 xl:pl-16"
             >
               <h2
                 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white capitalize"
@@ -186,7 +186,7 @@ export default function AboutPage() {
             {/* Right Column: Narrative Content */}
             <motion.div
               variants={slideUp}
-              className="lg:col-span-7 space-y-5 text-zinc-300 text-base sm:text-lg leading-relaxed font-normal"
+              className="lg:col-span-7 space-y-5 text-zinc-300 text-base sm:text-lg leading-relaxed font-normal pt-2 sm:pt-6"
             >
               <p>
                 Our vision is to stand as the global benchmark in next-generation software development and interactive digital engineering. We believe the future of the web belongs to living, intelligent platforms that seamlessly unite immersive 3D WebGL graphics, autonomous AI agents, and instantaneous edge computing.
@@ -207,7 +207,7 @@ export default function AboutPage() {
           />
 
           {/* ══════════════════════════════════════════════════════════
-              4. OUR TEAM (PERFECTLY ALIGNED)
+              4. OUR TEAM
           ══════════════════════════════════════════════════════════ */}
           <motion.section
             initial="hidden"
