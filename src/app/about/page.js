@@ -229,10 +229,10 @@ export default function AboutPage() {
               </p>
             </motion.div>
 
-            {/* Staggered Team Cards Grid */}
+            {/* Staggered Team Cards Grid (matching Home page 3-col width & gap) */}
             <motion.div
               variants={teamGridVariants}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 pt-2"
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pt-2"
             >
               {teamMembers.map((member, i) => (
                 <motion.div

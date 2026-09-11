@@ -339,56 +339,56 @@ export default function HomePage() {
                   <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-blue-500/60 via-indigo-500/60 to-transparent" />
 
                   <div className="flex items-center justify-between pb-4 border-b border-white/5">
-                    <span className="text-xs font-mono uppercase tracking-wider font-semibold flex items-center gap-2 text-blue-400">
-                      <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
+                    <span className="text-sm font-mono uppercase tracking-wider font-semibold flex items-center gap-2 text-blue-400">
+                      <span className="w-2.5 h-2.5 rounded-full bg-blue-500 animate-pulse" />
                       {services[activeTab].badge}
                     </span>
-                    <span className="text-xs font-mono text-zinc-400">
+                    <span className="text-sm font-mono text-zinc-400">
                       {activeTab + 1 < 10 ? `0${activeTab + 1}` : activeTab + 1} / {services.length < 10 ? `0${services.length}` : services.length}
                     </span>
                   </div>
 
-                  <div className="space-y-3">
+                  <div className="space-y-3.5">
                     <Link href={`/services/${services[activeTab].slug}`} className="block group">
                       <h3
-                        className="text-2xl sm:text-3xl font-bold text-white group-hover:text-blue-300 transition-colors"
+                        className="text-3xl sm:text-4xl font-extrabold text-white group-hover:text-blue-300 transition-colors"
                         style={{ fontFamily: '"Outfit", "Inter", system-ui, sans-serif' }}
                       >
                         {services[activeTab].title}
                       </h3>
                     </Link>
-                    <p className="text-sm leading-relaxed text-zinc-300">
+                    <p className="text-base sm:text-lg leading-relaxed text-zinc-300">
                       {services[activeTab].description || services[activeTab].shortDescription}
                     </p>
                   </div>
 
-                  <div className="space-y-3 pt-2">
-                    <span className="text-xs font-mono uppercase tracking-wider block font-semibold text-zinc-300">Capabilities Included</span>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div className="space-y-3.5 pt-2">
+                    <span className="text-sm font-mono uppercase tracking-wider block font-semibold text-zinc-200">Capabilities Included</span>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                       {services[activeTab].features.map((feat, fIdx) => (
                         <div 
                           key={fIdx} 
-                          className="p-3 rounded-xl flex items-center gap-2.5 text-xs transition-colors hover:border-blue-500/40 hover:text-white" 
-                          style={{ ...innerCardStyle, color: '#d4d4d8' }}
+                          className="p-3.5 rounded-xl flex items-center gap-3 text-sm font-medium transition-colors hover:border-blue-500/40 hover:text-white" 
+                          style={{ ...innerCardStyle, color: '#e4e4e7' }}
                         >
-                          <span className="w-1.5 h-1.5 rounded-full shrink-0 bg-blue-400 shadow-[0_0_8px_rgba(59,130,246,0.8)]" />
+                          <span className="w-2 h-2 rounded-full shrink-0 bg-blue-400 shadow-[0_0_8px_rgba(59,130,246,0.8)]" />
                           <span>{feat}</span>
                         </div>
                       ))}
                     </div>
                   </div>
 
-                  <div className="pt-4 flex items-center justify-between border-t border-white/5">
+                  <div className="pt-5 flex items-center justify-between border-t border-white/5">
                     <Link
                       href={`/services/${services[activeTab].slug}`}
-                      className="btn-interactive btn-gradient-primary inline-flex items-center gap-2 text-sm font-semibold px-5 py-2.5 rounded-full group"
+                      className="btn-interactive btn-gradient-primary inline-flex items-center gap-2 text-base font-semibold px-6 py-3 rounded-full group"
                     >
                       <span>Explore {services[activeTab].title} Details</span>
                       <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                     </Link>
                     <Link
                       href="/services"
-                      className="text-xs font-mono text-zinc-400 hover:text-blue-400 transition-colors"
+                      className="text-sm font-mono text-zinc-400 hover:text-blue-400 transition-colors"
                     >
                       View All 15 Services &rarr;
                     </Link>

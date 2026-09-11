@@ -84,17 +84,15 @@ export default function ServicesSection() {
     };
   };
 
-  // Calculate items visible per view responsively
+  // Calculate items visible per view responsively (wider cards: max 3 per view on desktop, 2 on tablet, 1 on mobile)
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth < 640) {
+      if (window.innerWidth < 768) {
         setItemsPerView(1);
-      } else if (window.innerWidth < 840) {
+      } else if (window.innerWidth < 1200) {
         setItemsPerView(2);
-      } else if (window.innerWidth < 1140) {
-        setItemsPerView(3);
       } else {
-        setItemsPerView(4);
+        setItemsPerView(3);
       }
     };
 
@@ -257,7 +255,7 @@ export default function ServicesSection() {
               return (
                 <div
                   key={`${service.id}-${idx}`}
-                  className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 shrink-0 p-2.5"
+                  className="w-full md:w-1/2 lg:w-1/3 shrink-0 p-3"
                 >
                   <Link 
                     href={`/services/${service.slug}`}
@@ -265,43 +263,43 @@ export default function ServicesSection() {
                       e.stopPropagation();
                       router.push(`/services/${service.slug}`);
                     }}
-                    className={`block h-full rounded-2xl p-6 flex flex-col justify-between hover-card border transition-all duration-300 group cursor-pointer ${hoverBorder}`}
+                    className={`block h-full rounded-2xl p-7 flex flex-col justify-between hover-card border transition-all duration-300 group cursor-pointer ${hoverBorder}`}
                     style={cardStyle}
                   >
                     {/* Card Top Section */}
-                    <div className="space-y-4">
+                    <div className="space-y-5">
                       {/* Icon & Badge */}
                       <div className="flex items-center justify-between">
                         <div 
-                          className={`w-11 h-11 rounded-xl flex items-center justify-center border transition-all duration-300 group-hover:scale-110 ${iconBoxClass}`} 
+                          className={`w-12 h-12 rounded-xl flex items-center justify-center border transition-all duration-300 group-hover:scale-110 ${iconBoxClass}`} 
                         >
-                          <IconComponent className={`w-5 h-5 ${iconClass}`} />
+                          <IconComponent className={`w-6 h-6 ${iconClass}`} />
                         </div>
                         <span
-                          className={`text-[10px] font-mono px-2.5 py-0.5 rounded-full border font-semibold uppercase tracking-wider ${badgeClass}`}
+                          className={`text-xs font-mono px-3 py-1 rounded-full border font-semibold uppercase tracking-wider ${badgeClass}`}
                         >
                           {service.badge}
                         </span>
                       </div>
 
                       {/* Title & Short Description */}
-                      <div className="space-y-2">
+                      <div className="space-y-2.5">
                         <h3
-                          className="text-lg font-bold text-white group-hover:text-blue-300 transition-colors line-clamp-1"
+                          className="text-xl sm:text-2xl font-bold text-white group-hover:text-blue-300 transition-colors line-clamp-1"
                           style={{ fontFamily: '"Outfit", "Inter", system-ui, sans-serif' }}
                         >
                           {service.title}
                         </h3>
-                        <p className="text-xs leading-relaxed line-clamp-3 text-zinc-300">
+                        <p className="text-sm leading-relaxed line-clamp-3 text-zinc-300">
                           {service.shortDescription || service.description}
                         </p>
                       </div>
 
                       {/* Feature Bullet Points */}
-                      <div className="space-y-1.5 pt-2">
+                      <div className="space-y-2 pt-2">
                         {service.features.slice(0, 3).map((feat, i) => (
-                          <div key={i} className="flex items-center gap-2 text-[11px] text-zinc-400">
-                            <CheckCircle2 className={`w-3.5 h-3.5 shrink-0 ${iconClass}`} />
+                          <div key={i} className="flex items-center gap-2.5 text-xs sm:text-sm text-zinc-400">
+                            <CheckCircle2 className={`w-4 h-4 shrink-0 ${iconClass}`} />
                             <span className="truncate">{feat}</span>
                           </div>
                         ))}
@@ -309,12 +307,12 @@ export default function ServicesSection() {
                     </div>
 
                     {/* Card Bottom CTA Link */}
-                    <div className="pt-4 mt-5 border-t border-white/5">
+                    <div className="pt-5 mt-6 border-t border-white/5">
                       <div
-                        className="btn-interactive inline-flex items-center justify-between w-full text-xs font-bold font-mono group/btn text-zinc-300 group-hover:text-blue-300 transition-colors"
+                        className="btn-interactive inline-flex items-center justify-between w-full text-sm font-bold font-mono group/btn text-zinc-300 group-hover:text-blue-300 transition-colors"
                       >
                         <span>Explore Details</span>
-                        <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+                        <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                       </div>
                     </div>
                   </Link>
