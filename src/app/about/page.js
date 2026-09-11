@@ -109,7 +109,7 @@ export default function AboutPage() {
           />
 
           {/* ══════════════════════════════════════════════════════════
-              2. OUR MISSION (SCROLL REVEAL ANIMATION)
+              2. OUR MISSION (HEADING & PARAGRAPH SWAPPED)
           ══════════════════════════════════════════════════════════ */}
           <motion.section
             initial="hidden"
@@ -118,10 +118,23 @@ export default function AboutPage() {
             variants={sectionContainer}
             className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start"
           >
-            {/* Left Column: Heading */}
+            {/* Left Column: Narrative Content */}
             <motion.div
               variants={slideUp}
-              className="lg:col-span-5 space-y-3 pt-8 sm:pt-14 lg:pt-20 pl-0 sm:pl-6 lg:pl-12 xl:pl-16"
+              className="lg:col-span-7 order-2 lg:order-1 space-y-5 text-zinc-300 text-base sm:text-lg leading-relaxed font-normal pt-2 sm:pt-6"
+            >
+              <p>
+                Our mission at DevCodeX is to empower startups, visionary founders, and established enterprises to dominate their markets through custom, high-velocity digital solutions. We reject fragile shortcuts, bloated frameworks, and vendor lock-in. Instead, we architect scalable cloud backends, fluid user experiences, and intelligent AI integrations that solve real-world problems and deliver measurable business growth.
+              </p>
+              <p>
+                Every solution we engineer adheres to non-negotiable principles: sub-second page performance, 100% client source code ownership, zero technical debt, and transparent, direct collaboration with senior architects every step of the way.
+              </p>
+            </motion.div>
+
+            {/* Right Column: Heading */}
+            <motion.div
+              variants={slideUp}
+              className="lg:col-span-5 order-1 lg:order-2 space-y-3 pt-8 sm:pt-14 lg:pt-20 pl-0 sm:pl-6 lg:pl-10 xl:pl-12"
             >
               <h2
                 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white capitalize"
@@ -131,19 +144,6 @@ export default function AboutPage() {
               </h2>
               <p className="text-xl sm:text-2xl font-medium text-zinc-300 tracking-tight leading-snug">
                 purpose beyond code
-              </p>
-            </motion.div>
-
-            {/* Right Column: Narrative Content */}
-            <motion.div
-              variants={slideUp}
-              className="lg:col-span-7 space-y-5 text-zinc-300 text-base sm:text-lg leading-relaxed font-normal pt-2 sm:pt-4"
-            >
-              <p>
-                Our mission at DevCodeX is to empower startups, visionary founders, and established enterprises to dominate their markets through custom, high-velocity digital solutions. We reject fragile shortcuts, bloated frameworks, and vendor lock-in. Instead, we architect scalable cloud backends, fluid user experiences, and intelligent AI integrations that solve real-world problems and deliver measurable business growth.
-              </p>
-              <p>
-                Every solution we engineer adheres to non-negotiable principles: sub-second page performance, 100% client source code ownership, zero technical debt, and transparent, direct collaboration with senior architects every step of the way.
               </p>
             </motion.div>
           </motion.section>
