@@ -57,8 +57,8 @@ const teamCardItem = {
 export default function AboutPage() {
   return (
     <PageTransition>
-      <div className="font-sans text-white pb-28 pt-10 sm:pt-16 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24 sm:space-y-32">
+      <div className="font-sans text-white pb-16 pt-8 sm:pt-12 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-16">
 
           {/* ══════════════════════════════════════════════════════════
               1. HISTORY OF DEVCODEX

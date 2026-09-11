@@ -167,7 +167,7 @@ export default function HomePage() {
 
 
         {/* ══ 2. WHO WE ARE SECTION ════════════════════════════════ */}
-        <section className="py-24 relative" style={sectionBorder}>
+        <section className="py-14 relative" style={sectionBorder}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
 
@@ -271,8 +271,8 @@ export default function HomePage() {
 
 
         {/* ══ 3. SERVICES / OUR EXPERTISE SECTION ══════════════════ */}
-        <section className="py-24 relative" style={sectionBorder}>
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        <section className="py-14 relative" style={sectionBorder}>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
             <motion.div 
               className="space-y-3"
               initial="hidden"
@@ -402,8 +402,8 @@ export default function HomePage() {
 
 
         {/* ══ 4. OUR VALUES SECTION ════════════════════════════════ */}
-        <section className="py-24 relative" style={sectionBorder}>
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        <section className="py-14 relative" style={sectionBorder}>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
 
             <motion.div 
               className="space-y-3"
@@ -497,7 +497,7 @@ export default function HomePage() {
         
 
         {/* ══ 6. WHAT DRIVES US SECTION ════════════════════════════ */}
-        <section className="py-24 relative" style={sectionBorder}>
+        <section className="py-14 relative" style={sectionBorder}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
 
@@ -598,8 +598,8 @@ export default function HomePage() {
 
 
         {/* ══ 7. OUR TEAM SECTION ═══════════════════════════════════ */}
-        <section className="py-24 relative" style={sectionBorder}>
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+        <section className="py-14 relative" style={sectionBorder}>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
             <SectionHeading
               badge="Our People"
               title="Our Team Members"
@@ -625,7 +625,7 @@ export default function HomePage() {
 
 
         {/* ══ 8. CTA BANNER SECTION ════════════════════════════════ */}
-        <section className="py-24 relative overflow-hidden">
+        <section className="py-14 relative overflow-hidden">
           
           {/* Subtle Ambient Light Glows */}
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none">

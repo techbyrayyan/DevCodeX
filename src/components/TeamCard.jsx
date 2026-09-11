@@ -77,34 +77,18 @@ export default function TeamCard({ member, index }) {
               </span>
             </div>
 
-            {/* Bottom Gradient & Name Bar */}
-            <div className="absolute inset-x-0 bottom-0 pt-24 pb-5 px-5 bg-gradient-to-t from-[#09090b] via-[#09090b]/80 to-transparent z-10 flex flex-col justify-end">
-              <div className="backdrop-blur-md bg-zinc-900/70 border border-zinc-800/80 rounded-xl p-4 shadow-lg transition-all duration-300 group-hover:border-blue-500/40">
-                <div className="flex items-center justify-between gap-2">
-                  <div>
-                    <h3
-                      className="text-xl font-bold text-white tracking-tight"
-                      style={{ fontFamily: '"Outfit", "Inter", system-ui, sans-serif' }}
-                    >
-                      {member.name}
-                    </h3>
-                    <p className="text-xs font-mono text-blue-400 font-medium mt-0.5">
-                      {member.role}
-                    </p>
-                  </div>
-
-                  {/* Flip Hint Icon */}
-                  <div className="w-8 h-8 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 shrink-0 group-hover:bg-blue-500 group-hover:text-white transition-all">
-                    <Sparkles className="w-4 h-4" />
-                  </div>
-                </div>
-
-                <div className="mt-2.5 pt-2 border-t border-white/5 flex items-center justify-between text-[11px] text-zinc-400 font-mono">
-                  <span>View Tech Stack</span>
-                  <span className="text-blue-400 flex items-center gap-1 group-hover:translate-x-1 transition-transform">
-                    Hover card &rarr;
-                  </span>
-                </div>
+            {/* Clean Name Overlay without heavy black shade */}
+            <div className="absolute inset-x-0 bottom-0 pb-5 px-5 z-10 flex flex-col justify-end">
+              <div>
+                <h3
+                  className="text-2xl font-extrabold text-white tracking-tight drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]"
+                  style={{ fontFamily: '"Outfit", "Inter", system-ui, sans-serif' }}
+                >
+                  {member.name}
+                </h3>
+                <p className="text-sm font-mono text-zinc-200 font-medium mt-0.5 drop-shadow-[0_2px_6px_rgba(0,0,0,0.95)]">
+                  {member.role}
+                </p>
               </div>
             </div>
           </div>
@@ -123,32 +107,34 @@ export default function TeamCard({ member, index }) {
           <div className="absolute top-0 right-0 w-44 h-44 bg-blue-500/10 rounded-full blur-2xl pointer-events-none" />
           <div className="absolute bottom-0 left-0 w-44 h-44 bg-blue-600/5 rounded-full blur-2xl pointer-events-none" />
 
-          {/* Top Section: Member Name & Role */}
-          <div className="relative z-10 space-y-3">
-            <div className="flex items-center justify-between pb-3 border-b border-zinc-800">
-              <span className="text-[11px] font-mono font-semibold uppercase tracking-wider text-blue-400 flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-blue-500" />
-                Team Profile
-              </span>
-              <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-zinc-800/80 text-zinc-400 border border-zinc-700">
-                {member.experience || 'Core Member'}
-              </span>
+          {/* Top Section: Member Avatar Image at Top Center & Info */}
+          <div className="relative z-10 space-y-2.5">
+            {/* Centered Profile Avatar */}
+            <div className="flex justify-center pt-0.5">
+              <div className="relative w-16 h-16 rounded-full overflow-hidden border-2 border-blue-500/60 shadow-[0_0_20px_rgba(59,130,246,0.35)] bg-zinc-900">
+                <Image
+                  src={member.avatar}
+                  alt={member.name}
+                  fill
+                  className="object-cover object-top"
+                />
+              </div>
             </div>
 
-            <div>
+            <div className="text-center">
               <h3
-                className="text-2xl font-extrabold text-white tracking-tight"
+                className="text-xl sm:text-2xl font-extrabold text-white tracking-tight"
                 style={{ fontFamily: '"Outfit", "Inter", system-ui, sans-serif' }}
               >
                 {member.name}
               </h3>
-              <p className="text-xs font-mono font-semibold text-blue-400 mt-1">
+              <p className="text-xs font-mono font-semibold text-blue-400 mt-0.5">
                 {member.role}
               </p>
             </div>
 
             {/* Bio */}
-            <p className="text-xs text-zinc-300 leading-relaxed pt-1">
+            <p className="text-xs text-zinc-300 leading-relaxed text-center line-clamp-3">
               {member.bio}
             </p>
           </div>

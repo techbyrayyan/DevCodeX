@@ -169,7 +169,7 @@ export default function ServicesSection() {
   const activeServiceNum = (currentIndex % services.length) + 1;
 
   return (
-    <section className="py-24 relative overflow-hidden" style={{ borderBottom: '1px solid #27272a' }}>
+    <section className="py-14 relative overflow-hidden" style={{ borderBottom: '1px solid #27272a' }}>
       {/* Subtle ambient background glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[850px] h-[350px] bg-blue-600/5 rounded-full blur-3xl pointer-events-none" />
 

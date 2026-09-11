@@ -249,10 +249,10 @@ function ProfessionalServiceCard({ service, index }) {
 export default function ServicesPage() {
   return (
     <PageTransition>
-      <div className="space-y-24 pb-28 font-sans" style={{ backgroundColor: 'transparent', color: '#ffffff' }}>
+      <div className="space-y-12 pb-16 font-sans" style={{ backgroundColor: 'transparent', color: '#ffffff' }}>
         
         {/* Services Hero */}
-        <section className="pt-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+        <section className="pt-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-5">
           <motion.div
             initial="hidden"
             animate="visible"

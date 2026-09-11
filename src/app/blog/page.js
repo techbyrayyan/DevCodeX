@@ -37,10 +37,10 @@ export default function BlogPage() {
 
   return (
     <PageTransition>
-      <div className="space-y-20 pb-24 font-sans" style={{ backgroundColor: 'transparent', color: '#ffffff' }}>
+      <div className="space-y-10 pb-14 font-sans" style={{ backgroundColor: 'transparent', color: '#ffffff' }}>
         
         {/* Blog Hero */}
-        <section className="pt-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+        <section className="pt-8 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
           <motion.div
             initial="hidden"
             animate="visible"
