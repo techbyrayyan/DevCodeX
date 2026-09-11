@@ -171,7 +171,7 @@ export default function ContactPage() {
                       <MapPin className="w-4 h-4" />
                     </div>
                     <div>
-                      <span className="block uppercase font-mono" style={{ color: '#a1a1aa' }}>HQ Office</span>
+                      <span className="block uppercase font-mono" style={{ color: '#a1a1aa' }}> Corporate Office</span>
                       <span className="font-bold text-sm" style={{ color: '#ffffff' }}>Lahore, Pakistan</span>
                     </div>
                   </div>

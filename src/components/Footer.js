@@ -68,13 +68,13 @@ export default function Footer() {
               <Image
                 src="/logo4.png"
                 alt="DevCodeX Logo"
-                width={130}
-                height={36}
-                className="h-8 w-auto object-contain transition-transform duration-200 group-hover:scale-105"
+                width={145}
+                height={40}
+                className="h-14 w-auto object-contain transition-transform duration-200 group-hover:scale-105"
               />
             </Link>
 
-            <p className="text-xs leading-relaxed" style={{ color: '#a1a1aa' }}>
+            <p className="text-sm leading-relaxed" style={{ color: '#a1a1aa' }}>
               Building digital solutions that drive real growth and create lasting impact.
             </p>
 
@@ -98,9 +98,9 @@ export default function Footer() {
           </div>
 
           {/* Quick Links */}
-          <div className="space-y-3">
-            <h4 className="text-xs font-semibold text-white uppercase tracking-wider">Quick Links</h4>
-            <ul className="space-y-2 text-xs">
+          <div className="space-y-3.5">
+            <h4 className="text-sm font-semibold text-white uppercase tracking-wider">Quick Links</h4>
+            <ul className="space-y-2.5 text-sm">
               <li><Link href="/" className="hover:text-blue-400 transition-colors" style={{ color: '#a1a1aa' }}>Home</Link></li>
               <li><Link href="/about" className="hover:text-blue-400 transition-colors" style={{ color: '#a1a1aa' }}>About Us</Link></li>
               <li><Link href="/services" className="hover:text-blue-400 transition-colors" style={{ color: '#a1a1aa' }}>Services</Link></li>
@@ -111,9 +111,9 @@ export default function Footer() {
           </div>
 
           {/* Services */}
-          <div className="space-y-3">
-            <h4 className="text-xs font-semibold text-white uppercase tracking-wider">Core Services</h4>
-            <ul className="space-y-2 text-xs">
+          <div className="space-y-3.5">
+            <h4 className="text-sm font-semibold text-white uppercase tracking-wider">Core Services</h4>
+            <ul className="space-y-2.5 text-sm">
               <li><Link href="/services/next-js" className="hover:text-blue-400 transition-colors" style={{ color: '#a1a1aa' }}>Next.js &amp; React.js</Link></li>
               <li><Link href="/services/ai-automation" className="hover:text-blue-400 transition-colors" style={{ color: '#a1a1aa' }}>AI &amp; Workflow Automation</Link></li>
               <li><Link href="/services/figma" className="hover:text-blue-400 transition-colors" style={{ color: '#a1a1aa' }}>Figma &amp; UI/UX Design</Link></li>
@@ -124,9 +124,9 @@ export default function Footer() {
           </div>
 
           {/* Resources */}
-          <div className="space-y-3">
-            <h4 className="text-xs font-semibold text-white uppercase tracking-wider">Resources</h4>
-            <ul className="space-y-2 text-xs">
+          <div className="space-y-3.5">
+            <h4 className="text-sm font-semibold text-white uppercase tracking-wider">Resources</h4>
+            <ul className="space-y-2.5 text-sm">
               <li><Link href="/faq" className="hover:text-blue-400 transition-colors" style={{ color: '#a1a1aa' }}>FAQs</Link></li>
               <li><Link href="/projects" className="hover:text-blue-400 transition-colors" style={{ color: '#a1a1aa' }}>Case Studies</Link></li>
               <li><Link href="/blog" className="hover:text-blue-400 transition-colors" style={{ color: '#a1a1aa' }}>Blog</Link></li>
@@ -136,19 +136,19 @@ export default function Footer() {
           </div>
 
           {/* Contact Info */}
-          <div className="space-y-3">
-            <h4 className="text-xs font-semibold text-white uppercase tracking-wider">Contact Info</h4>
-            <ul className="space-y-2.5 text-xs">
-              <li className="flex items-center gap-2 hover:text-white transition-colors" style={{ color: '#a1a1aa' }}>
-                <Phone className="w-3.5 h-3.5 shrink-0" style={{ color: '#3b82f6' }} />
+          <div className="space-y-3.5">
+            <h4 className="text-sm font-semibold text-white uppercase tracking-wider">Contact Info</h4>
+            <ul className="space-y-3 text-sm">
+              <li className="flex items-center gap-2.5 hover:text-white transition-colors" style={{ color: '#a1a1aa' }}>
+                <Phone className="w-4 h-4 shrink-0" style={{ color: '#3b82f6' }} />
                 <span>+92 3239724377</span>
               </li> 
-              <li className="flex items-center gap-2 hover:text-white transition-colors" style={{ color: '#a1a1aa' }}>
-                <Mail className="w-3.5 h-3.5 shrink-0" style={{ color: '#3b82f6' }} />
+              <li className="flex items-center gap-2.5 hover:text-white transition-colors" style={{ color: '#a1a1aa' }}>
+                <Mail className="w-4 h-4 shrink-0" style={{ color: '#3b82f6' }} />
                 <span>devcodex.agency@gmail.com</span>
               </li>
-              <li className="flex items-center gap-2 hover:text-white transition-colors" style={{ color: '#a1a1aa' }}>
-                <MapPin className="w-3.5 h-3.5 shrink-0" style={{ color: '#3b82f6' }} />
+              <li className="flex items-center gap-2.5 hover:text-white transition-colors" style={{ color: '#a1a1aa' }}>
+                <MapPin className="w-4 h-4 shrink-0" style={{ color: '#3b82f6' }} />
                 <span>Lahore, Pakistan</span>
               </li>
             </ul>
@@ -157,7 +157,7 @@ export default function Footer() {
         </div>
 
         {/* Copyright */}
-        <div className="pt-8 text-center text-xs" style={{ color: '#a1a1aa' }}>
+        <div className="pt-8 text-center text-sm" style={{ color: '#a1a1aa' }}>
           <p>© 2025 DevcodeX. All Rights Reserved.</p>
         </div>
 
