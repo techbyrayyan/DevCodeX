@@ -86,6 +86,17 @@ export const teamMembers = [
     skills: ["Graphic Design", "Adobe Photoshop", "Adobe Illustrator", "Social Media Marketing", "SEO & Content Marketing", "Branding & Visual Identity"],
     experience: "3+ Years Exp",
    
+  },
+   {
+    id: "Zain-ul-Abideen",
+    name: "Zain-ul-Abideen",
+    role: "Senior WordPress & Shopify Developer",
+    bio: "Experienced WordPress and Shopify developer with a passion for creating custom themes, plugins, and seamless e-commerce solutions.",
+    avatar: "/zain.jpeg",
+    skills: ["WordPress", "Shopify", "PHP", "Store Manager", "HTML/CSS", "Theme Development", "Plugin Development"],
+    experience: "3+ Years Exp",
+   
   }
+
 ];
 
