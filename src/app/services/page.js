@@ -8,12 +8,14 @@ import PageTransition from '@/components/PageTransition';
 import { services } from '@/data/servicesData';
 import { 
   ArrowRight, CheckCircle2, Code2, Layout, Sparkles, Zap, Cpu, Layers, 
-  Server, Box, Database, Globe, ShoppingBag, Bot, Brain, Palette, Cloud, TrendingUp 
+  Server, Box, Database, Globe, ShoppingBag, Bot, Brain, Palette, Cloud, TrendingUp,
+  Smartphone, ShieldAlert, ShieldCheck, Search, Target, Megaphone, Boxes
 } from 'lucide-react';
 
 const iconMap = { 
   Code2, Layout, Sparkles, Zap, Cpu, Layers, 
-  Server, Box, Database, Globe, ShoppingBag, Bot, Brain, Palette, Cloud, TrendingUp 
+  Server, Box, Database, Globe, ShoppingBag, Bot, Brain, Palette, Cloud, TrendingUp,
+  Smartphone, ShieldAlert, ShieldCheck, Search, Target, Megaphone, Boxes
 };
 
 /* ── Vibrant Color Palette Cycle (Blue, Yellow, Green, Purple, Cyan, Rose, Orange) ── */

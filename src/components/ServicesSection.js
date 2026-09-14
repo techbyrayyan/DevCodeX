@@ -7,12 +7,14 @@ import { services } from '@/data/servicesData';
 import { 
   ArrowRight, CheckCircle2, Code2, Layout, Sparkles, Zap, Cpu, Layers, 
   Server, Box, Database, Globe, ShoppingBag, Bot, Brain, Palette, Cloud, TrendingUp,
-  ChevronLeft, ChevronRight, Play, Pause
+  ChevronLeft, ChevronRight, Play, Pause,
+  Smartphone, ShieldAlert, ShieldCheck, Search, Target, Megaphone, Boxes
 } from 'lucide-react';
 
 const iconMap = { 
   Code2, Layout, Sparkles, Zap, Cpu, Layers, 
-  Server, Box, Database, Globe, ShoppingBag, Bot, Brain, Palette, Cloud, TrendingUp 
+  Server, Box, Database, Globe, ShoppingBag, Bot, Brain, Palette, Cloud, TrendingUp,
+  Smartphone, ShieldAlert, ShieldCheck, Search, Target, Megaphone, Boxes
 };
 
 // Triple the services array for seamless infinite looping
@@ -189,7 +191,7 @@ export default function ServicesSection() {
               Technology Solutions & Services
             </h2>
             <p className="text-sm max-w-2xl" style={{ color: '#a1a1aa' }}>
-              Explore our complete suite of engineering capabilities. Swipe or use the controls below to slide through all 15 specialized services.
+              Explore our complete suite of engineering capabilities. Swipe or use the controls below to slide through all {services.length} specialized services.
             </p>
           </div>
 
@@ -326,15 +328,16 @@ export default function ServicesSection() {
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-2 border-t border-zinc-800/80">
           <div className="flex items-center gap-2">
             <span className="text-xs font-mono text-zinc-400">Total Available Services:</span>
-            <span className="text-xs font-mono font-bold text-white">{services.length} Specialized Offerings</span>
+            <span suppressHydrationWarning className="text-xs font-mono font-bold text-white">{services.length} Specialized Offerings</span>
           </div>
 
           <div className="flex items-center gap-3">
             <Link
               href="/services"
+              suppressHydrationWarning
               className="inline-flex items-center gap-2 text-xs font-mono text-blue-400 hover:text-blue-300 transition-colors font-semibold group"
             >
-              <span>View All 15 Services on Services Page</span>
+              <span>View All {services.length} Services on Services Page</span>
               <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
             </Link>
           </div>

@@ -2,20 +2,12 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { usePathname } from 'next/navigation';
 
 export default function IntroAnimation() {
-  const pathname = usePathname();
   const [isVisible, setIsVisible] = useState(true);
   const [isFadingOut, setIsFadingOut] = useState(false);
 
-  const isTools = pathname?.startsWith('/tools');
-
   useEffect(() => {
-    if (isTools) {
-      setIsVisible(false);
-      return;
-    }
 
     // Only show once per session so navigating pages is instant
     if (typeof window !== 'undefined' && sessionStorage.getItem('dx_intro_seen')) {
@@ -45,7 +37,7 @@ export default function IntroAnimation() {
       clearTimeout(timer);
       window.removeEventListener('keydown', handleKey);
     };
-  }, [isTools]);
+  }, []);
 
   const handleDismiss = () => {
     setIsFadingOut(true);
@@ -54,7 +46,7 @@ export default function IntroAnimation() {
     }, 300);
   };
 
-  if (!isVisible || isTools) return null;
+  if (!isVisible) return null;
 
   /*
    * Circuit lines traces definitions

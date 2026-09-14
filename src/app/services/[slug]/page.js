@@ -7,12 +7,14 @@ import SectionHeading from '@/components/SectionHeading';
 import { services } from '@/data/servicesData';
 import { 
   ArrowRight, CheckCircle2, Code2, Layout, Sparkles, Zap, Cpu, Layers, 
-  Server, Box, Database, Globe, ShoppingBag, Bot, Brain, Palette, Cloud, TrendingUp, ChevronRight 
+  Server, Box, Database, Globe, ShoppingBag, Bot, Brain, Palette, Cloud, TrendingUp, ChevronRight,
+  Smartphone, ShieldAlert, ShieldCheck, Search, Target, Megaphone, Boxes
 } from 'lucide-react';
 
 const iconMap = { 
   Code2, Layout, Sparkles, Zap, Cpu, Layers, 
-  Server, Box, Database, Globe, ShoppingBag, Bot, Brain, Palette, Cloud, TrendingUp 
+  Server, Box, Database, Globe, ShoppingBag, Bot, Brain, Palette, Cloud, TrendingUp,
+  Smartphone, ShieldAlert, ShieldCheck, Search, Target, Megaphone, Boxes
 };
 
 export default function ServiceDetailPage() {

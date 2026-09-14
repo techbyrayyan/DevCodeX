@@ -1,6 +1,5 @@
 'use client';
 import { useState, useRef, useEffect } from 'react';
-import { usePathname } from 'next/navigation';
 import { MessageSquare, X, Send, Bot, Sparkles, Image as ImageIcon } from 'lucide-react';
 
 interface Message {
@@ -10,7 +9,6 @@ interface Message {
 }
 
 export default function AIConsultantWidget() {
-  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
     { role: 'assistant', content: 'Hi 👋\n\nI\'m your AI Business Consultant.\n\nTell me about your project and I\'ll help you estimate the cost, timeline and recommend the best technology.' }
@@ -29,11 +27,6 @@ export default function AIConsultantWidget() {
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
-
-  // Do not render on /tools
-  if (pathname?.startsWith('/tools')) {
-    return null;
-  }
 
   const handleImageSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];

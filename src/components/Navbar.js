@@ -1,15 +1,20 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, X, ArrowRight } from 'lucide-react';
+import { Menu, X, ArrowRight, ChevronDown } from 'lucide-react';
+import ServicesMegaDropdown from './ServicesMegaDropdown';
+import { servicesMegaMenuCategories } from '@/data/servicesData';
 
 export default function Navbar() {
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isServicesDropdownOpen, setIsServicesDropdownOpen] = useState(false);
+  const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
+  const dropdownTimeoutRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,18 +24,38 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Do NOT render main Navbar on /tools routes
-  if (pathname?.startsWith('/tools')) return null;
+  // Close dropdown on route change
+  useEffect(() => {
+    setIsServicesDropdownOpen(false);
+    setIsMobileMenuOpen(false);
+  }, [pathname]);
+
+  const handleMouseEnterServices = () => {
+    if (dropdownTimeoutRef.current) {
+      clearTimeout(dropdownTimeoutRef.current);
+    }
+    setIsServicesDropdownOpen(true);
+  };
+
+  const handleMouseLeaveServices = () => {
+    dropdownTimeoutRef.current = setTimeout(() => {
+      setIsServicesDropdownOpen(false);
+    }, 200);
+  };
+
+  const handleImmediateCloseServices = () => {
+    if (dropdownTimeoutRef.current) {
+      clearTimeout(dropdownTimeoutRef.current);
+    }
+    setIsServicesDropdownOpen(false);
+  };
 
   const navLinks = [
     { href: '/', label: 'Home' },
     { href: '/about', label: 'About' },
-    { href: '/services', label: 'Services' },
-    // { href: '/blog', label: 'Blog' },
+    { href: '/services', label: 'Services', hasDropdown: true },
     { href: '/projects', label: 'Portfolio' },
-    // { href: '/lets talk', label: 'Lets Talk' },
     { href: '/faq', label: 'FAQs' },
-    { href: '/tools', label: 'Get Free Tools' },
   ];
 
   return (
@@ -44,10 +69,14 @@ export default function Navbar() {
         padding: isScrolled ? '0.875rem 0' : '1.25rem 0',
       }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between relative">
 
         {/* Brand Logo */}
-        <Link href="/" className="flex items-center gap-2.5 group">
+        <Link 
+          href="/" 
+          className="flex items-center gap-2.5 group"
+          onMouseEnter={handleImmediateCloseServices}
+        >
           <Image
             src="/logo4.png"
             alt="DevCodeX Logo"
@@ -61,11 +90,41 @@ export default function Navbar() {
         {/* Desktop Navigation Links */}
         <nav className="hidden lg:flex items-center gap-6 xl:gap-8 text-sm font-medium">
           {navLinks.map((link) => {
-            const isActive = pathname === link.href;
+            const isActive = pathname === link.href || (link.hasDropdown && pathname?.startsWith('/services'));
+            
+            if (link.hasDropdown) {
+              return (
+                <div
+                  key={link.href}
+                  className="relative py-1"
+                  onMouseEnter={handleMouseEnterServices}
+                  onMouseLeave={handleMouseLeaveServices}
+                >
+                  <Link
+                    href={link.href}
+                    className="inline-flex items-center gap-1.5 text-sm font-medium transition-colors hover:text-white py-1 cursor-pointer"
+                    style={{ color: isActive || isServicesDropdownOpen ? '#ffffff' : '#a1a1aa', fontWeight: isActive ? '600' : '500' }}
+                  >
+                    <span>{link.label}</span>
+                    <ChevronDown 
+                      className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                        isServicesDropdownOpen ? 'rotate-180 text-blue-400' : 'text-zinc-400'
+                      }`} 
+                    />
+                  </Link>
+
+                  {isActive && (
+                    <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full shadow-[0_0_10px_rgba(59,130,246,0.8)]" />
+                  )}
+                </div>
+              );
+            }
+
             return (
               <Link
                 key={link.href}
                 href={link.href}
+                onMouseEnter={handleImmediateCloseServices}
                 className="text-sm font-medium transition-colors hover:text-white relative py-1"
                 style={{ color: isActive ? '#ffffff' : '#a1a1aa', fontWeight: isActive ? '600' : '500' }}
               >
@@ -82,6 +141,7 @@ export default function Navbar() {
         <div className="flex items-center gap-3">
           <Link
             href="/contact"
+            onMouseEnter={handleImmediateCloseServices}
             className="btn-interactive btn-gradient-primary hidden sm:inline-flex items-center gap-2 font-semibold text-xs sm:text-sm px-5 py-2.5 rounded-full cursor-pointer transition-all duration-200"
           >
             <span>Let&apos;s Talk</span>
@@ -99,14 +159,85 @@ export default function Navbar() {
         </div>
       </div>
 
+      {/* Desktop Mega Dropdown */}
+      <ServicesMegaDropdown 
+        isOpen={isServicesDropdownOpen} 
+        onClose={() => setIsServicesDropdownOpen(false)}
+        onMouseEnter={handleMouseEnterServices}
+        onMouseLeave={handleMouseLeaveServices}
+      />
+
       {/* Mobile & Tablet Drawer */}
       {isMobileMenuOpen && (
         <div
-          className="lg:hidden fixed inset-x-0 top-[65px] p-6 shadow-2xl flex flex-col gap-3 backdrop-blur-2xl animate-in fade-in duration-200"
-          style={{ backgroundColor: 'rgba(18, 18, 18, 0.95)', borderBottom: '1px solid #27272a' }}
+          className="lg:hidden fixed inset-x-0 top-[65px] max-h-[85vh] overflow-y-auto p-6 shadow-2xl flex flex-col gap-3 backdrop-blur-2xl animate-in fade-in duration-200 custom-scrollbar"
+          style={{ backgroundColor: 'rgba(18, 18, 18, 0.98)', borderBottom: '1px solid #27272a' }}
         >
           {navLinks.map((link) => {
-            const isActive = pathname === link.href;
+            const isActive = pathname === link.href || (link.hasDropdown && pathname?.startsWith('/services'));
+
+            if (link.hasDropdown) {
+              return (
+                <div key={link.href} className="space-y-2">
+                  <div
+                    className="flex items-center justify-between text-sm sm:text-base font-medium py-2.5 px-4 rounded-xl transition-all cursor-pointer"
+                    style={{
+                      color: isActive ? '#ffffff' : '#a1a1aa',
+                      backgroundColor: isActive ? 'rgba(59, 130, 246, 0.12)' : 'transparent',
+                      border: isActive ? '1px solid rgba(59, 130, 246, 0.3)' : '1px solid transparent',
+                      fontWeight: isActive ? '600' : '500'
+                    }}
+                    onClick={() => setIsMobileServicesOpen(!isMobileServicesOpen)}
+                  >
+                    <Link
+                      href="/services"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="flex-1"
+                    >
+                      {link.label}
+                    </Link>
+                    <button
+                      type="button"
+                      className="p-1 text-zinc-400 hover:text-white"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setIsMobileServicesOpen(!isMobileServicesOpen);
+                      }}
+                    >
+                      <ChevronDown className={`w-4 h-4 transition-transform ${isMobileServicesOpen ? 'rotate-180 text-blue-400' : ''}`} />
+                    </button>
+                  </div>
+
+                  {/* Mobile Accordion for 4 categories */}
+                  {isMobileServicesOpen && (
+                    <div className="pl-3 pr-1 py-2 space-y-4 rounded-xl bg-zinc-950/60 border border-zinc-800/80">
+                      {servicesMegaMenuCategories.map((cat, cIdx) => (
+                        <div key={cIdx} className="space-y-1.5">
+                          <p className="text-[11px] font-mono font-bold uppercase tracking-wider text-zinc-400 px-3 flex items-center gap-1.5">
+                            <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: cat.dotColor }} />
+                            {cat.category}
+                          </p>
+                          <div className="grid grid-cols-1 gap-1">
+                            {cat.services.map((s) => (
+                              <Link
+                                key={s.slug}
+                                href={`/services/${s.slug}`}
+                                onClick={() => setIsMobileMenuOpen(false)}
+                                className="text-xs text-zinc-300 hover:text-blue-300 py-1.5 px-3 rounded-lg hover:bg-white/5 transition-colors block"
+                              >
+                                <span className="font-medium">{s.title}</span>
+                                <span className="text-[10px] block text-zinc-500 font-mono">{s.subtitle}</span>
+                              </Link>
+                            ))}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              );
+            }
+
             return (
               <Link
                 key={link.href}

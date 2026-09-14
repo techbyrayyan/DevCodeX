@@ -388,9 +388,10 @@ export default function HomePage() {
                     </Link>
                     <Link
                       href="/services"
+                      suppressHydrationWarning
                       className="text-sm font-mono text-zinc-400 hover:text-blue-400 transition-colors"
                     >
-                      View All 15 Services &rarr;
+                      View All {services.length} Services &rarr;
                     </Link>
                   </div>
                 </motion.div>

@@ -1,16 +1,8 @@
 'use client';
 
-import { usePathname } from 'next/navigation';
 import { MessageCircle } from 'lucide-react';
 
 export default function WhatsAppButton() {
-  const pathname = usePathname();
-
-  // Do not render on /tools
-  if (pathname?.startsWith('/tools')) {
-    return null;
-  }
-
   const phoneNumber = '923239724377';
   const defaultMessage = encodeURIComponent('Hello DevCodeX, I would like to discuss a project with your team.');
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${defaultMessage}`;

@@ -7,9 +7,6 @@ export default function BackgroundVideo() {
   const pathname = usePathname();
   const videoRef = useRef(null);
 
-  // Exclude background video on /tools
-  const isToolsPage = Boolean(pathname?.startsWith('/tools'));
-
   // 1. Core setup and auto-play listeners (runs once on mount)
   useEffect(() => {
     const video = videoRef.current;
@@ -76,7 +73,6 @@ export default function BackgroundVideo() {
 
   // 2. Route change effect: triggers play on navigation across pages
   useEffect(() => {
-    if (isToolsPage) return;
     const video = videoRef.current;
     if (video) {
       video.muted = true;
@@ -88,10 +84,6 @@ export default function BackgroundVideo() {
       }
     }
   }, [pathname]);
-
-  if (isToolsPage) {
-    return null;
-  }
 
   return (
     <div

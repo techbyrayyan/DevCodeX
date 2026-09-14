@@ -2,7 +2,6 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 import { Phone, Mail, MapPin } from 'lucide-react';
 
 const FacebookIcon = () => (
@@ -36,11 +35,6 @@ const LinkedInIcon = () => (
 );
 
 export default function Footer() {
-  const pathname = usePathname();
-
-  // Do NOT render main Footer on /tools routes
-  if (pathname?.startsWith('/tools')) return null;
-
   const socialLinks = [
     { name: 'Facebook', href: 'https://www.facebook.com/profile.php?id=61593387100056', icon: FacebookIcon, hoverClass: 'hover:border-[#1877F2]/60 hover:text-[#1877F2] hover:bg-[#1877F2]/10 hover:shadow-[0_0_15px_rgba(24,119,242,0.35)]' },
     { name: 'Instagram', href: 'https://www.instagram.com/devcodex.solution/', icon: InstagramIcon, hoverClass: 'hover:border-[#E4405F]/60 hover:text-[#E4405F] hover:bg-[#E4405F]/10 hover:shadow-[0_0_15px_rgba(228,64,95,0.35)]' },
@@ -105,7 +99,6 @@ export default function Footer() {
               <li><Link href="/about" className="hover:text-blue-400 transition-colors" style={{ color: '#a1a1aa' }}>About Us</Link></li>
               <li><Link href="/services" className="hover:text-blue-400 transition-colors" style={{ color: '#a1a1aa' }}>Services</Link></li>
               <li><Link href="/projects" className="hover:text-blue-400 transition-colors" style={{ color: '#a1a1aa' }}>Portfolio</Link></li>
-              <li><Link href="/tools" className="hover:text-blue-400 transition-colors" style={{ color: '#a1a1aa' }}>Get Free Tools</Link></li>
               <li><Link href="/blog" className="hover:text-blue-400 transition-colors" style={{ color: '#a1a1aa' }}>Blog</Link></li>
             </ul>
           </div>
