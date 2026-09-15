@@ -8,6 +8,7 @@ export const projects = [
     badge: "FEATURED HEALTHCARE PLATFORM",
     category: "Web App",
     categoryKey: "webapp",
+    imagePosition: "right",
     shortDescription: "A modern healthcare discovery and appointment scheduling platform connecting patients with top verified medical specialists.",
     description: "Find and book appointments with top verified medical specialists near you. Docfind is an accessible, modern healthcare platform engineered to simplify doctor discovery with specialty categorization, real-time doctor availability, verified patient ratings, and frictionless one-click consultation reservations.",
     image: "/docfind.png",
@@ -41,6 +42,7 @@ export const projects = [
     badge: "AI PLATFORM & WORKSPACE",
     category: "AI Platform",
     categoryKey: "ai",
+    imagePosition: "left",
     shortDescription: "An advanced generative AI chat application featuring multi-session management, streaming responses, and developer workspace tools.",
     description: "An advanced conversational AI platform designed for high-speed assistance and daily workflow productivity. Features a persistent multi-chat sidebar, real-time streaming AI responses, integrated Codex and Apps shortcuts, and a sleek dark-mode desktop-class user interface.",
     image: "/chatgpt-clone.png",
@@ -64,5 +66,39 @@ export const projects = [
       "Instant Message Querying & Copying"
     ],
     gallery: ["/chatgpt-clone.png"]
+  },
+  {
+    id: "motel-app",
+    slug: "motel-app",
+    title: "Sunset Motel — Digital Hospitality & Dining Order Application",
+    shortTitle: "Sunset Motel",
+    subtitle: "Digital Hospitality & Dining Order Application",
+    badge: "HOSPITALITY & DINING SYSTEM",
+    category: "Web App",
+    categoryKey: "webapp",
+    imagePosition: "left",
+    shortDescription: "A streamlined hospitality and culinary reservation platform providing seamless dining menus, meal ordering, and motel stay experiences.",
+    description: "Sunset Motel is a tailored digital hospitality and culinary reservation platform crafted to elevate the guest dining experience. Featuring curated breakfast, lunch, and dinner menus with real-time dish showcases, dietary filters, and frictionless room-service ordering designed for optimal motel customer satisfaction.",
+    image: "/motel-app.png",
+    client: "Sunset Hospitality Group",
+    year: "2026",
+    duration: "3 Weeks",
+    liveUrl: "https://motel-app-bay.vercel.app/",
+    tags: ["Tailwind CSS", "JavaScript", "HTML5", "Food Ordering", "Hospitality"],
+    challenge: "Motel guests frequently experience delays and miscommunication when attempting to browse static paper menus and coordinate breakfast, lunch, or room-service dining orders.",
+    solution: "We engineered a lightweight, mobile-first dining web application featuring categorized visual menus, immediate meal selections, and intuitive guest ordering flow.",
+    results: [
+      { label: "Order Placement Speed", value: "<45s" },
+      { label: "Guest Satisfaction", value: "98%" },
+      { label: "Daily Dining Volume", value: "350+" }
+    ],
+    features: [
+      "Multi-Course Meal Categorization (Breakfast, Lunch, Dinner)",
+      "High-Resolution Dish Presentation & Descriptions",
+      "Mobile-Optimized Touch Navigation for Guests",
+      "Fast Loading Responsive Architecture",
+      "Direct Action Buttons for Instant Dining Selection"
+    ],
+    gallery: ["/motel-app.png"]
   }
 ];

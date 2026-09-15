@@ -93,7 +93,7 @@ export default function ProjectsPage() {
         {filteredProjects.length > 0 ? (
           <div className="space-y-24 sm:space-y-32">
             {filteredProjects.map((project, idx) => {
-              const isImageLeft = project.id === 'chatgpt-clone' || idx % 2 === 1;
+              const isImageLeft = project.imagePosition ? project.imagePosition === 'left' : (idx % 2 === 1);
 
               return (
                 <section key={project.id} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
