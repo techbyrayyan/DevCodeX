@@ -81,7 +81,7 @@ export default function AboutPage() {
                 about
               </h1>
               <p className="text-xl sm:text-2xl font-medium text-zinc-300 tracking-tight leading-snug">
-                the story &amp; history of devcodex
+                the story of devcodex
               </p>
             </motion.div>
 
@@ -94,7 +94,7 @@ export default function AboutPage() {
                 DevCodeX was founded with a singular ambition: to bridge the gap between creative digital design and industrial-grade software engineering. In an industry crowded with slow, template-driven agencies, our founders—a collective of senior cloud architects and developers—set out to build a modern studio committed to custom Next.js architectures, sub-second speeds, and uncompromising code quality.
               </p>
               <p>
-                Since our launch in 2022, DevCodeX has grown into a trusted global technology partner, delivering over 150+ high-performance web applications, interactive 3D WebGL experiences, and autonomous AI systems. We work as a dedicated extension of your leadership team, turning ambitious ideas into scalable digital products with zero bloat and 100% full source code ownership.
+                Since our launch in 2025, DevCodeX has grown into a trusted global technology partner, delivering over 150+ high-performance web applications, interactive 3D WebGL experiences, and autonomous AI systems. We work as a dedicated extension of your leadership team, turning ambitious ideas into scalable digital products with zero bloat and 100% full source code ownership.
               </p>
             </motion.div>
           </motion.section>
