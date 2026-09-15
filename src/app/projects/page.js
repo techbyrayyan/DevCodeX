@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import PageTransition from '@/components/PageTransition';
 import { projects } from '@/data/projectsData';
-import { ArrowRight, ExternalLink, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, ExternalLink } from 'lucide-react';
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 16 },
@@ -98,129 +98,63 @@ export default function ProjectsPage() {
           </motion.div>
         </section>
 
-        {/* ══ FEATURED DOCFIND SHOWCASE (Right: Image, Left: Description - About style) ══ */}
+        {/* ══ FEATURED DOCFIND SHOWCASE (Direct Image, No Card BG, Hover Centered Button) ══ */}
         {showDocfindFeatured && docfindProject && (
           <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               initial={{ opacity: 0, y: 25 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
-              className="rounded-3xl p-6 sm:p-10 lg:p-12 border border-zinc-800/80 bg-[#121212]/90 backdrop-blur-xl relative overflow-hidden group hover:border-blue-500/40 transition-all duration-500 shadow-2xl"
+              className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center"
             >
-              {/* Ambient background glow */}
-              <div className="absolute -top-32 -right-32 w-80 h-80 bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
-              <div className="absolute -bottom-32 -left-32 w-80 h-80 bg-indigo-600/10 rounded-full blur-3xl pointer-events-none" />
+              {/* ── LEFT COLUMN: Docfind Description Only ── */}
+              <div className="lg:col-span-5 space-y-4">
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-blue-500/30 bg-blue-500/10 text-xs font-mono font-semibold uppercase tracking-widest text-blue-400">
+                  <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
+                  <span>+ FEATURED HEALTHCARE PLATFORM</span>
+                </div>
 
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-10">
-                
-                {/* ── LEFT COLUMN: Docfind Description & Details ── */}
-                <div className="lg:col-span-5 space-y-5">
-                  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-blue-500/30 bg-blue-500/10 text-xs font-mono font-semibold uppercase tracking-widest text-blue-400">
-                    <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
-                    <span>+ FEATURED HEALTHCARE PLATFORM</span>
-                  </div>
-
-                  <div className="space-y-3">
-                    <h2
-                      className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight"
-                      style={{ fontFamily: '"Outfit", "Inter", system-ui, sans-serif' }}
-                    >
-                      Docfind
-                    </h2>
-                    <p className="text-lg sm:text-xl font-medium text-zinc-300">
-                      Find The Best Doctor Near You
-                    </p>
-                  </div>
-
-                  <p className="text-sm sm:text-base leading-relaxed text-zinc-300">
-                    Find and book appointments with top verified medical specialists near you. Docfind is an accessible, modern healthcare platform engineered to simplify doctor discovery with specialty categorization, real-time doctor availability, verified patient ratings, and frictionless one-click consultation reservations.
+                <div className="space-y-2">
+                  <h2
+                    className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight"
+                    style={{ fontFamily: '"Outfit", "Inter", system-ui, sans-serif' }}
+                  >
+                    Docfind
+                  </h2>
+                  <p className="text-xl sm:text-2xl font-medium text-zinc-300">
+                    Find The Best Doctor Near You
                   </p>
+                </div>
 
-                  {/* Highlights */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1 text-xs font-mono text-zinc-400">
-                    <div className="flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-blue-400 shrink-0" />
-                      <span>Specialist Search &amp; Discovery</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-blue-400 shrink-0" />
-                      <span>Instant Calendar Scheduling</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-blue-400 shrink-0" />
-                      <span>Verified Patient Ratings</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-blue-400 shrink-0" />
-                      <span>Mobile-First Responsive UI</span>
-                    </div>
-                  </div>
+                <p className="text-base sm:text-lg leading-relaxed text-zinc-300 font-normal pt-2">
+                  Find and book appointments with top verified medical specialists near you. Docfind is an accessible, modern healthcare platform engineered to simplify doctor discovery with specialty categorization, real-time doctor availability, verified patient ratings, and frictionless one-click consultation reservations.
+                </p>
+              </div>
 
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-2 pt-2">
-                    {['Next.js', 'React', 'Tailwind CSS', 'Healthcare', 'Doctor Booking'].map((tag) => (
-                      <span
-                        key={tag}
-                        className="px-3 py-1 rounded-lg text-xs font-mono bg-zinc-900/90 border border-zinc-800 text-zinc-300"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
+              {/* ── RIGHT COLUMN: Direct Image with Hover Centered Visit Site Button ── */}
+              <div className="lg:col-span-7">
+                <a
+                  href="https://docfind-two.vercel.app/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="group relative block w-full h-[300px] sm:h-[400px] lg:h-[460px] rounded-2xl overflow-hidden border border-zinc-800/90 shadow-2xl hover:border-blue-500/60 transition-all duration-500 cursor-pointer"
+                >
+                  <Image
+                    src="/docfind.png"
+                    alt="Docfind - Find The Best Doctor Near You"
+                    fill
+                    className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                    priority
+                  />
 
-                  {/* Actions */}
-                  <div className="pt-4 flex flex-wrap items-center gap-4">
-                    <a
-                      href="https://docfind-two.vercel.app/"
-                      target="_blank"
-                      rel="noreferrer"
-                      className="btn-interactive inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-xs sm:text-sm bg-white text-black hover:bg-blue-400 hover:text-black transition-all duration-300 shadow-lg shadow-white/10"
-                    >
+                  {/* Centered Visit Site button on hover */}
+                  <div className="absolute inset-0 bg-black/55 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center z-20">
+                    <span className="btn-interactive inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full font-semibold text-sm bg-white text-black hover:bg-blue-400 hover:text-black transition-all duration-300 shadow-2xl transform scale-90 group-hover:scale-100">
                       <span>Visit Live Site</span>
                       <ExternalLink className="w-4 h-4" />
-                    </a>
-
-                    <Link
-                      href="/projects/docfind"
-                      className="btn-interactive inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-xs sm:text-sm text-white border border-zinc-700 bg-zinc-900/60 hover:border-blue-500/50 hover:bg-blue-500/10 transition-all duration-300"
-                    >
-                      <span>Read Case Study</span>
-                      <ArrowRight className="w-4 h-4" />
-                    </Link>
+                    </span>
                   </div>
-                </div>
-
-                {/* ── RIGHT COLUMN: Docfind Screenshot Image ── */}
-                <div className="lg:col-span-7">
-                  <a
-                    href="https://docfind-two.vercel.app/"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="relative block w-full h-[280px] sm:h-[380px] lg:h-[440px] rounded-2xl overflow-hidden border border-zinc-800 bg-[#050505] group/img shadow-2xl hover:border-blue-500/60 transition-all duration-500"
-                  >
-                    <Image
-                      src="/docfind.png"
-                      alt="Docfind - Find The Best Doctor Near You"
-                      fill
-                      className="object-cover object-top transition-transform duration-700 group-hover/img:scale-105"
-                      priority
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60 group-hover/img:opacity-30 transition-opacity duration-300" />
-                    
-                    {/* Live status badge */}
-                    <div className="absolute top-4 right-4 z-10 flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/80 backdrop-blur-md border border-white/10 text-xs font-mono text-emerald-400">
-                      <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                      <span>Live Site</span>
-                    </div>
-
-                    {/* Hover overlay hint */}
-                    <div className="absolute bottom-4 left-4 z-10 hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-black/80 backdrop-blur-md border border-white/10 text-xs font-mono text-zinc-300 group-hover/img:text-white transition-colors">
-                      <span>Preview docfind-two.vercel.app</span>
-                      <ExternalLink className="w-3.5 h-3.5" />
-                    </div>
-                  </a>
-                </div>
-
+                </a>
               </div>
             </motion.div>
           </section>
