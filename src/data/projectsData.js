@@ -134,5 +134,39 @@ export const projects = [
       "Direct WhatsApp & Digital Booking Inquiries"
     ],
     gallery: ["/events-lahore.png"]
+  },
+  {
+    id: "ilaj-bil-ghiza",
+    slug: "ilaj-bil-ghiza",
+    title: "Ilaj Bil Ghiza — AI-Powered Organic Healing & Nutrition Platform",
+    shortTitle: "Ilaj Bil Ghiza",
+    subtitle: "Natural Treatment Through Organic Food & Nutrition Science",
+    badge: "HEALTHCARE & ORGANIC NUTRITION",
+    category: "Web App",
+    categoryKey: "webapp",
+    imagePosition: "left",
+    shortDescription: "An AI-driven holistic healthcare and organic nutrition platform enabling natural treatment through science-backed dietary guidance.",
+    description: "Ilaj Bil Ghiza is a pioneering organic health and wellness ecosystem uniting ancient dietary wisdom with modern AI nutrition algorithms. Provides personalized meal regimens, chronic illness dietary protocols, doctor-approved natural remedies, and direct access to pure organic nutritional foods.",
+    image: "/ilaj-bil-ghiza.png",
+    client: "Ilaj Bil Ghiza Wellness Center",
+    year: "2026",
+    duration: "5 Weeks",
+    liveUrl: "https://ilaj-bil-ghiza.vercel.app/",
+    tags: ["Next.js", "React", "Tailwind CSS", "AI Nutrition", "Organic Health"],
+    challenge: "Patients suffering from chronic conditions lack reliable, non-invasive nutritional roadmaps and access to certified organic foods tailored to their medical profiles.",
+    solution: "We engineered an intelligent health application offering disease-targeted dietary recommendations, symptoms assessment calculators, certified organic superfoods, and specialist consultations.",
+    results: [
+      { label: "Active Health Users", value: "50,000+" },
+      { label: "Health Improvement Rate", value: "88%" },
+      { label: "Organic Products Listed", value: "200+" }
+    ],
+    features: [
+      "AI-Powered Condition-Specific Diet Plans",
+      "Integrated Organic Foods E-Commerce Shop",
+      "Doctor & Nutritionist Consultation Portal",
+      "Interactive Symptom Checker & Assessment",
+      "Health Progress & Dietary Tracking Dashboard"
+    ],
+    gallery: ["/ilaj-bil-ghiza.png"]
   }
 ];
