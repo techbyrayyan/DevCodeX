@@ -100,5 +100,39 @@ export const projects = [
       "Direct Action Buttons for Instant Dining Selection"
     ],
     gallery: ["/motel-app.png"]
+  },
+  {
+    id: "events-lahore",
+    slug: "events-lahore",
+    title: "Events Lahore — Premier Event Booking & Venue Management Platform",
+    shortTitle: "Events Lahore",
+    subtitle: "Lahore's Most Trusted Event & Wedding Booking Platform",
+    badge: "LUXURY EVENT & VENUE PLATFORM",
+    category: "Web App",
+    categoryKey: "webapp",
+    imagePosition: "right",
+    shortDescription: "A premier luxury event management and venue reservation platform engineered for effortless hall discovery, package customization, and booking.",
+    description: "Events Lahore is an elite event management and venue booking ecosystem connecting clients with Lahore's finest marquees, banquet halls, farmhouses, and curated event services. Features venue comparison filters, custom wedding and corporate package builders, live calendar availability, and direct reservation inquiries.",
+    image: "/events-lahore.png",
+    client: "Events Lahore Group",
+    year: "2026",
+    duration: "4 Weeks",
+    liveUrl: "https://eventslahore.vercel.app/",
+    tags: ["Next.js", "React", "Tailwind CSS", "Venue Booking", "Event Management"],
+    challenge: "Users seeking wedding and corporate event venues in Lahore deal with fragmented pricing, lack of transparent availability, and tedious manual venue visits.",
+    solution: "DevCodeX architected Events Lahore with high-fidelity visual venue showcases, interactive package calculators, location-based searching, and a streamlined reservation pipeline.",
+    results: [
+      { label: "Venue Inquiries", value: "3,500+" },
+      { label: "Booking Time Saved", value: "80%" },
+      { label: "Partner Venues Listed", value: "50+" }
+    ],
+    features: [
+      "Comprehensive Venue Directory (Halls, Marquees, Farmhouses)",
+      "Interactive Wedding & Corporate Package Customizer",
+      "Transparent Pricing & Amenities Comparison",
+      "Integrated Catering & Decor Service Selections",
+      "Direct WhatsApp & Digital Booking Inquiries"
+    ],
+    gallery: ["/events-lahore.png"]
   }
 ];
