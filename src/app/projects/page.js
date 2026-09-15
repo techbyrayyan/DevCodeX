@@ -2,11 +2,10 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import PageTransition from '@/components/PageTransition';
 import { projects } from '@/data/projectsData';
-import { ArrowRight, ExternalLink } from 'lucide-react';
+import { ExternalLink } from 'lucide-react';
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 16 },
@@ -40,14 +39,7 @@ export default function ProjectsPage() {
   // Docfind project
   const docfindProject = projects.find((p) => p.id === 'docfind');
 
-  // Filter remaining projects
-  const filteredProjects = selectedCategory === 'All'
-    ? projects.filter((p) => p.id !== 'docfind')
-    : projects.filter((p) => p.category === selectedCategory && p.id !== 'docfind');
-
   const showDocfindFeatured = selectedCategory === 'All' || selectedCategory === 'Web App';
-
-  const cardStyle = { backgroundColor: '#121212', border: '1px solid #27272a' };
 
   return (
     <PageTransition>
@@ -160,100 +152,19 @@ export default function ProjectsPage() {
           </section>
         )}
 
-        {/* Projects Showcase Grid */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {showDocfindFeatured && filteredProjects.length > 0 && (
-            <div className="mb-8">
-              <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight" style={{ fontFamily: '"Outfit", "Inter", system-ui, sans-serif' }}>
-                More Selected Works
-              </h3>
-              <p className="text-xs sm:text-sm text-zinc-400 mt-1">
-                Explore additional enterprise and commercial case studies engineered by DevCodeX.
-              </p>
+        {!showDocfindFeatured && (
+          <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-12">
+            <div className="p-8 rounded-2xl border border-zinc-800/80 bg-zinc-900/30 max-w-md mx-auto space-y-3">
+              <p className="text-zinc-400 text-sm font-medium">New case studies in this category are coming soon.</p>
+              <button
+                onClick={() => setSelectedCategory('All')}
+                className="btn-interactive text-xs font-semibold text-blue-400 hover:text-white underline cursor-pointer"
+              >
+                View All Projects
+              </button>
             </div>
-          )}
-
-          <motion.div 
-            layout
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: '-60px' }}
-            variants={staggerContainer}
-          >
-            <AnimatePresence>
-              {filteredProjects.map((project, idx) => (
-                <motion.div
-                  key={project.id}
-                  layout
-                  variants={fadeInUp}
-                  custom={idx}
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.4 }}
-                  className="hover-card rounded-2xl overflow-hidden flex flex-col justify-between group cursor-pointer"
-                  style={cardStyle}
-                >
-                  <div
-                    className="relative h-56 w-full overflow-hidden"
-                    style={{ borderBottom: '1px solid #27272a', backgroundColor: '#050505' }}
-                  >
-                    <Image
-                      src={project.image}
-                      alt={project.title}
-                      fill
-                      className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                    />
-                    <div className="absolute top-4 right-4">
-                      <span
-                        className="px-3 py-1 rounded-full text-xs font-mono backdrop-blur-md"
-                        style={{ backgroundColor: 'rgba(5,5,5,0.85)', border: '1px solid #27272a', color: '#3b82f6' }}
-                      >
-                        {project.category}
-                      </span>
-                    </div>
-                  </div>
-
-                  <div className="p-6 space-y-4 flex-1 flex flex-col justify-between">
-                    <div className="space-y-3">
-                      <h3
-                        className="text-2xl font-bold group-hover:text-white transition-colors"
-                        style={{ color: '#ffffff', fontFamily: '"Outfit", "Inter", system-ui, sans-serif' }}
-                      >
-                        {project.title}
-                      </h3>
-                      <p className="text-xs leading-relaxed" style={{ color: '#a1a1aa' }}>
-                        {project.shortDescription}
-                      </p>
-                    </div>
-
-                    <div className="pt-4 flex items-center justify-between" style={{ borderTop: '1px solid #27272a' }}>
-                      <Link
-                        href={`/projects/${project.slug}`}
-                        className="btn-interactive inline-flex items-center gap-2 text-xs font-bold group/link"
-                        style={{ color: '#ffffff' }}
-                      >
-                        <span>Read Case Study</span>
-                        <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover/link:translate-x-1" />
-                      </Link>
-
-                      <a
-                        href={project.liveUrl}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="p-1 rounded-lg hover:text-white transition-colors"
-                        style={{ color: '#a1a1aa' }}
-                      >
-                        <ExternalLink className="w-4 h-4" />
-                      </a>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </AnimatePresence>
-          </motion.div>
-        </section>
+          </section>
+        )}
 
       </div>
     </PageTransition>
