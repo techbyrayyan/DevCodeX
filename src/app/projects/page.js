@@ -36,10 +36,9 @@ export default function ProjectsPage() {
 
   const categories = ['All', 'Web App', 'AI Platform', 'FinTech', 'E-Commerce'];
 
-  // Docfind project
-  const docfindProject = projects.find((p) => p.id === 'docfind');
-
-  const showDocfindFeatured = selectedCategory === 'All' || selectedCategory === 'Web App';
+  const filteredProjects = selectedCategory === 'All'
+    ? projects
+    : projects.filter((p) => p.category === selectedCategory);
 
   return (
     <PageTransition>
@@ -90,69 +89,73 @@ export default function ProjectsPage() {
           </motion.div>
         </section>
 
-        {/* ══ FEATURED DOCFIND SHOWCASE (Direct Image, No Card BG, Hover Centered Button) ══ */}
-        {showDocfindFeatured && docfindProject && (
-          <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial={{ opacity: 0, y: 25 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
-              className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center"
-            >
-              {/* ── LEFT COLUMN: Docfind Description Only ── */}
-              <div className="lg:col-span-5 space-y-4">
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-blue-500/30 bg-blue-500/10 text-xs font-mono font-semibold uppercase tracking-widest text-blue-400">
-                  <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
-                  <span>+ FEATURED HEALTHCARE PLATFORM</span>
-                </div>
-
-                <div className="space-y-2">
-                  <h2
-                    className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight"
-                    style={{ fontFamily: '"Outfit", "Inter", system-ui, sans-serif' }}
-                  >
-                    Docfind
-                  </h2>
-                  <p className="text-xl sm:text-2xl font-medium text-zinc-300">
-                    Find The Best Doctor Near You
-                  </p>
-                </div>
-
-                <p className="text-base sm:text-lg leading-relaxed text-zinc-300 font-normal pt-2">
-                  Find and book appointments with top verified medical specialists near you. Docfind is an accessible, modern healthcare platform engineered to simplify doctor discovery with specialty categorization, real-time doctor availability, verified patient ratings, and frictionless one-click consultation reservations.
-                </p>
-              </div>
-
-              {/* ── RIGHT COLUMN: Direct Image with Hover Centered Visit Site Button ── */}
-              <div className="lg:col-span-7">
-                <a
-                  href="https://docfind-two.vercel.app/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="group relative block w-full h-[300px] sm:h-[400px] lg:h-[460px] rounded-2xl overflow-hidden border border-zinc-800/90 shadow-2xl hover:border-blue-500/60 transition-all duration-500 cursor-pointer"
+        {/* ══ PROJECTS SHOWCASE (Direct Image, No Card BG, Hover Centered Button) ══ */}
+        {filteredProjects.length > 0 ? (
+          <div className="space-y-24 sm:space-y-32">
+            {filteredProjects.map((project, idx) => (
+              <section key={project.id} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <motion.div
+                  initial={{ opacity: 0, y: 25 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.55, delay: idx * 0.08, ease: [0.16, 1, 0.3, 1] }}
+                  className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center"
                 >
-                  <Image
-                    src="/docfind.png"
-                    alt="Docfind - Find The Best Doctor Near You"
-                    fill
-                    className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
-                    priority
-                  />
+                  {/* ── LEFT COLUMN: Description / Content Only ── */}
+                  <div className="lg:col-span-5 space-y-4">
+                    <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-blue-500/30 bg-blue-500/10 text-xs font-mono font-semibold uppercase tracking-widest text-blue-400">
+                      <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
+                      <span>+ {project.badge || project.category.toUpperCase()}</span>
+                    </div>
 
-                  {/* Centered Visit Site button on hover */}
-                  <div className="absolute inset-0 bg-black/55 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center z-20">
-                    <span className="btn-interactive inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full font-semibold text-sm bg-white text-black hover:bg-blue-400 hover:text-black transition-all duration-300 shadow-2xl transform scale-90 group-hover:scale-100">
-                      <span>Visit Live Site</span>
-                      <ExternalLink className="w-4 h-4" />
-                    </span>
+                    <div className="space-y-2">
+                      <h2
+                        className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight"
+                        style={{ fontFamily: '"Outfit", "Inter", system-ui, sans-serif' }}
+                      >
+                        {project.shortTitle || project.title}
+                      </h2>
+                      {project.subtitle && (
+                        <p className="text-xl sm:text-2xl font-medium text-zinc-300">
+                          {project.subtitle}
+                        </p>
+                      )}
+                    </div>
+
+                    <p className="text-base sm:text-lg leading-relaxed text-zinc-300 font-normal pt-2">
+                      {project.description}
+                    </p>
                   </div>
-                </a>
-              </div>
-            </motion.div>
-          </section>
-        )}
 
-        {!showDocfindFeatured && (
+                  {/* ── RIGHT COLUMN: Direct Image with Hover Centered Visit Site Button ── */}
+                  <div className="lg:col-span-7">
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="group relative block w-full h-[300px] sm:h-[400px] lg:h-[460px] rounded-2xl overflow-hidden border border-zinc-800/90 shadow-2xl hover:border-blue-500/60 transition-all duration-500 cursor-pointer"
+                    >
+                      <Image
+                        src={project.image}
+                        alt={project.title}
+                        fill
+                        className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                        priority={idx === 0}
+                      />
+
+                      {/* Centered Visit Site button on hover */}
+                      <div className="absolute inset-0 bg-black/55 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center z-20">
+                        <span className="btn-interactive inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full font-semibold text-sm bg-white text-black hover:bg-blue-400 hover:text-black transition-all duration-300 shadow-2xl transform scale-90 group-hover:scale-100">
+                          <span>Visit Live Site</span>
+                          <ExternalLink className="w-4 h-4" />
+                        </span>
+                      </div>
+                    </a>
+                  </div>
+                </motion.div>
+              </section>
+            ))}
+          </div>
+        ) : (
           <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-12">
             <div className="p-8 rounded-2xl border border-zinc-800/80 bg-zinc-900/30 max-w-md mx-auto space-y-3">
               <p className="text-zinc-400 text-sm font-medium">New case studies in this category are coming soon.</p>
