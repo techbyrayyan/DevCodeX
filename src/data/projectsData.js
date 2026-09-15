@@ -168,5 +168,39 @@ export const projects = [
       "Health Progress & Dietary Tracking Dashboard"
     ],
     gallery: ["/ilaj-bil-ghiza.png"]
+  },
+  {
+    id: "eatiz-restaurant",
+    slug: "eatiz-restaurant",
+    title: "Eatiz — Order Delicious Food Online & Fast Delivery",
+    shortTitle: "Eatiz Restaurant",
+    subtitle: "Pakistan's Premier Restaurant & Food Delivery Platform",
+    badge: "FOOD DELIVERY & RESTAURANT PLATFORM",
+    category: "Web App",
+    categoryKey: "webapp",
+    imagePosition: "right",
+    shortDescription: "A comprehensive food delivery and restaurant discovery portal connecting thousands of food lovers with top-rated eateries across Pakistan.",
+    description: "Hungry? Eatiz connects food lovers across Pakistan with 500+ top-rated restaurants. Features real-time online food ordering, instant table reservations, exclusive dining promo deals, and lightning-fast doorstep delivery.",
+    image: "/eatiz.png",
+    client: "Eatiz Foodtech Pakistan",
+    year: "2026",
+    duration: "4 Weeks",
+    liveUrl: "https://eatiz-restaurant.vercel.app/landing",
+    tags: ["Next.js", "React", "Tailwind CSS", "Food Delivery", "Restaurant POS"],
+    challenge: "Connecting users with hundreds of regional restaurants while managing live order tracking, menu synchronization, and table booking requires a resilient web architecture.",
+    solution: "We engineered Eatiz with rapid meal search filtering, dynamic restaurant storefronts, real-time cart checkout, and digital table reservation confirmation.",
+    results: [
+      { label: "Partner Restaurants", value: "500+" },
+      { label: "Active Customers", value: "50,000+" },
+      { label: "Menu Items Listed", value: "10,000+" }
+    ],
+    features: [
+      "500+ Top-Rated Restaurant Directory",
+      "Real-Time Doorstep Food Delivery Tracking",
+      "Seamless Online Table Reservation System",
+      "Exclusive Culinary Deals & Promo Discounts",
+      "Secure Digital Payment Gateways"
+    ],
+    gallery: ["/eatiz.png"]
   }
 ];
