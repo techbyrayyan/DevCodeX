@@ -202,5 +202,39 @@ export const projects = [
       "Secure Digital Payment Gateways"
     ],
     gallery: ["/eatiz.png"]
+  },
+  {
+    id: "testherapy",
+    slug: "testherapy",
+    title: "TES Therapy — Professional Mental Health Care & Counseling",
+    shortTitle: "TES Therapy",
+    subtitle: "Comprehensive Virtual & In-Person Mental Health Services",
+    badge: "MENTAL HEALTH & COUNSELING PLATFORM",
+    category: "Web App",
+    categoryKey: "webapp",
+    imagePosition: "left",
+    shortDescription: "A compassionate digital mental health platform connecting individuals with licensed therapists, clinical counselors, and wellness programs.",
+    description: "TES Mental Health Therapy is a comprehensive telehealth and counseling portal dedicated to mental wellness. Features a directory of licensed clinical therapists, online consultation reservations, confidential patient assessment tools, and personalized mental wellness roadmaps.",
+    image: "/testherapy.png",
+    client: "TES Mental Health Group",
+    year: "2026",
+    duration: "5 Weeks",
+    liveUrl: "https://testherapy.com/",
+    tags: ["Next.js", "React", "Tailwind CSS", "Mental Health", "Telehealth"],
+    challenge: "Individuals seeking professional mental health support face barriers in scheduling confidential consultations, finding specialized therapists, and tracking therapy progress.",
+    solution: "DevCodeX architected TES Therapy with an intuitive telehealth booking interface, practitioner directory, secure patient portals, and automated session reminder workflows.",
+    results: [
+      { label: "Therapy Sessions", value: "10,000+" },
+      { label: "Client Satisfaction", value: "99%" },
+      { label: "Licensed Counselors", value: "45+" }
+    ],
+    features: [
+      "Licensed Practitioner Directory & Specialty Search",
+      "Confidential Online & In-Person Telehealth Scheduling",
+      "Interactive Mental Wellness Self-Assessment Tools",
+      "Secure Patient Confidentiality Protocols",
+      "Automated Appointment Reminders & Calendar Sync"
+    ],
+    gallery: ["/testherapy.png"]
   }
 ];
