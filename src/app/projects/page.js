@@ -92,70 +92,74 @@ export default function ProjectsPage() {
         {/* ══ PROJECTS SHOWCASE (Direct Image, No Card BG, Hover Centered Button) ══ */}
         {filteredProjects.length > 0 ? (
           <div className="space-y-24 sm:space-y-32">
-            {filteredProjects.map((project, idx) => (
-              <section key={project.id} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <motion.div
-                  initial={{ opacity: 0, y: 25 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.55, delay: idx * 0.08, ease: [0.16, 1, 0.3, 1] }}
-                  className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center"
-                >
-                  {/* ── LEFT COLUMN: Description / Content Only ── */}
-                  <div className="lg:col-span-5 space-y-4">
-                    <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-blue-500/30 bg-blue-500/10 text-xs font-mono font-semibold uppercase tracking-widest text-blue-400">
-                      <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
-                      <span>+ {project.badge || project.category.toUpperCase()}</span>
-                    </div>
+            {filteredProjects.map((project, idx) => {
+              const isImageLeft = project.id === 'chatgpt-clone' || idx % 2 === 1;
 
-                    <div className="space-y-2">
-                      <h2
-                        className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight"
-                        style={{ fontFamily: '"Outfit", "Inter", system-ui, sans-serif' }}
-                      >
-                        {project.shortTitle || project.title}
-                      </h2>
-                      {project.subtitle && (
-                        <p className="text-xl sm:text-2xl font-medium text-zinc-300">
-                          {project.subtitle}
-                        </p>
-                      )}
-                    </div>
-
-                    <p className="text-base sm:text-lg leading-relaxed text-zinc-300 font-normal pt-2">
-                      {project.description}
-                    </p>
-                  </div>
-
-                  {/* ── RIGHT COLUMN: Direct Image with Hover Centered Visit Site Button ── */}
-                  <div className="lg:col-span-7">
-                    <a
-                      href={project.liveUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="group relative block w-full h-[300px] sm:h-[400px] lg:h-[460px] rounded-2xl overflow-hidden border border-zinc-800/90 shadow-2xl hover:border-blue-500/60 transition-all duration-500 cursor-pointer"
-                    >
-                      <Image
-                        src={project.image}
-                        alt={project.title}
-                        fill
-                        unoptimized
-                        priority
-                        sizes="(max-width: 1024px) 100vw, 60vw"
-                        className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
-                      />
-
-                      {/* Centered Visit Site button on hover */}
-                      <div className="absolute inset-0 bg-black/55 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center z-20">
-                        <span className="btn-interactive inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full font-semibold text-sm bg-white text-black hover:bg-blue-400 hover:text-black transition-all duration-300 shadow-2xl transform scale-90 group-hover:scale-100">
-                          <span>Visit Live Site</span>
-                          <ExternalLink className="w-4 h-4" />
-                        </span>
+              return (
+                <section key={project.id} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                  <motion.div
+                    initial={{ opacity: 0, y: 25 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.55, delay: idx * 0.08, ease: [0.16, 1, 0.3, 1] }}
+                    className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center"
+                  >
+                    {/* ── Content Column ── */}
+                    <div className={`lg:col-span-5 space-y-4 ${isImageLeft ? 'lg:order-2' : 'lg:order-1'}`}>
+                      <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-blue-500/30 bg-blue-500/10 text-xs font-mono font-semibold uppercase tracking-widest text-blue-400">
+                        <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
+                        <span>+ {project.badge || project.category.toUpperCase()}</span>
                       </div>
-                    </a>
-                  </div>
-                </motion.div>
-              </section>
-            ))}
+
+                      <div className="space-y-2">
+                        <h2
+                          className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight"
+                          style={{ fontFamily: '"Outfit", "Inter", system-ui, sans-serif' }}
+                        >
+                          {project.shortTitle || project.title}
+                        </h2>
+                        {project.subtitle && (
+                          <p className="text-xl sm:text-2xl font-medium text-zinc-300">
+                            {project.subtitle}
+                          </p>
+                        )}
+                      </div>
+
+                      <p className="text-base sm:text-lg leading-relaxed text-zinc-300 font-normal pt-2">
+                        {project.description}
+                      </p>
+                    </div>
+
+                    {/* ── Direct Image with Hover Centered Visit Site Button ── */}
+                    <div className={`lg:col-span-7 ${isImageLeft ? 'lg:order-1' : 'lg:order-2'}`}>
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="group relative block w-full h-[300px] sm:h-[400px] lg:h-[460px] rounded-2xl overflow-hidden border border-zinc-800/90 shadow-2xl hover:border-blue-500/60 transition-all duration-500 cursor-pointer"
+                      >
+                        <Image
+                          src={project.image}
+                          alt={project.title}
+                          fill
+                          unoptimized
+                          priority
+                          sizes="(max-width: 1024px) 100vw, 60vw"
+                          className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                        />
+
+                        {/* Centered Visit Site button on hover */}
+                        <div className="absolute inset-0 bg-black/55 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center z-20">
+                          <span className="btn-interactive inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full font-semibold text-sm bg-white text-black hover:bg-blue-400 hover:text-black transition-all duration-300 shadow-2xl transform scale-90 group-hover:scale-100">
+                            <span>Visit Live Site</span>
+                            <ExternalLink className="w-4 h-4" />
+                          </span>
+                        </div>
+                      </a>
+                    </div>
+                  </motion.div>
+                </section>
+              );
+            })}
           </div>
         ) : (
           <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-12">
