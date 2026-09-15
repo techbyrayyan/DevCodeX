@@ -43,7 +43,7 @@ export const projects = [
     categoryKey: "ai",
     shortDescription: "An advanced generative AI chat application featuring multi-session management, streaming responses, and developer workspace tools.",
     description: "An advanced conversational AI platform designed for high-speed assistance and daily workflow productivity. Features a persistent multi-chat sidebar, real-time streaming AI responses, integrated Codex and Apps shortcuts, and a sleek dark-mode desktop-class user interface.",
-    image: "/chatgpt clone.png",
+    image: "/chatgpt-clone.png",
     client: "AI Innovation Studio",
     year: "2026",
     duration: "4 Weeks",
@@ -63,6 +63,6 @@ export const projects = [
       "Dark Minimalist Interface",
       "Instant Message Querying & Copying"
     ],
-    gallery: ["/chatgpt clone.png"]
+    gallery: ["/chatgpt-clone.png"]
   }
 ];

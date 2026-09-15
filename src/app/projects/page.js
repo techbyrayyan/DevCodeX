@@ -138,8 +138,10 @@ export default function ProjectsPage() {
                         src={project.image}
                         alt={project.title}
                         fill
+                        unoptimized
+                        priority
+                        sizes="(max-width: 1024px) 100vw, 60vw"
                         className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
-                        priority={idx === 0}
                       />
 
                       {/* Centered Visit Site button on hover */}

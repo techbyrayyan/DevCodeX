@@ -76,6 +76,7 @@ export default function ProjectDetailPage({ params }) {
               src={project.image}
               alt={project.title}
               fill
+              unoptimized
               className="object-cover object-top"
               priority
             />
