@@ -1,6 +1,5 @@
 'use client';
 
-import { useState } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import PageTransition from '@/components/PageTransition';
@@ -32,14 +31,6 @@ const staggerContainer = {
 };
 
 export default function ProjectsClient() {
-  const [selectedCategory, setSelectedCategory] = useState('All');
-
-  const categories = ['All', 'Web App', 'AI Platform', 'FinTech', 'E-Commerce'];
-
-  const filteredProjects = selectedCategory === 'All'
-    ? projects
-    : projects.filter((p) => p.category === selectedCategory);
-
   return (
     <PageTransition>
       <div className="space-y-20 pb-24 font-sans" style={{ backgroundColor: 'transparent', color: '#ffffff' }}>
@@ -67,32 +58,12 @@ export default function ProjectsClient() {
             <motion.p variants={fadeInUp} className="text-base sm:text-xl max-w-2xl mx-auto leading-relaxed" style={{ color: '#a1a1aa' }}>
               Explore our curated portfolio of bespoke web platforms, autonomous AI infrastructure, and high-converting commercial applications.
             </motion.p>
-
-            {/* Category Filters */}
-            <motion.div variants={fadeInUp} className="flex flex-wrap items-center justify-center gap-2 pt-6">
-              {categories.map((cat) => (
-                <button
-                  key={cat}
-                  onClick={() => setSelectedCategory(cat)}
-                  className="btn-interactive text-xs font-medium px-5 py-2.5 rounded-full cursor-pointer transition-all duration-200"
-                  style={{
-                    backgroundColor: selectedCategory === cat ? '#ffffff' : '#121212',
-                    color: selectedCategory === cat ? '#000000' : '#a1a1aa',
-                    border: selectedCategory === cat ? 'none' : '1px solid #27272a',
-                    fontWeight: selectedCategory === cat ? '600' : '500',
-                  }}
-                >
-                  {cat}
-                </button>
-              ))}
-            </motion.div>
           </motion.div>
         </section>
 
         {/* ══ PROJECTS SHOWCASE (Direct Image, No Card BG, Hover Centered Button) ══ */}
-        {filteredProjects.length > 0 ? (
-          <div className="space-y-24 sm:space-y-32">
-            {filteredProjects.map((project, idx) => {
+        <div className="space-y-24 sm:space-y-32">
+          {projects.map((project, idx) => {
               const isImageLeft = project.imagePosition ? project.imagePosition === 'left' : (idx % 2 === 1);
 
               return (
@@ -161,19 +132,6 @@ export default function ProjectsClient() {
               );
             })}
           </div>
-        ) : (
-          <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-12">
-            <div className="p-8 rounded-2xl border border-zinc-800/80 bg-zinc-900/30 max-w-md mx-auto space-y-3">
-              <p className="text-zinc-400 text-sm font-medium">New case studies in this category are coming soon.</p>
-              <button
-                onClick={() => setSelectedCategory('All')}
-                className="btn-interactive text-xs font-semibold text-blue-400 hover:text-white underline cursor-pointer"
-              >
-                View All Projects
-              </button>
-            </div>
-          </section>
-        )}
 
       </div>
     </PageTransition>
