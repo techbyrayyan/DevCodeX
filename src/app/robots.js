@@ -1,10 +1,13 @@
 export default function robots() {
   return {
-    rules: {
-      userAgent: '*',
-      allow: '/',
-      disallow: ['/api/'],
-    },
+    rules: [
+      {
+        userAgent: '*',
+        allow: '/',
+        disallow: ['/api/'],
+      },
+    ],
     sitemap: 'https://devcodex.com/sitemap.xml',
+    host: 'https://devcodex.com',
   };
 }

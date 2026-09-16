@@ -14,7 +14,7 @@ export default function NotFound() {
 
         <div className="space-y-2">
           <span className="text-6xl font-black font-mono cyan-gradient-text">404</span>
-          <h2 className="text-2xl font-bold text-white">Dimension Not Found</h2>
+          <h1 className="text-2xl font-bold text-white">404 — Dimension Not Found</h1>
           <p className="text-xs text-neutral-400">
             The page or route you are looking for has shifted coordinates or does not exist.
           </p>
