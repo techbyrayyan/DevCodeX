@@ -236,5 +236,39 @@ export const projects = [
       "Automated Appointment Reminders & Calendar Sync"
     ],
     gallery: ["/testherapy.png"]
+  },
+  {
+    id: "brandhive",
+    slug: "brandhive",
+    title: "Brandhive — Web & Brand Design For Ambitious Founders",
+    shortTitle: "Brandhive",
+    subtitle: "Premium Digital Design Studio for Startups & Founders",
+    badge: "BRANDING & WEB DESIGN AGENCY",
+    category: "Web App",
+    categoryKey: "webapp",
+    imagePosition: "right",
+    shortDescription: "A premier digital design studio crafting high-contrast, conversion-engineered websites and bold brand identities for ambitious founders.",
+    description: "Brandhive is a creative digital agency specializing in branding, graphic design, web development, UI/UX, digital marketing, SEO, social media, and AI-powered content. From brand identity to fully launched websites, Brandhive helps businesses stand out and scale with 100+ successful projects delivered.",
+    image: "/brand-hive.png",
+    client: "Brandhive Creative Studio",
+    year: "2026",
+    duration: "6 Weeks",
+    liveUrl: "https://brandhavi.vercel.app/",
+    tags: ["Next.js", "React", "Tailwind CSS", "Branding", "UI/UX Design"],
+    challenge: "Ambitious founders need a single trusted partner who delivers both stunning brand identity and high-converting digital presence without juggling multiple agencies.",
+    solution: "DevCodeX built Brandhive as an end-to-end creative agency platform covering branding, web design, graphic design, digital marketing, SEO, and AI content — all under one roof.",
+    results: [
+      { label: "Projects Delivered", value: "100+" },
+      { label: "Conversion Rate Increase", value: "180%" },
+      { label: "Seed & Series A Funding Raised", value: "\$250k+" }
+    ],
+    features: [
+      "Brand Identity & Persona Development",
+      "High-Conversion Web Design & Development",
+      "Graphic Design & Motion Visual Production",
+      "Digital Marketing, SEO & Social Media Strategy",
+      "AI-Powered Content Creation & Optimization"
+    ],
+    gallery: ["/brand-hive.png"]
   }
 ];
